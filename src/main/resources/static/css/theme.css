@@ -484,6 +484,15 @@ p.dolor:after{
 	-moz-transition:.5s all;
 	-ms-transition:.5s all;
 }
+.about span.mdi {
+    font-size: 2em;
+	color: rgb(134, 133, 133);
+	transition:.5s all;
+	-o-transition:.5s all;
+	-webkit-transition:.5s all;
+	-moz-transition:.5s all;
+	-ms-transition:.5s all;
+}
 .about-grid:nth-child(1) .about-grid-right {
     border-right: 1px solid rgba(188, 188, 188, 0.57);
 }
@@ -505,6 +514,9 @@ p.dolor:after{
     left: 10%;
 }
 .about-grid:hover span.glyphicon{
+	color:#F58703;
+}
+.about-grid:hover span.mdi{
 	color:#F58703;
 }
 .about-grid:hover .about-grid-left h4{
@@ -2763,6 +2775,9 @@ a.pa_italic:focus {
 		width: 71%;
 	}
 	.about span.glyphicon {
+		font-size: 1.5em;
+	}
+	.about span.mdi {
 		font-size: 1.5em;
 	}
 	.agileits_about_bottom_left {

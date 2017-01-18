@@ -7,7 +7,60 @@
 </head>
 <section th:replace="fragments/head :: head(Home)"></section>
 <body>
-	<section th:replace="fragments/nav"></section>
+	<section th:replace="fragments/nav(Home)"></section>
+
+	<div class="about">
+		<div class="container">
+			<h3>Doctors without Guitars</h3>
+			<p class="dolor">is a Pathfinder management system.</p>
+			<div class="about-grids">
+				<div class="col-md-6 about-grid about-one">
+					<div class="about-grid-left">
+						<h4>Skill Checks</h4>
+						<p>Keep track of skill modifiers with a simple user interface.</p>
+					</div>
+					<div class="about-grid-right">
+						<span class="mdi mdi-dice-d20" aria-hidden="true"></span>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-6 about-grid about-one">
+					<div class="about-grid-right aliquam">
+						<span class="mdi mdi-account-card-details" aria-hidden="true"></span>
+					</div>
+					<div class="about-grid-left non">
+						<h4>Character Sheets</h4>
+						<p>Manage your character sheet online without having to deal with PDFs.</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="about-grids">
+				<div class="col-md-6 about-grid">
+					<div class="about-grid-left">
+						<h4>Maps</h4>
+						<p>Document your party's campaign on an interactive map.</p>
+					</div>
+					<div class="about-grid-right">
+						<span class="mdi mdi-map" aria-hidden="true"></span>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-6 about-grid">
+					<div class="about-grid-right aliquam">
+						<span class="mdi mdi-dice-d4" aria-hidden="true"></span>
+					</div>
+					<div class="about-grid-left non">
+						<h4>Attack Modifiers</h4>
+						<p>Activate buffs and calculate attack and damage modifiers with a click of a button.</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
 
 	<section th:replace="fragments/js"></section>
 </body>

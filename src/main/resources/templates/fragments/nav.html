@@ -1,4 +1,4 @@
-<section th:fragment="nav">
+<section th:fragment="nav(subtitle)">
 	<div class="header-bottom">
 		<div class="container">
 			<nav class="navbar navbar-default">
@@ -20,8 +20,11 @@
 				<div class="collapse navbar-collapse nav-wil"
 					id="bs-example-navbar-collapse-1">
 					<nav class="cl-effect-1" id="cl-effect-1">
-						<ul class="nav navbar-nav">
-							<li class="active"><a th:href="@{/}">Home</a></li>
+						<ul th:if="${user == null}" class="nav navbar-nav">
+							<li><a href="#" class="hvr-bounce-to-bottom">Login</a></li>
+							<li><a href="#" class="hvr-bounce-to-bottom">Register</a></li>
+						</ul>
+						<ul th:if="${user != null}" class="nav navbar-nav">
 							<li><a href="#" class="hvr-bounce-to-bottom">Character Sheet</a></li>
 							<li><a href="#" class="hvr-bounce-to-bottom">Party</a></li>
 							<li><a href="#" class="hvr-bounce-to-bottom">Class</a></li>
@@ -33,8 +36,8 @@
 			<div class="w3ls_search">
 				<div class="cd-main-header">
 					<ul class="cd-header-buttons">
-						<li><a class="icon icon-border facebook" href="#"></a></li>
-						<li><a class="icon icon-border wiki" href="#"></a></li>
+						<li><a class="icon icon-border facebook" href="https://www.facebook.com/groups/1839522119662611/" target="_blank"></a></li>
+						<li><a class="icon icon-border wiki" href="http://www.d20pfsrd.com/" target="_blank"></a></li>
 					</ul>
 				</div>
 				<div id="cd-search" class="cd-search">
