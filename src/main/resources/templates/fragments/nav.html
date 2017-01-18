@@ -21,8 +21,8 @@
 					id="bs-example-navbar-collapse-1">
 					<nav class="cl-effect-1" id="cl-effect-1">
 						<ul th:if="${user == null}" class="nav navbar-nav">
-							<li><a href="#" class="hvr-bounce-to-bottom">Login</a></li>
-							<li><a href="#" class="hvr-bounce-to-bottom">Register</a></li>
+							<li th:classappend="${subtitle} == 'Login' ? 'active' : 'inactive'"><a th:href="@{/login}" class="hvr-bounce-to-bottom">Login</a></li>
+							<li th:classappend="${subtitle} == 'Register' ? 'active' : 'inactive'"><a th:href="@{/register}" class="hvr-bounce-to-bottom">Register</a></li>
 						</ul>
 						<ul th:if="${user != null}" class="nav navbar-nav">
 							<li><a href="#" class="hvr-bounce-to-bottom">Character Sheet</a></li>

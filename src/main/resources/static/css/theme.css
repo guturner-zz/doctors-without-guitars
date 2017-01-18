@@ -1540,9 +1540,6 @@ section#tables  p {
 .nav-tabs {
 	margin-bottom: 3em;
 }
-.alert {
-	font-size: 0.85em;
-}
 h1.t-button,h2.t-button,h3.t-button,h4.t-button,h5.t-button {
 	line-height:2em;
 	margin-top:0.5em;
@@ -1619,9 +1616,6 @@ h2.typoh2{
 	.label {
 		font-size: 53%;
 	}
-	.alert,p {
-		font-size: 14px;
-	}
 	.pagination {
 		margin: 20px 0 0px;
 	}
@@ -1632,13 +1626,6 @@ h2.typoh2{
 	}
 	h3.title {
 		font-size: 1.6em;
-	}
-	.alert, p,ol.breadcrumb li, .grid_3 p,.well, ul.list-group li, li.list-group-item1,a.list-group-item {
-		font-size: 13px;
-	}
-	.alert {
-		padding: 10px;
-		margin-bottom: 10px;
 	}
 	ul.pagination li a {
 		font-size: 14px;
@@ -2858,9 +2845,6 @@ a.pa_italic:focus {
 	}
 	.about h3 {
 		font-size: 1.38em;
-	}
-	.alert, p,.agileits_about_bottom_left ul li,ul.contact_info li,.agileits_mail_grid_left input[type="text"], .agileits_mail_grid_left input[type="email"], .agileits_mail_grid_left textarea,.panel-body,.wthree_write_reply input[type="text"], .wthree_write_reply input[type="email"], .wthree_write_reply textarea,.w3_single_grid_left_grid1_left ul li,.wthree_service_breadcrumb_left ul li,.agileits_newsletter_grids input[type="email"],.agileinfo_footer_grid ul li a {
-		font-size: 13px;
 	}
 	.map iframe {
 		min-height: 150px;
