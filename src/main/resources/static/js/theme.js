@@ -31,13 +31,6 @@ jQuery(document).ready(function($){
 		closeNav();
 	});
 
-	
-	
-	
-
-
-	
-
 	//submenu items - go back link
 	$('.go-back').on('click', function(){
 		$(this).parent('ul').addClass('is-hidden').parent('.has-children').parent('ul').removeClass('moves-out');
@@ -87,8 +80,9 @@ jQuery(document).ready(function($){
 	}
 
 	function moveSearchBar(){
-		var navigation = $('.cd-search');
-		navigation.detach();
-		navigation.insertBefore('.cd-header-buttons');
+		var searchBar = $('.cd-search');
+		searchBar.detach();
+		searchBar.insertBefore('.logo');
 	}
+	
 });

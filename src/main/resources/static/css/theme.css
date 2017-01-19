@@ -356,6 +356,10 @@ ul.social-icons li {
 .cd-search-trigger.search-is-visible span::after {
 
 }
+ul li a {
+	cursor: pointer;
+	cursor: hand;
+}
 .cd-search {
 	position: absolute;
 	width: 100%;
@@ -367,6 +371,7 @@ ul.social-icons li {
 	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
 	-moz-transition: opacity .3s 0s, visibility 0s .3s;
 	transition: opacity .3s 0s, visibility 0s .3s;
+	margin-top: 8em;
 }
 .cd-search input {
     border-radius: 0;

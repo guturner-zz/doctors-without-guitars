@@ -16,26 +16,6 @@
 						</a>
 					</div>
 				</div>
-
-				<div class="collapse navbar-collapse nav-wil"
-					id="bs-example-navbar-collapse-1">
-					<nav class="cl-effect-1" id="cl-effect-1">
-						<ul th:if="${user == null}" class="nav navbar-nav">
-							<li th:classappend="${subtitle} == 'Login' ? 'active' : 'inactive'"><a th:href="@{/login}" class="hvr-bounce-to-bottom">Login</a></li>
-							<li th:classappend="${subtitle} == 'Register' ? 'active' : 'inactive'"><a th:href="@{/register}" class="hvr-bounce-to-bottom">Register</a></li>
-						</ul>
-						<ul th:if="${user != null}" class="nav navbar-nav">
-							<li><a href="#" th:text="${user}" class="hvr-bounce-to-bottom"></a></li>
-							<li><a href="#" class="hvr-bounce-to-bottom">Character Sheet</a></li>
-							<li><a href="#" class="hvr-bounce-to-bottom">Party</a></li>
-							<li><a href="#cd-search" class="hvr-bounce-to-bottom cd-search-trigger">Ask DM</a></li>
-							<li>
-								<form id="logoutForm" method="post" th:action="@{/logout}"></form>
-								<a onclick="document.getElementById('logoutForm').submit();" class="hvr-bounce-to-bottom">Logout</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
 			</nav>
 			<div class="w3ls_search">
 				<div class="cd-main-header">
@@ -49,6 +29,25 @@
 						<input name="Search" type="search" placeholder="What is your quest?"></input>
 					</form>
 				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="service-breadcrumb">
+		<div class="container">
+			<div class="wthree_service_breadcrumb_left">
+				<ul th:if="${user == null}" class="nav navbar-nav">
+					<li><a th:href="@{/login}">Login</a></li>
+					<li><a th:href="@{/register}">Register</a></li>
+				</ul>
+				<ul th:if="${user != null}" class="nav navbar-nav">
+					<form id="logoutForm" method="post" th:action="@{/logout}"></form>
+					<li><a href="#" th:text="${user}"></a></li>
+					<li><a href="#">Character Sheet</a></li>
+					<li><a href="#">Party</a></li>
+					<li><a href="#cd-search" class="cd-search-trigger">Ask DM</a></li>
+					<li><a onclick="document.getElementById('logoutForm').submit();">Logout</a></li>
+				</ul>
 			</div>
 			<div class="clearfix"></div>
 		</div>
