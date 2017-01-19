@@ -9,47 +9,51 @@
 <body>
 	<section th:replace="fragments/nav :: nav(Login)"></section>
 
-	<div class="container">
-
-		<div class="alert alert-dismissable alert-success"
-			th:if="${not #strings.isEmpty(status)}">
-			<p th:text="${status}">|Login Status|</p>
-		</div>
-
-		<div class="alert alert-dismissable alert-danger bad-login"
-			th:if="${errors != null and not #lists.isEmpty(errors)}">
-			<!--/*/ <th:block data-th-each="error : ${errors}"> /*/-->
-			<p th:text="${error.message}">|Error message here.|</p>
-			<!--/*/ </th:block> /*/-->
-		</div>
-
-		<form method="post" role="form" class="login-form form-horizontal">
-			<div th:each="field : ${form.fields}" form-group="true"
-				th:class="'form-group group-' + ${field.name}">
-				<th:block th:if="${field.type == 'hidden'}">
-					<input th:name="${field.name}" th:type="${field.type}"
-						th:value="${field.value}" />
-				</th:block>
-				<th:block th:if="${field.type != 'hidden'}">
-					<label
-						th:class="${#lists.isEmpty(accountStores) ? 'col-sm-4' : 'col-sm-12'}"
-						th:text="${field.label}">|Field label|</label>
-					<div
-						th:class="${#lists.isEmpty(accountStores) ? 'col-sm-8' : 'col-sm-12'}">
-						<input th:name="${field.name}" th:value="${field.value}"
-							th:type="${field.type}" th:placeholder="${field.placeholder}"
-							th:required="${field.required}" class="form-control" />
-					</div>
-				</th:block>
+	<div class="login-page">
+		<div class="container">
+			<div class="alert alert-dismissable alert-success"
+				th:if="${not #strings.isEmpty(status)}">
+				<p th:text="${status}">|Login Status|</p>
 			</div>
 
-			<div>
-				<button type="submit" class="login btn btn-login btn-sp-green"
-					th:text="#{stormpath.web.login.form.button.value}">|Login|
-				</button>
+			<div class="alert alert-dismissable alert-danger bad-login"
+				th:if="${errors != null and not #lists.isEmpty(errors)}">
+				<!--/*/ <th:block data-th-each="error : ${errors}"> /*/-->
+				<p th:text="${error.message}">|Error message here.|</p>
+				<!--/*/ </th:block> /*/-->
 			</div>
-		</form>
 
+			<div class="agileits_mail_grids">
+				<div class="col-md-8 agileits_mail_grid_left">
+					<form method="post" role="form">
+						<div th:each="field : ${form.fields}">
+							<th:block th:if="${field.type == 'hidden'}">
+								<input th:name="${field.name}" th:type="${field.type}"
+									th:value="${field.value}" />
+							</th:block>
+							<th:block th:if="${field.type != 'hidden'}">
+								<h4 th:text="${field.label}">|Field label|</h4>
+								<input th:name="${field.name}"
+									th:value="${field.value}"
+									th:placeholder="${field.placeholder}"
+									th:required="${field.required}"
+									th:type="${field.type}" 
+									formnovalidate="true" />
+							</th:block>
+						</div>
+						<div>
+							<h1>
+								<button type="submit" class="label label-default"
+									th:text="#{stormpath.web.login.form.button.value}">|Login|
+								</button>
+							</h1>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4 agileits_mail_grid_right"></div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
 	</div>
 
 	<section th:replace="fragments/js"></section>

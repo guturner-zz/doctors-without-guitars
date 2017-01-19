@@ -2,9 +2,9 @@ jQuery(document).ready(function($){
 	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
 	var MqL = 1170;
 	//move nav element position according to window width
-	moveNavigation();
+	moveSearchBar();
 	$(window).on('resize', function(){
-		(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
+		(!window.requestAnimationFrame) ? setTimeout(moveSearchBar, 300) : window.requestAnimationFrame(moveSearchBar);
 	});
 
 	//mobile - open lateral menu clicking on the menu icon
@@ -86,15 +86,9 @@ jQuery(document).ready(function($){
 		}
 	}
 
-	function moveNavigation(){
-		var navigation = $('.cd-nav');
-  		var desktop = checkWindowWidth();
-        if ( desktop ) {
-			navigation.detach();
-			navigation.insertBefore('.cd-header-buttons');
-		} else {
-			navigation.detach();
-			navigation.insertAfter('.cd-main-content');
-		}
+	function moveSearchBar(){
+		var navigation = $('.cd-search');
+		navigation.detach();
+		navigation.insertBefore('.cd-header-buttons');
 	}
 });

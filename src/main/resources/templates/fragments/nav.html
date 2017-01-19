@@ -1,5 +1,5 @@
 <section th:fragment="nav(subtitle)">
-	<div class="header-bottom">
+	<div class="header">
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -25,10 +25,14 @@
 							<li th:classappend="${subtitle} == 'Register' ? 'active' : 'inactive'"><a th:href="@{/register}" class="hvr-bounce-to-bottom">Register</a></li>
 						</ul>
 						<ul th:if="${user != null}" class="nav navbar-nav">
+							<li><a href="#" th:text="${user}" class="hvr-bounce-to-bottom"></a></li>
 							<li><a href="#" class="hvr-bounce-to-bottom">Character Sheet</a></li>
 							<li><a href="#" class="hvr-bounce-to-bottom">Party</a></li>
-							<li><a href="#" class="hvr-bounce-to-bottom">Class</a></li>
 							<li><a href="#cd-search" class="hvr-bounce-to-bottom cd-search-trigger">Ask DM</a></li>
+							<li>
+								<form id="logoutForm" method="post" th:action="@{/logout}"></form>
+								<a onclick="document.getElementById('logoutForm').submit();" class="hvr-bounce-to-bottom">Logout</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -46,6 +50,7 @@
 					</form>
 				</div>
 			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 </section>

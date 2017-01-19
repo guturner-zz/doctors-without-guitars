@@ -9,6 +9,13 @@ html, body{
 	font-family: 'Open Sans', sans-serif;
 	background:#ffffff;
 }
+.info {
+	font-size: 12px;
+	margin-bottom: 2.5em;
+}
+.info-enabled {
+	margin-bottom: 0.5em !important;
+}
 p{
 	margin:0;
 	font-size:14px;
@@ -25,7 +32,7 @@ body a:hover{
 	text-decoration:none;
 }
 /*-- header --*/
-input[type="submit"],.w3l_header_left ul li a,.related-post-right h4 a,.comments-grid-right h4 a,.reply a,.w3_single_grid_left_grid ul li a,ul.contact_info li a,.w3ls_services_bottom_grid_grid_pos,.footer-copy p a,.w3l_services_grid h4 a,.agileinfo_footer_grid ul li a,.wthree_service_breadcrumb_left ul li a{
+input[type="submit"],.w3l_header_left ul li a, ul form li a, .related-post-right h4 a,.comments-grid-right h4 a,.reply a,.w3_single_grid_left_grid ul li a,ul.contact_info li a,.w3ls_services_bottom_grid_grid_pos,.footer-copy p a,.w3l_services_grid h4 a,.agileinfo_footer_grid ul li a,.wthree_service_breadcrumb_left ul li a{
 	transition: .5s ease-in;
 	-webkit-transition: .5s ease-in;
 	-moz-transition: .5s ease-in;
@@ -36,7 +43,7 @@ input[type="submit"],.w3l_header_left ul li a,.related-post-right h4 a,.comments
 	float:left;
 	margin: .3em 0 0;
 }
-.w3l_header_left ul li{
+.w3l_header_left ul li, ul form li a{
 	display:inline-block;
 	margin-right:2em;
 	font-size:14px;
@@ -45,11 +52,11 @@ input[type="submit"],.w3l_header_left ul li a,.related-post-right h4 a,.comments
 .w3l_header_left ul li span{
 	padding-right:1em;
 }
-.w3l_header_left ul li a{
+.w3l_header_left ul li a, ul form li a{
 	color:#212121;
 	text-decoration:none;
 }
-.w3l_header_left ul li a:hover{
+.w3l_header_left ul li a:hover, ul li form a:hover{
 	color:#999;
 }
 .w3l_header_right{
@@ -235,7 +242,7 @@ ul.social-icons li {
 }
 .navbar-nav {
     float: left;
-    margin:0 0 0 5em;
+    margin:0 0 0 2em;
 }
 .navbar-default .navbar-brand,.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: #212121;
@@ -261,10 +268,10 @@ ul.social-icons li {
     background: none;
 	color:#F58703;
 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > form > a:focus {
     color:#F58703;
 }
-.navbar-nav > li > a {
+.navbar-nav > li > a, .navbar-nav > li > form > a {
     font-size: 14px;
     text-transform: uppercase;
     padding: 20px 15px 0;
@@ -404,10 +411,10 @@ ul.social-icons li {
 }
 /*-- //header --*/
 /*-- about --*/
-.about,.team,.testimonials,.comments,.single,.services,.services-bottom,.services-icons,.gallery,.typo,.mail{
+.about,.team,.testimonials,.comments,.single,.services,.services-bottom,.services-icons,.register-page,.typo,.login-page{
 	padding:5em 0;
 }
-.about h3,.team h3,.testimonials h3,.newsletter h3,.services h3,.services-bottom h3,.gallery h3,h3.title,.mail h3{
+.about h3,.team h3,.testimonials h3,.newsletter h3,.services h3,.services-bottom h3,.register-page h3,h3.title,.login-page h3{
 	font-size: 2.5em;
     color: #212121;
     text-align: center;
@@ -1654,7 +1661,7 @@ h2.typoh2{
 	color:#F58703;
 	margin-bottom:1em;
 }
-.agileits_mail_grid_left input[type="text"],.agileits_mail_grid_left input[type="email"],.agileits_mail_grid_left textarea{
+.agileits_mail_grid_left input[type="text"],.agileits_mail_grid_left input[type="email"],.agileits_mail_grid_left input[type="password"]{
 	outline: none;
     background: #f5f5f5;
     border: 1px solid #E8E8E8;
@@ -2007,7 +2014,7 @@ a.pa_italic:focus {
 	}
 }
 @media (max-width: 1280px){
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .gallery, .typo, .mail {
+	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
 		padding: 4em 0;
 	}
 	.agileits_about_bottom_left {
@@ -2036,7 +2043,7 @@ a.pa_italic:focus {
 	.about-grids {
 		margin: 3em 0 0;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 2.2em;
 	}
 	.agileits_about_bottom_left h3 {
@@ -2309,7 +2316,7 @@ a.pa_italic:focus {
 	}
 }
 @media (max-width: 768px){
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .gallery, .typo, .mail {
+	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
 		padding: 3em 0;
 	}
 	.agile_testimonials_grid1:before {
@@ -2440,7 +2447,7 @@ a.pa_italic:focus {
 	.navbar-toggle {
 		margin: .6em 17.2em 0 0;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.8em;
 	}
 	p.dolor {
@@ -2552,10 +2559,10 @@ a.pa_italic:focus {
 	.navbar-toggle {
 		margin: .6em 11.9em 0 0;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.6em;
 	}
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .gallery, .typo, .mail {
+	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
 		padding: 2em 0;
 	}
 	.about-grid-right {
@@ -2752,7 +2759,7 @@ a.pa_italic:focus {
 	.navbar-toggle {
 		margin: .6em 5.9em 0 0;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.5em;
 	}
 	.about-grid-left h4 {
@@ -2796,7 +2803,7 @@ a.pa_italic:focus {
 	.w3l_header_left ul li span {
 		padding-right: .5em;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.7em;
 	}
 	.wthree_team_grid {
@@ -2840,7 +2847,7 @@ a.pa_italic:focus {
 		font-size: 14px;
 		padding: 10px 25px;
 	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .gallery h3, h3.title, .mail h3 {
+	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.5em;
 	}
 	.about h3 {
