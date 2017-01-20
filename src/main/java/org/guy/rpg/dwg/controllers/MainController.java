@@ -2,23 +2,22 @@ package org.guy.rpg.dwg.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.guy.rpg.dwg.security.UserManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.stormpath.sdk.account.Account;
-
+/**
+ * Controller for core application pages.
+ * Main Menu, About, etc.
+ * 
+ * @author Guy
+ */
 @Controller
-public class MainController {
+public class MainController extends BaseController {
 
 	@RequestMapping("/")
 	public String main(HttpServletRequest request, Model model) {
-		Account account = UserManager.getCurrentUser(request);
-		
-		if (account != null) {
-			model.addAttribute("user", account.getUsername());
-		}
+		model.addAllAttributes(getAttributeMap(request));
 		
 		return "main/main";
 	}

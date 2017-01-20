@@ -11,11 +11,13 @@
 
 	<div class="login-page">
 		<div class="container">
+			<!-- Success Messages -->
 			<div class="alert alert-dismissable alert-success"
 				th:if="${not #strings.isEmpty(status)}">
 				<p th:text="${status}">|Login Status|</p>
 			</div>
 
+			<!-- Error Messages -->
 			<div class="alert alert-dismissable alert-danger bad-login"
 				th:if="${errors != null and not #lists.isEmpty(errors)}">
 				<!--/*/ <th:block data-th-each="error : ${errors}"> /*/-->
@@ -26,10 +28,12 @@
 			<div class="agileits_mail_grids">
 				<div class="col-md-8 agileits_mail_grid_left">
 					<form method="post" role="form">
+					
+						<!-- Fields -->
 						<div th:each="field : ${form.fields}">
 							<th:block th:if="${field.type == 'hidden'}">
-								<input th:name="${field.name}" th:type="${field.type}"
-									th:value="${field.value}" />
+								<input th:name="${field.name}" th:value="${field.value}"
+									th:type="${field.type}"/>
 							</th:block>
 							<th:block th:if="${field.type != 'hidden'}">
 								<h4 th:text="${field.label}">|Field label|</h4>
@@ -41,6 +45,8 @@
 									formnovalidate="true" />
 							</th:block>
 						</div>
+						
+						<!-- Submit Button -->
 						<div>
 							<h1>
 								<button type="submit" class="label label-default"

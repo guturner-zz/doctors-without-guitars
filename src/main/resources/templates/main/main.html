@@ -11,6 +11,12 @@
 
 	<div class="about">
 		<div class="container">
+			<!-- Success Messages -->
+			<div class="alert alert-dismissable alert-success"
+				th:if="${not #strings.isEmpty(status)}">
+				<p th:text="${status}">|Login Status|</p>
+			</div>
+		
 			<h3>Doctors without Guitars</h3>
 			<p class="dolor">is a Pathfinder management system.</p>
 			<div class="about-grids">
