@@ -8,7 +8,7 @@ Demonstrates knowledge of:
 - Java
 - Spring Boot
 - API.AI
-- Unfolding Maps
+- OpenLayers 3 (Map API)
 - Stormpath (User Authentication)
 - Web APIs (HTTP)
 - Test-Driven Development (JUnit 4 and Mockito)
