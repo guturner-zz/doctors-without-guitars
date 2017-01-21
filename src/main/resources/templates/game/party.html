@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Must go here due to a bug with putting fragments in head. -->
+	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
+</head>
+<section th:replace="fragments/head :: head(Party)"></section>
+<body>
+	<section th:replace="fragments/nav(Party)"></section>
+
+		<div class="about">
+			<div class="container">
+	
+				<section th:replace="fragments/map"></section>
+				
+			</div>
+		</div>
+	
+	<section th:replace="fragments/js"></section>
+</body>
+</html>
