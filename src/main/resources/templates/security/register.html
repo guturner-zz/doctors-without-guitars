@@ -5,9 +5,9 @@
 	<!-- Must go here due to a bug with putting fragments in head. -->
 	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
 </head>
-<section th:replace="fragments/head :: head(Register)"></section>
+<section th:replace="fragments/theme/head :: head(Register)"></section>
 <body>
-	<section th:replace="fragments/nav :: nav(Register)"></section>
+	<section th:replace="fragments/theme/nav :: nav(Register)"></section>
 
 	<div class="register-page">
 		<div class="container">
@@ -54,6 +54,6 @@
 		</div>
 	</div>
 
-	<section th:replace="fragments/js"></section>
+	<section th:replace="fragments/tech/js"></section>
 </body>
 </html>

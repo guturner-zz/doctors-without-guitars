@@ -1,0 +1,30 @@
+<section th:fragment="js">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Boot Strap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet/less" th:href="@{/css/bootstrap-select.less}"></link>
+	<script th:src="@{js/less.js}"></script>
+	<script th:src="@{js/bootstrap-select.js}"></script>
+
+	<!-- Theme JS -->
+	<script th:src="@{js/theme.js}"></script>
+	<script th:src="@{js/move-top.js}"></script>
+	<script th:src="@{js/easing.js}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop : $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	
+	<!-- OL3 Maps JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.js" type="text/javascript"></script>
+	
+</section>

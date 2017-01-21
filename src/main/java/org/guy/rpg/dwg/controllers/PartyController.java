@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.rossillo.spring.web.mvc.CacheControl;
+
 /**
  * Controller for the party page.
  * 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PartyController extends BaseController {
 
+	// OpenLayers Maps use hi-res images, we should cache when possible:
+	@CacheControl(maxAge=86400)
 	@RequestMapping("/party")
 	public String main(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));

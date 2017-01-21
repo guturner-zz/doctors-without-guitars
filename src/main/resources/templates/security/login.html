@@ -5,9 +5,10 @@
 	<!-- Must go here due to a bug with putting fragments in head. -->
 	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
 </head>
-<section th:replace="fragments/head :: head(Login)"></section>
+<section th:replace="fragments/theme/head :: head(Login)"></section>
 <body>
-	<section th:replace="fragments/nav :: nav(Login)"></section>
+	<section th:replace="fragments/theme/nav :: nav(Login)"></section>
+	<section th:replace="fragments/tech/preload_images"></section>
 
 	<div class="login-page">
 		<div class="container">
@@ -62,6 +63,6 @@
 		</div>
 	</div>
 
-	<section th:replace="fragments/js"></section>
+	<section th:replace="fragments/tech/js"></section>
 </body>
 </html>

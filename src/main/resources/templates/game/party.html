@@ -5,9 +5,9 @@
 	<!-- Must go here due to a bug with putting fragments in head. -->
 	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
 </head>
-<section th:replace="fragments/head :: head(Party)"></section>
+<section th:replace="fragments/theme/head :: head(Party)"></section>
 <body>
-	<section th:replace="fragments/nav(Party)"></section>
+	<section th:replace="fragments/theme/nav(Party)"></section>
 
 		<div class="about">
 			<div class="container">
@@ -17,6 +17,7 @@
 			</div>
 		</div>
 	
-	<section th:replace="fragments/js"></section>
+	<section th:replace="fragments/tech/js"></section>
+	<script th:src="@{js/map.js}"></script>
 </body>
 </html>
