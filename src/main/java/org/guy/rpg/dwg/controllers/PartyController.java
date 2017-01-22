@@ -1,7 +1,11 @@
 package org.guy.rpg.dwg.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.guy.rpg.dwg.maps.MapManager;
+import org.guy.rpg.dwg.models.Landmark;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,9 @@ public class PartyController extends BaseController {
 	@RequestMapping("/party")
 	public String main(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
+		
+		List<Landmark> landmarks = MapManager.getLandmarks();
+		model.addAttribute("landmarks", landmarks);
 		
 		return "game/party";
 	}

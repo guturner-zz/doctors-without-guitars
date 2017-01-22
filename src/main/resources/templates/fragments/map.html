@@ -14,12 +14,17 @@
 		<tbody>
 			<tr>
 				<td>
-					<select class="selectpicker">
-						<option>- - -</option>
-						<option>City</option>
+					<select id="drpDown" class="selectpicker">
+						<th:block th:each="landmark : ${landmarks}">
+							<th:block th:with="args='\'' + ${landmark.name} + '\', \'' + ${landmark.description} + '\', ' + ${landmark.longitude} + ', ' + ${landmark.latitude}">
+							<option th:text="${landmark.name}" 
+							    th:value="${landmark.name}" 
+							    th:onclick="'setWaypointEvent(' + ${args} + ');'"></option>
+							</th:block>
+						</th:block>
 					</select>
 				</td>
-				<td></td>
+				<td><div id="description"></div></td>
 				<td>
 					<h1>
 						<a id="panBtn" class="label label-default">GO</a>
@@ -35,7 +40,7 @@
 	
 	<div style="display: none;">
       <!-- Popup -->
-      <div id="popup" title="Welcome to ol3"></div>
+      <div id="popup" title=""></div>
     </div>
 	
 </section>
