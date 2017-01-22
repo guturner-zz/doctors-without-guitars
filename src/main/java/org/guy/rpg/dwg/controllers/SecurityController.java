@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.guy.rpg.dwg.db.repositories.UserRepository;
+import org.guy.rpg.dwg.db.DatabaseManager;
 import org.guy.rpg.dwg.models.Field;
 import org.guy.rpg.dwg.models.User;
 import org.guy.rpg.dwg.security.UserManager;
@@ -32,7 +32,7 @@ import com.stormpath.sdk.account.Account;
 public class SecurityController {
 	
 	@Autowired
-	UserRepository userRepository;
+	DatabaseManager dbManager;
 	
 	private Map<String, Object> getRegisterFieldAttributeMap() {
 		Map<String, Object> attributeMap = new HashMap<String, Object>();
@@ -91,7 +91,7 @@ public class SecurityController {
 		}
 
 		model.addAttribute("status", "Account " + accountValidator.getEmail() + " was created! Please login.");
-		userRepository.save(new User(accountValidator.getGivenName(), accountValidator.getSurname(), accountValidator.getEmail()));
+		dbManager.saveNewUser(new User(accountValidator.getGivenName(), accountValidator.getSurname(), accountValidator.getEmail()));
 		return "main/main";
 	}
 
