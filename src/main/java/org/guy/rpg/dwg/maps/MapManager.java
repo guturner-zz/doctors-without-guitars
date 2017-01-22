@@ -1,6 +1,7 @@
 package org.guy.rpg.dwg.maps;
 
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import au.com.bytecode.opencsv.bean.CsvToBean;
 public class MapManager {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MapManager.class);
-	private static final String CSV_FILE_NAME = "properties/map/landmarks.csv";
+	private static final String CSV_FILE_NAME = "/properties/map/landmarks.csv";
 
 	public static List<Landmark> getLandmarks() {
 		List<Landmark> landmarks = new ArrayList<Landmark>();
@@ -23,8 +24,8 @@ public class MapManager {
 		CSVReader csvReader = null;
 
 		try {
-			String absolutePath = MapManager.class.getClassLoader().getResource(CSV_FILE_NAME).getPath();
-			csvReader = new CSVReader(new FileReader(absolutePath), '|', '"', 0);
+			InputStream is = MapManager.class.getResourceAsStream(CSV_FILE_NAME); 
+			csvReader = new CSVReader(new InputStreamReader(is), '|', '"', 0);
 
 			ColumnPositionMappingStrategy<Landmark> mappingStrategy = new ColumnPositionMappingStrategy<Landmark>();
 			mappingStrategy.setType(Landmark.class);
