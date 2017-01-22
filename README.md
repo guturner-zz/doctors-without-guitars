@@ -22,3 +22,11 @@ STORMPATH_APPLICATION_HREF
 STORMPATH_CLIENT_APIKEY_ID
 STORMPATH_CLIENT_APIKEY_SECRET
 ```
+
+
+Add a datasource.properties file under src/main/resource/properties:
+```
+mysql.url=jdbc:mysql://host:3306/databasename
+mysql.username=username
+mysql.password=password
+```
