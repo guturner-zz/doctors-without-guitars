@@ -7,6 +7,7 @@ Demonstrates knowledge of:
 
 - Java
 - Spring Boot
+- Spring-JPA (with MySQL)
 - API.AI
 - OpenLayers 3 (Map API)
 - Stormpath (User Authentication)
