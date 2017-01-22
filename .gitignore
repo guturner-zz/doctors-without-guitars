@@ -12,6 +12,3 @@ target/
 
 .project
 .classpath
-
-# Database Files #
-*datasource.properties
