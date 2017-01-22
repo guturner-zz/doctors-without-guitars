@@ -19,6 +19,7 @@
 	</properties>
 
 	<dependencies>
+		<!-- Core Spring Libraries -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -27,10 +28,65 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+
+		<!-- Database Libraries -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
+		<!-- External Data Libraries -->
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
+
+		<!-- Misc. -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.rossillo.mvc.cache</groupId>
+			<artifactId>spring-mvc-cache-control</artifactId>
+			<version>1.1.1-RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Stormpath Authentication Libraries -->
+		<dependency>
+			<groupId>com.stormpath.spring</groupId>
+			<artifactId>stormpath-default-spring-boot-starter</artifactId>
+			<version>${stormpath.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.stormpath.sdk</groupId>
+			<artifactId>stormpath-sdk-api</artifactId>
+			<version>${stormpath.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.stormpath.sdk</groupId>
+			<artifactId>stormpath-sdk-httpclient</artifactId>
+			<version>${stormpath.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Testing Libraries -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -58,39 +114,6 @@
 			<artifactId>easymock</artifactId>
 			<version>3.4</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.stormpath.spring</groupId>
-			<artifactId>stormpath-default-spring-boot-starter</artifactId>
-			<version>${stormpath.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.stormpath.sdk</groupId>
-			<artifactId>stormpath-sdk-api</artifactId>
-			<version>${stormpath.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.stormpath.sdk</groupId>
-			<artifactId>stormpath-sdk-httpclient</artifactId>
-			<version>${stormpath.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.rossillo.mvc.cache</groupId>
-			<artifactId>spring-mvc-cache-control</artifactId>
-			<version>1.1.1-RELEASE</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>2.3</version>
 		</dependency>
 	</dependencies>
 
