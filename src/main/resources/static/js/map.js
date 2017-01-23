@@ -128,22 +128,3 @@ for (i = 0; i < namesToFix.length; i++) {
 	$("span:contains('" + namesToFix[i] + "')").html(namesToFix[i]);
 	$("option:contains('" + namesToFix[i] + "')").html(namesToFix[i]);
 }
-
-
-map.on('click', function(evt) {
-    var element = popup.getElement();
-    var coordinate = evt.coordinate;
-    var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
-        coordinate, 'EPSG:3857', 'EPSG:4326'));
-
-    $(element).popover('destroy');
-    popup.setPosition(coordinate);
-    // the keys are quoted to prevent renaming in ADVANCED mode.
-    $(element).popover({
-      'placement': 'top',
-      'animation': false,
-      'html': true,
-      'content': '<p>The location you clicked was:</p><code>' + hdms + '</code>'
-    });
-    $(element).popover('show');
-  });
