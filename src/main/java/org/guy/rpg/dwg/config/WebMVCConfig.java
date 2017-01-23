@@ -1,5 +1,6 @@
 package org.guy.rpg.dwg.config;
 
+import org.guy.rpg.dwg.interceptors.AuthenticationInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -11,8 +12,9 @@ import net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor;
 public class WebMVCConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 
 	@Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new CacheControlHandlerInterceptor());
-    }
-	
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new CacheControlHandlerInterceptor());
+		registry.addInterceptor(new AuthenticationInterceptor()).addPathPatterns("/**");
+	}
+
 }
