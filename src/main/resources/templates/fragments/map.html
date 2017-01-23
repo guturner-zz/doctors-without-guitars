@@ -16,12 +16,17 @@
 				<td>
 					<select id="drpDown" class="selectpicker">
 						<th:block th:each="landmark : ${landmarks}">
+						
 							<th:block th:with="args='\'' + ${landmark.name} + '\', \'' + ${landmark.description} + '\', ' + ${landmark.longitude} + ', ' + ${landmark.latitude}">
-							<option th:text="${landmark.name}" 
-							    th:value="${landmark.name}" 
-							    th:onclick="'setWaypointEvent(' + ${args} + ');'"></option>
+									
+								<option th:text="${landmark.name}" 
+								    th:value="${landmark.name}" 
+								    th:onclick="'setWaypointEvent(' + ${args} + ');'"></option>
+									    
 							</th:block>
+				
 						</th:block>
+						
 					</select>
 				</td>
 				<td><div id="description"></div></td>

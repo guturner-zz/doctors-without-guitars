@@ -78,11 +78,11 @@ function removeWaypointEvent() {
 }
 
 function setDescription(description) {
-	$('#description').text(description);
+	$('#description').html(description);
 }
 
 function removeDescription() {
-	$('#description').text('');
+	$('#description').html('');
 }
 
 function setOverlay(name, description, waypoint) {
@@ -120,3 +120,30 @@ $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, newValue, 
     var selected = $(e.currentTarget).val();
     $("#drpDown option[value='" + selected + "']").trigger("click");
 });
+
+// Fix for Bootstrap-Select links (mainly for apostrophes):
+var i;
+var namesToFix = ["Falcon&apos;s Hollow"];
+for (i = 0; i < namesToFix.length; i++) {
+	$("span:contains('" + namesToFix[i] + "')").html(namesToFix[i]);
+	$("option:contains('" + namesToFix[i] + "')").html(namesToFix[i]);
+}
+
+
+map.on('click', function(evt) {
+    var element = popup.getElement();
+    var coordinate = evt.coordinate;
+    var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
+        coordinate, 'EPSG:3857', 'EPSG:4326'));
+
+    $(element).popover('destroy');
+    popup.setPosition(coordinate);
+    // the keys are quoted to prevent renaming in ADVANCED mode.
+    $(element).popover({
+      'placement': 'top',
+      'animation': false,
+      'html': true,
+      'content': '<p>The location you clicked was:</p><code>' + hdms + '</code>'
+    });
+    $(element).popover('show');
+  });
