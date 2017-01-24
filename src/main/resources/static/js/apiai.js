@@ -13,9 +13,15 @@ function askDM() {
         url = url + '/?statement=' + $('#cd-search-val').val();
     }
     
-    $('#cd-search-response').load(url);
+	$('#cd-search-response-inner-val').load(url, function(response, status, xhr) {
+		if ( status != "error" ) {
+			$('#cd-search-response').show();
+		}
+	});
+    	
 }
 
 function clearSearchResponse() {
-	$('#cd-search-response').text('');
+	$('#cd-search-response-inner-val').text('');
+	$('#cd-search-response').hide();
 }
