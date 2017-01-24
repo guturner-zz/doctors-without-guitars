@@ -1,7 +1,7 @@
 package org.guy.rpg.dwg.db;
 
 import org.guy.rpg.dwg.db.repositories.UserRepository;
-import org.guy.rpg.dwg.models.User;
+import org.guy.rpg.dwg.models.db.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

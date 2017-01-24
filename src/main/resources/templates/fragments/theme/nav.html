@@ -22,9 +22,9 @@
 					</ul>
 				</div>
 				<div id="cd-search" class="cd-search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="What is your quest?"></input>
-					</form>
+					<input id="cd-search-val" name="Search" type="search" placeholder="What is your quest?"></input>
+				
+					<div class="cd-search-response" id="cd-search-response"></div>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -44,7 +44,7 @@
 					<li><a href="#" th:text="${user}"></a></li>
 					<li><a href="#">Character Sheet</a></li>
 					<li><a th:href="@{/party}">Party</a></li>
-					<li><a href="#cd-search" class="cd-search-trigger">Ask DM</a></li>
+					<li><a href="#cd-search" class="cd-search-trigger" onclick="clearSearchResponse();">Ask DM</a></li>
 					<li><a onclick="document.getElementById('logoutForm').submit();">Logout</a></li>
 				</ul>
 			</div>

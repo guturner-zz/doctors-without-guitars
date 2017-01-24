@@ -406,6 +406,9 @@ ul li a {
 .cd-search input:focus {
 	outline: none;
 }
+.cd-search-response {
+	margin-top: 3em;
+}
 .cd-search.is-visible {
 	-moz-opacity: 1;
 	opacity: 1;

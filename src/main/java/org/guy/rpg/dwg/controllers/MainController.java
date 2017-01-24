@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MainController extends BaseController {
-
+	
 	@RequestMapping("/")
 	public String main(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));

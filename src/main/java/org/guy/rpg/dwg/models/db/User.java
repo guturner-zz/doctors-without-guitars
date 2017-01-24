@@ -1,4 +1,4 @@
-package org.guy.rpg.dwg.models;
+package org.guy.rpg.dwg.models.db;
 
 import java.io.Serializable;
 

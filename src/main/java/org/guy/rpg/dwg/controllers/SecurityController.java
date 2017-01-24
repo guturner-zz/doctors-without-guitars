@@ -10,7 +10,7 @@ import javax.validation.Valid;
 
 import org.guy.rpg.dwg.db.DatabaseManager;
 import org.guy.rpg.dwg.models.Field;
-import org.guy.rpg.dwg.models.User;
+import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.security.UserManager;
 import org.guy.rpg.dwg.validators.AccountValidator;
 import org.springframework.beans.factory.annotation.Autowired;

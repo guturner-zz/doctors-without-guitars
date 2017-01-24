@@ -15,3 +15,6 @@ target/
 
 # Database Files #
 *datasource.properties
+
+# API.AI Files #
+*apiai.properties
