@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class APIAIWebhookController {
 
 	private Map<String, String> classSpellsMap = new HashMap<String, String>() {{
-		put("bard", "Check out <a href='http://www.d20pfsrd.com/magic/spell-lists-and-domains/spell-lists---bard' _target='blank'>this list of Bard spells</a>!");
+		put("bard", "Check out <a href='http://www.d20pfsrd.com/magic/spell-lists-and-domains/spell-lists---bard' target='_blank'>this list of Bard spells</a>!");
 	}};
 	
 	@Autowired
