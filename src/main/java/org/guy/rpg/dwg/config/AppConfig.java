@@ -2,7 +2,11 @@ package org.guy.rpg.dwg.config;
 
 import javax.sql.DataSource;
 
+import org.apache.catalina.Context;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -16,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Guy
  */
 @Configuration
-@EnableJpaRepositories(basePackages="org.guy.rpg.dwg.db.repositories")
+@EnableJpaRepositories(basePackages = "org.guy.rpg.dwg.db.repositories")
 @PropertySource("classpath:properties/datasource.properties")
 public class AppConfig {
 
@@ -44,5 +48,4 @@ public class AppConfig {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-
 }
