@@ -10,7 +10,7 @@ function askDM() {
     var url = '/askDM';
     
     if ($('#cd-search-val').val() != '') {
-        url = url + '/?statement=' + $('#cd-search-val').val();
+        url = url + '/?statement=' + encodeURIComponent($('#cd-search-val').val());
     }
     
 	$('#cd-search-response-inner-val').load(url, function(response, status, xhr) {
