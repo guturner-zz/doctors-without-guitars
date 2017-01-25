@@ -15,7 +15,13 @@ function askDM() {
     
 	$('#cd-search-response-inner-val').load(url, function(response, status, xhr) {
 		if ( status != "error" ) {
+			$('#cd-search-response-inner-val').hide();
+			$('#loading').show();
 			$('#cd-search-response').show();
+			setTimeout(function(){
+				$('#cd-search-response-inner-val').show();
+				$('#loading').hide();
+			}, 2000);
 		}
 	});
     	
@@ -23,5 +29,6 @@ function askDM() {
 
 function clearSearchResponse() {
 	$('#cd-search-response-inner-val').text('');
+	$('#loading').hide();
 	$('#cd-search-response').hide();
 }
