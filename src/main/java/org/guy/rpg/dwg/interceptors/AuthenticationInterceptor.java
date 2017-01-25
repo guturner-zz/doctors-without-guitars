@@ -22,6 +22,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		add("/login");
 		add("/logout");
 		add("/register");
+		add("/webhook");
 	}};
 
 	@Override
