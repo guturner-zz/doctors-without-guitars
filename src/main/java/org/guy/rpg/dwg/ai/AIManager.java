@@ -64,7 +64,7 @@ public class AIManager {
 		CSVReader csvReader = null;
 
 		try {
-			String csvFileName = "/properties/ai/" + intentName + ".csv";
+			String csvFileName = "/properties/ai/" + intentName + "/responses.csv";
 			InputStream is = AIManager.class.getResourceAsStream(csvFileName); 
 			csvReader = new CSVReader(new InputStreamReader(is), '|', '"', 0);
 
