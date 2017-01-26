@@ -16,7 +16,6 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements WebMvcConfi
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new CacheControlHandlerInterceptor());
 		registry.addInterceptor(new AuthenticationInterceptor()).addPathPatterns("/**");
-		registry.addInterceptor(new HTTPSInterceptor()).addPathPatterns("/**");
 	}
 
 }
