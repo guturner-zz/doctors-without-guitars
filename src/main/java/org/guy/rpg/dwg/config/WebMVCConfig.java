@@ -1,7 +1,6 @@
 package org.guy.rpg.dwg.config;
 
 import org.guy.rpg.dwg.interceptors.AuthenticationInterceptor;
-import org.guy.rpg.dwg.interceptors.HTTPSInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
