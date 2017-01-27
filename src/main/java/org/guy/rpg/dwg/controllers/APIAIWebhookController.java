@@ -1,6 +1,7 @@
 package org.guy.rpg.dwg.controllers;
 
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,6 +42,8 @@ public class APIAIWebhookController {
 			case IntentConstants.SEARCH_SPELLS:
 				respObj.setSpeech(getClassSpecificIntentResponse(reqObj, intentName));
 				break;
+			case IntentConstants.ROLL_DICE:
+				respObj.setSpeech(getRandomNumber(reqObj));
 			}
 		}
 
@@ -58,6 +61,32 @@ public class APIAIWebhookController {
 		}
 
 		return response;
+	}
+	
+	private String getRandomNumber(AIRequestObject request) {
+		String randomNumberResponse = "0";
+		
+		String die = request.getParameters().get("die").toLowerCase();
+		int dieVal = Integer.parseInt(die.replace("d", ""));
+		
+		Random r = new Random();
+		Integer randomNumberVal = r.nextInt(dieVal) + 1;
+		randomNumberResponse = "I rolled a " + die + " and got... ";
+		
+		String result = randomNumberVal.toString();
+		// Custom responses for critical fail / success:
+		if (die.equals("d20")) {
+			if (randomNumberVal == 1) {
+				result = "Ooh, critical fail. Tough luck.";
+			}
+			
+			if (randomNumberVal == 2) {
+				result = "Nice! Nat 20!";
+			}
+		}
+		
+		
+		return randomNumberResponse + result;
 	}
 	
 	@RequestMapping(value = "/askDM", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)

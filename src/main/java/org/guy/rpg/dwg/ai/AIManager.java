@@ -3,7 +3,6 @@ package org.guy.rpg.dwg.ai;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -24,6 +23,11 @@ import ai.api.AIDataService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
+/**
+ * Logic for processing user requests via API.AI.
+ * 
+ * @author Guy
+ */
 @Component
 @PropertySource("classpath:properties/apiai.properties")
 public class AIManager {
@@ -46,6 +50,9 @@ public class AIManager {
 		dataService = new AIDataService(config);
 	}
 
+	/**
+	 * Calls the API.AI service using user input from the UI.
+	 */
 	public String sendRequest(String statement) {
 		String responseText = "Hmm, I need to think on that. Ask again later.";
 
@@ -63,6 +70,9 @@ public class AIManager {
 		return responseText;
 	}
 
+	/**
+	 * Retrieves custom fulfillment responses from a CSV source.
+	 */
 	public Map<String, String> getResponses(String intentName) {
 		String csvFileName = "/properties/ai/" + intentName + "/responses.csv";
 		List<KeyValuePair> keyValues = csvManager.getCSVAsListOfPOJOs(KeyValuePair.class, csvFileName, "key", "value");
