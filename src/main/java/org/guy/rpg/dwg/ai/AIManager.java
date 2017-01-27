@@ -80,7 +80,7 @@ public class AIManager {
 		List<KeyValuePair> newKeyValues = new ArrayList<KeyValuePair>();
 		
 		
-		Map<String, String> placeholdersMap = csvManager.getKeyValuePairsFromCSVAsMap("/properties/placeholders.csv");
+		Map<String, String> placeholdersMap = csvManager.getKeyValuePairsFromCSVAsMap("/properties/ai/placeholders.csv");
 		
 		String pattern = "\\{\\{(.*)\\}\\}";
 		Pattern r = Pattern.compile(pattern);
