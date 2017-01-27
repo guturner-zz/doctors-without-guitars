@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class APIAIWebhookController {
 
-	private static final String SPELL_LISTS_URL = "http://www.d20pfsrd.com/magic/spell-lists-and-domains/spell-lists";
 	private static final String DEFAULT_RESPONSE = "Hmm, I don't know what you mean.";
 	private static final String DEFAULT_ERROR_RESPONSE = "Hmm, let me think on that. Check back in a minute.";
 
