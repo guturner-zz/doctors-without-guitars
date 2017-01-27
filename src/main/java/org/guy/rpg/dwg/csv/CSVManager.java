@@ -38,6 +38,7 @@ public class CSVManager {
 			resultList = ctb.parse(mappingStrategy, csvReader);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
 		} finally {
 			try {
 				csvReader.close();
