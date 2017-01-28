@@ -28,6 +28,9 @@ public class APIAIWebhookController {
 	@Autowired
 	AIManager aiManager;
 	
+	/**
+	 * Entrypoint for API.AI webhook. All intents get filtered through here.
+	 */
 	@RequestMapping(value = "/webhook", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public AIResponseObject webhook(@RequestBody AIGenericRequest request, HttpServletResponse response) {
 		AIResponseObject respObj = new AIResponseObject();
@@ -44,25 +47,50 @@ public class APIAIWebhookController {
 				break;
 			case IntentConstants.ROLL_DICE:
 				respObj.setSpeech(getRandomNumber(reqObj));
+				break;
+			case IntentConstants.SEARCH_VEHICLES:
+				respObj.setSpeech(getResponse(reqObj, "vehicle", intentName));
+				break;
 			}
 		}
 
 		return respObj;
 	}
 
-	private String getClassSpecificIntentResponse(AIRequestObject request, String intentName) {
+	/**
+	 * Intended to be used when retrieving a generic response from a CSV.
+	 */
+	private String getResponse(AIRequestObject request, String parameter, String intentName) {
 		String response = DEFAULT_ERROR_RESPONSE;
 		
-		String charClass = request.getParameters().get("class").toLowerCase();
+		String paramKey = request.getParameters().get(parameter).toLowerCase();
 		Map<String, String> responseMap = aiManager.getResponses(intentName);
 		
-		if (responseMap.containsKey(charClass)) {
-			response = responseMap.get(charClass);
+		if (responseMap.containsKey(paramKey)) {
+			response = responseMap.get(paramKey);
+		} else {
+			String defaultKey = "default";
+			
+			// Fallback value requires the existence of a "default" row in responses.csv:
+			if (responseMap.containsKey(defaultKey)) {
+				response = responseMap.get(defaultKey);
+			}
 		}
 
 		return response;
 	}
+
+	/**
+	 * Intended to be used when retrieving a class-specific response from a CSV.
+	 * Note the hard-coded "class" parameter.
+	 */
+	private String getClassSpecificIntentResponse(AIRequestObject request, String intentName) {
+		return getResponse(request, "class", intentName);
+	}
 	
+	/**
+	 * Used for the roll.dice intent.
+	 */
 	private String getRandomNumber(AIRequestObject request) {
 		String randomNumberResponse = "0";
 		
@@ -89,6 +117,9 @@ public class APIAIWebhookController {
 		return randomNumberResponse + result;
 	}
 	
+	/**
+	 * Endpoint for the AJAX call to API.AI.
+	 */
 	@RequestMapping(value = "/askDM", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	public String askDM(@RequestParam String statement) {
 		return aiManager.sendRequest(statement);

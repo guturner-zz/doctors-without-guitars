@@ -21,7 +21,7 @@ function askDM() {
 			setTimeout(function(){
 				$('#cd-search-response-inner-val').show();
 				$('#loading').hide();
-			}, 2000);
+			}, 1000);
 		}
 	});
     	

@@ -1,0 +1,6 @@
+air|Here's <a href='{{VEHICLES_LIST_URL}}#TOC-Air-Vehicles' target='_blank'>a handful of air vehicles</a>.
+animal|Look at <a href='{{VEHICLES_LIST_URL}}' target='_blank'>this table</a>. There are dogs, dragons and more.
+land|There are <a href='{{VEHICLES_LIST_URL}}#TOC-Land-Vehicles' target='_blank'>plenty of land vehicles here</a>!
+ship|Look at <a href='{{VEHICLES_LIST_URL}}' target='_blank'>this table</a>. I've got everything from rowboats to warships!
+water|Here are <a href='{{VEHICLES_LIST_URL}}#TOC-Water-Vehicles' target='_blank'>some water vehicles</a>.
+default|Check out this <a href='{{VEHICLES_LIST_URL}}' target='_blank'>list of vehicles</a>!

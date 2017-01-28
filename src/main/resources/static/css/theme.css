@@ -415,7 +415,7 @@ ul li a {
 .cd-search-response-inner {
 	height: 125px;
   	line-height: 125px;
-  	text-align: center;
+  	text-align: center; 
 }
 .cd-search-response-inner-val {
   display: inline-block;
