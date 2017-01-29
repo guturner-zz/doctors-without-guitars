@@ -21,8 +21,8 @@ public abstract class BaseController {
 	 * Should be overridden for specific Controllers.
 	 * 
 	 */
-	protected Map<String, String> getAttributeMap(HttpServletRequest request) {
-		Map<String, String> attributeMap = new HashMap<String, String>();
+	protected Map<String, Object> getAttributeMap(HttpServletRequest request) {
+		Map<String, Object> attributeMap = new HashMap<String, Object>();
 		
 		// Account related:
 		Account account = UserManager.getCurrentUserAccount(request);

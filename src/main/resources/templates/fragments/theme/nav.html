@@ -47,7 +47,7 @@
 				</ul>
 				<ul th:if="${user != null}" class="nav navbar-nav">
 					<form id="logoutForm" method="post" th:action="@{/logout}"></form>
-					<li><a href="#" th:text="${user}"></a></li>
+					<li><a th:href="@{/profile}" th:text="${user}"></a></li>
 					<li><a href="#">Character Sheet</a></li>
 					<li><a th:href="@{/party}">Party</a></li>
 					<li><a href="#cd-search" class="cd-search-trigger" onclick="clearSearchResponse();">Ask DM</a></li>

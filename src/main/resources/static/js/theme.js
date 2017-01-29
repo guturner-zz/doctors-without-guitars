@@ -85,4 +85,15 @@ jQuery(document).ready(function($){
 		searchBar.insertBefore('.logo');
 	}
 	
+	$('.jzBoxLink').click(function(event) {
+		updatePortrait(event.target);
+	});
+	
+	function updatePortrait(selectedPortrait) {
+		var mainPortrait = $('#charPortrait');
+		
+		var selectedPortraitSrc = $(selectedPortrait).attr('src');
+		mainPortrait.attr('src', selectedPortraitSrc);
+	}
+	
 });

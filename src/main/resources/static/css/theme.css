@@ -587,7 +587,7 @@ p.dolor:after{
     border-right: 17px solid #F58703;
     position: absolute;
     top: 0%;
-    left: -8%;
+    left: -6%;
 }
 .wthree_team_grid1_pos h4:after{
 	content: '';
@@ -596,7 +596,7 @@ p.dolor:after{
     border-left: 17px solid #F58703;
     position: absolute;
     top: 0%;
-    right: -8%;
+    right: -6%;
 }
 .wthree_team_grid2{
 	text-align: center;
@@ -2094,14 +2094,14 @@ a.pa_italic:focus {
 		border-bottom: 14px solid transparent;
 		border-right: 14px solid #F58703;
 		top: -3%;
-		left: -8%;
+		left: -6%;
 	}
 	.wthree_team_grid1_pos h4:after {
 		border-top: 14px solid transparent;
 		border-bottom: 14px solid transparent;
 		border-left: 14px solid #F58703;
 		top: -3%;
-		right: -8%;
+		right: -6%;
 	}
 	.newsletter {
 		padding: 3em 0;
