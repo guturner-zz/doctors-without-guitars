@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Class implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column(name = "name")
@@ -24,8 +23,17 @@ public class Class implements Serializable {
 
 	}
 
-	public Class(String name) {
-		this.name = name;
+	public Class(int id) {
+		this.id = (long) id;
+		
+		switch (id) {
+		case 1:
+			this.name = "Barbarian";
+			break;
+		case 2:
+			this.name = "Bard";
+			break;
+		}
 	}
 
 	public Long getId() {

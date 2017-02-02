@@ -20,6 +20,8 @@ public class CharacterValidator {
 
 	private int classId;
 
+	private String image;
+
 	public String getName() {
 		return name;
 	}
@@ -34,6 +36,14 @@ public class CharacterValidator {
 
 	public void setClassId(int classId) {
 		this.classId = classId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public List<String> validate(BindingResult result, HttpServletRequest request) {

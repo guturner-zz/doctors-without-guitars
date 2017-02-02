@@ -94,6 +94,8 @@ jQuery(document).ready(function($){
 		
 		var selectedPortraitSrc = $(selectedPortrait).attr('src');
 		mainPortrait.attr('src', selectedPortraitSrc);
+		
+		$('#imageField').val(selectedPortraitSrc);
 	}
 	
 });

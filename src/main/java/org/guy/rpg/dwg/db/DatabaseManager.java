@@ -47,4 +47,17 @@ public class DatabaseManager {
 		User user = getCurrentUser(request);
 		return characterRepository.getCharacterByUser(user);
 	}
+	
+	public boolean saveCharacter(Character character) {
+		boolean success = false;
+		
+		Character savedCharacter = characterRepository.save(character);
+		
+		if (savedCharacter != null) {
+			success = false;
+		}
+		
+		return success;
+	}
+	
 }
