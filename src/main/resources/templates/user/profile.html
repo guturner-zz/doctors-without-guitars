@@ -27,11 +27,11 @@
 									
 										<div>
 											<!-- Character Portrait -->
-											<figure th:if="${character == null}">
+											<figure th:if="${character?.image == null}">
 												<img id="charPortrait" src="img/portraits/unknown.png" class="img-responsive portrait"></img>
 											</figure>
 											
-											<figure th:if="${character != null}">
+											<figure th:if="${character?.image != null}">
 												<img id="charPortrait" th:src="${character?.image}" class="img-responsive portrait"></img>
 											</figure>
 										</div>

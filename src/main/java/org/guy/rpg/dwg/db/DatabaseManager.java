@@ -40,12 +40,24 @@ public class DatabaseManager {
 
 	public User getCurrentUser(HttpServletRequest request) {
 		Account userAccount = UserManager.getCurrentUserAccount(request);
-		return userRepository.getUserByEmail(userAccount.getEmail());
+		User user = null;
+		
+		if (userAccount != null) {
+			user = userRepository.getUserByEmail(userAccount.getEmail());
+		}
+		
+		return user;
 	}
 	
 	public Character getCurrentUserCharacter(HttpServletRequest request) {
 		User user = getCurrentUser(request);
-		return characterRepository.getCharacterByUser(user);
+		Character character = null;
+		
+		if (user != null) {
+			character = characterRepository.getCharacterByUser(user);
+		}
+		
+		return character;
 	}
 	
 	public boolean saveCharacter(Character character) {
