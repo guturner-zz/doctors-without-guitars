@@ -10,11 +10,11 @@
 	<section th:replace="fragments/theme/nav(Home)"></section>
 
 	<th:block th:if="${user == null}">
-		<section th:replace="fragments/main/welcome"></section>
+		<section th:replace="fragments/ui/main/welcome"></section>
 	</th:block>
 
 	<th:block th:if="${user != null}">
-		<section th:replace="fragments/main/tips"></section>
+		<section th:replace="fragments/ui/main/tips"></section>
 	</th:block>
 	
 </body>

@@ -33,7 +33,7 @@ public class PartyController extends BaseController {
 		List<Landmark> landmarks = mapManager.getLandmarks();
 		model.addAttribute("landmarks", landmarks);
 		
-		return "game/party";
+		return "party/party";
 	}
 	
 }

@@ -3,3 +3,11 @@
 	border-style: solid;
     border-width: 1px;
 }
+
+.long-input {
+	width: 100%;
+}
+
+.lower {
+	margin-top: 2em;
+}

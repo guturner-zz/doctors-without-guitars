@@ -558,20 +558,20 @@ p.dolor:after{
 }
 /*-- //about --*/
 /*-- team --*/
-.wthree_team_grids {
+.wthree_element_grids {
     margin: 3em 0 0;
 }
-.wthree_team_grid1{
+.wthree_element_grid1{
 	position:relative;
 }
-.wthree_team_grid1_pos{
+.wthree_element_grid1_pos{
 	position: absolute;
     bottom:-6.5%;
     width: 80%;
     left: 10%;
 	z-index: 9;
 }
-.wthree_team_grid1_pos h4{
+.wthree_element_grid1_pos h4{
 	text-transform:uppercase;
 	font-size:1em;
 	color:#fff;
@@ -580,7 +580,7 @@ p.dolor:after{
 	position:relative;
 	text-align: center;
 }
-.wthree_team_grid1_pos h4:before{
+.wthree_element_grid1_pos h4:before{
 	content: '';
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
@@ -589,7 +589,7 @@ p.dolor:after{
     top: 0%;
     left: -6%;
 }
-.wthree_team_grid1_pos h4:after{
+.wthree_element_grid1_pos h4:after{
 	content: '';
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
@@ -598,7 +598,7 @@ p.dolor:after{
     top: 0%;
     right: -6%;
 }
-.wthree_team_grid2{
+.wthree_element_grid2{
 	text-align: center;
     padding: 1.5em 0 1em;
     background:#FFFFFF;
@@ -608,7 +608,7 @@ p.dolor:after{
 	margin: 0;
 	padding: 0;
 }
-.wthree_team_grid1 figure {	
+.wthree_element_grid1 figure {	
 	margin: 0;
 	padding: 0;
 	background: #fff;
@@ -635,7 +635,7 @@ p.dolor:after{
 	-o-transform: skewX(-25deg);
 	-ms-transform: skewX(-25deg);
 }
-.hover14 figure:hover::before,.wthree_team_grid:hover .hover14 figure::before{
+.hover14 figure:hover::before,.wthree_element_grid:hover .hover14 figure::before{
 	-webkit-animation: shine .75s;
 	animation: shine .75s;
 	-moz-animation: shine .75s;
@@ -2086,17 +2086,17 @@ a.pa_italic:focus {
 		width: 50%;
 		margin: 0 auto;
 	}
-	.wthree_team_grid1_pos h4 {
+	.wthree_element_grid1_pos h4 {
 		font-size: 13px;
 	}
-	.wthree_team_grid1_pos h4:before {
+	.wthree_element_grid1_pos h4:before {
 		border-top: 14px solid transparent;
 		border-bottom: 14px solid transparent;
 		border-right: 14px solid #F58703;
 		top: -3%;
 		left: -6%;
 	}
-	.wthree_team_grid1_pos h4:after {
+	.wthree_element_grid1_pos h4:after {
 		border-top: 14px solid transparent;
 		border-bottom: 14px solid transparent;
 		border-left: 14px solid #F58703;
@@ -2239,28 +2239,28 @@ a.pa_italic:focus {
 	.about-grids:nth-child(3){
 		margin:3em 0 0;
 	}
-	.wthree_team_grid {
+	.wthree_element_grid {
 		float: left;
 		width: 50%;
 	}
 	.agileits_about_bottom_left {
 		padding: 4em 7em 3em;
 	}
-	.wthree_team_grid1 img {
+	.wthree_element_grid1 img {
 		margin: 0 auto;
 	}
-	.wthree_team_grid1_pos {
+	.wthree_element_grid1_pos {
 		bottom: -4.5%;
 		width: 60%;
 		left: 21%;
 	}
-	.wthree_team_grid1_pos h4:before {
+	.wthree_element_grid1_pos h4:before {
 		left: -7%;
 	}
-	.wthree_team_grid1_pos h4:after {
+	.wthree_element_grid1_pos h4:after {
 		right: -7%;
 	}
-	.wthree_team_grid:nth-child(2) {
+	.wthree_element_grid:nth-child(2) {
 		margin-bottom: 2em;
 	}
 	.agileits_newsletter_grids {
@@ -2543,7 +2543,7 @@ a.pa_italic:focus {
 	.agileits_about_bottom_left {
 		padding: 3em 2em 2em;
 	}
-	.wthree_team_grid1_pos {
+	.wthree_element_grid1_pos {
 		bottom: -5.5%;
 		width: 67%;
 		left: 18%;
@@ -2565,7 +2565,7 @@ a.pa_italic:focus {
 	.w3_updates_bottom_grid1 h4 {
 		font-size: 1.2em;
 	}
-	.wthree_team_grid1_pos {
+	.wthree_element_grid1_pos {
 		width: 80%;
 		left: 11%;
 	}
@@ -2620,18 +2620,18 @@ a.pa_italic:focus {
 	.agileits_about_bottom_right {
 		width: 100%;
 	}
-	.wthree_team_grid {
+	.wthree_element_grid {
 		float: none;
 		width: 60%;
 		margin: 0 auto;
 	}
-	.wthree_team_grids {
+	.wthree_element_grids {
 		margin: 2em 0 0;
 	}
-	.wthree_team_grid:nth-child(2) {
+	.wthree_element_grid:nth-child(2) {
 		margin: 2em auto;
 	}
-	.wthree_team_grid:nth-child(4) {
+	.wthree_element_grid:nth-child(4) {
 		margin-top: 2em;
 	}
 	.agileits_newsletter_grids {
@@ -2722,7 +2722,7 @@ a.pa_italic:focus {
 	.agileits_about_bottom_left {
 		padding: 2em 2em 1em;
 	}
-	.wthree_team_grid {
+	.wthree_element_grid {
 		width: 75%;
 	}
 	.agileits_newsletter_grids input[type="submit"] {
@@ -2833,7 +2833,7 @@ a.pa_italic:focus {
 	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
 		font-size: 1.7em;
 	}
-	.wthree_team_grid {
+	.wthree_element_grid {
 		width: 80%;
 	}
 	.related-post-right {
@@ -2927,7 +2927,7 @@ a.pa_italic:focus {
 	.about-grid-right {
 		padding: 1em 1.5em 6em 1em;
 	}
-	.wthree_team_grid {
+	.wthree_element_grid {
 		width: 100%;
 	}
 	.agileits_newsletter_grids input[type="submit"] {

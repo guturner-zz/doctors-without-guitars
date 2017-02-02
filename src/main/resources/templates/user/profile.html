@@ -15,96 +15,79 @@
 	<div class="single">
 		<div class="container">
 		
-			<!-- Grid Layout -->
 			<div class="w3_single_grid">
-
-				<!-- Left -->
 				<div class="col-md-6 w3_single_grid_left">
 					<div class="w3_single_grid_left_grid">
-
-						<div class="wthree_team_grids">
-							<div class="col-md-6 wthree_team_grid">
-								<div class="wthree_team_grid1">
+						<div class="wthree_element_grids">
+		
+							<div class="col-md-6 wthree_element_grid">
+								<div class="wthree_element_grid1">
+									<!-- Character Portrait -->
 									<div class="hover14 column">
-										<div>
-											<!-- Character Portrait -->
-											<figure th:if="${character != null}">
-												<img id="charPortrait" src="img/portraits/1.png" class="img-responsive portrait"></img>
-											</figure>
-											
-											<figure th:if="${character == null}">
-												<img id="charPortrait" src="img/portraits/unknown.png" class="img-responsive portrait"></img>
-											</figure>
-										</div>
-									</div>
-									<div class="wthree_team_grid1_pos">
-										<!-- Character Class -->
-										<h4 th:if="${character != null}">
-											<span th:text="${user}"></span>
-										</h4>
 										
-										<h4 th:if="${character == null}">
-											<span>Adventurer</span>
-										</h4>
+										<div th:switch="${character}"> 
+											<section th:case="${null}" th:replace="fragments/ui/user/character_portrait('img/portraits/unknown.png')"></section>
+											<section th:case="*" th:replace="fragments/ui/user/character_portrait(${character.image})"></section> 
+										</div>
+										
+										
+									</div>
+									
+									<!-- Character Class -->
+									<div class="wthree_element_grid1_pos">
+										
+										<div th:switch="${character}"> 
+											<h4 th:case="${null}"><span>Adventurer</span></h4>
+											<h4 th:case="*"><span th:text="${character.charClass.name}"></span></h4> 
+										</div>
+										
+									</div>
+											
+									<!-- Edit Buttons -->
+									<div th:switch="${editMode}"> 
+										<div th:case="true" class="wthree_element_grid2">
+											<form id="editForm" method="post" th:action="@{/editProfile}">
+												<h1>
+													<button id="editBtn" type="submit" class="label label-default">Edit</button>
+												</h1>
+											</form>
+										</div>
+										
+										<div th:case="*" class="wthree_element_grid2">
+											<script>
+												 function postForm(){
+												 	$('#saveForm').submit();
+												 }
+											 </script>
+											<h1>
+												<button id="saveBtn" onclick="postForm();" class="label label-default">Save</button>
+											</h1>
+											
+											<form id="cancelForm" method="get" th:action="@{/profile}">
+												<h1>
+													<button id="cancelBtn" type="submit" class="label label-default">Cancel</button>
+												</h1>
+											</form>
+										</div> 
 									</div>
 								</div>
-								
-								<!-- Edit Buttons -->
-								<div th:if="${editMode == false}" class="wthree_team_grid2">
-									<form id="editForm" method="post" th:action="@{/editProfile}">
-										<h1>
-											<button id="editBtn" type="submit" class="label label-default">Edit</button>
-										</h1>
-									</form>
-								</div>
-								
-								<div th:if="${editMode == true}" class="wthree_team_grid2">
-									<script>
-										 function postForm(){
-										 	$('#saveForm').submit();
-										 }
-									 </script>
-									<h1>
-										<button id="saveBtn" onclick="postForm();" class="label label-default">Save</button>
-									</h1>
-									
-									<form id="cancelForm" method="get" th:action="@{/profile}">
-										<h1>
-											<button id="cancelBtn" type="submit" class="label label-default">Cancel</button>
-										</h1>
-									</form>
-								</div>
-								
 							</div>
-							<div class="clearfix"></div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- Right -->
-				<div class="col-md-6 w3_single_grid_right">
-					<div class="w3_single_grid_right_grid">
-					
-						<div class="wthree_team_grids">
-							<div class="col-md-6 wthree_team_grid">
-							
+										
+							<div class="col-md-6 wthree_element_grid">
 								<!-- Character Info -->
 								<div class="col-md-12">
 									<form th:if="${editMode == true}" id="saveForm" method="post" th:action="@{/profile}" th:object="${characterValidator}">
-										<block>
-											<h4>Character Name</h4>
-											<input th:field="*{name}" style="width: 100%" />
-										</block>
+										<div class="row">
+											<input th:field="*{name}" placeholder="Character Name" class="long-input" />
+										</div>
 										
-										<block style="margin-top: 5px;">
-											<h4>Class</h4>
-											<select th:field="*{classId}" class="selectpicker">
-												<option value="0">- - -</option>
+										<div class="row lower">
+											<select th:field="*{classId}" class="long-input">
+												<option value="0">Select Class</option>
 												<option value="1">Barbarian</option>
 												<option value="2">Bard</option>
 											</select>
-										</block>
+										</div>
 									</form>
 								</div>
 								
@@ -120,18 +103,17 @@
 									</script>
 									
 								</div>
-								
 							</div>
+	
+							<div class="clearfix"></div>
 						</div>
-					
 					</div>
 				</div>
-				<div class="clearfix"></div>
 			</div>
-		</div>
-
-		<div th:if="${editMode == true}">
-			<section th:replace="fragments/choose_portrait"></section>
+			
+			<div th:if="${editMode == true}">
+				<section th:replace="fragments/ui/user/choose_portrait"></section>
+			</div>
 		</div>
 	</div>
 	
