@@ -3,8 +3,10 @@ package org.guy.rpg.dwg.db;
 import javax.servlet.http.HttpServletRequest;
 
 import org.guy.rpg.dwg.db.repositories.CharacterRepository;
+import org.guy.rpg.dwg.db.repositories.CharacterSheetRepository;
 import org.guy.rpg.dwg.db.repositories.UserRepository;
 import org.guy.rpg.dwg.models.db.Character;
+import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.security.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class DatabaseManager {
 
 	@Autowired
 	CharacterRepository characterRepository;
+	
+	@Autowired
+	CharacterSheetRepository characterSheetRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -66,6 +71,29 @@ public class DatabaseManager {
 		Character savedCharacter = characterRepository.save(character);
 		
 		if (savedCharacter != null) {
+			success = false;
+		}
+		
+		return success;
+	}
+	
+	public CharacterSheet getCurrentUserCharacterSheet(HttpServletRequest request) {
+		Character character = getCurrentUserCharacter(request);
+		CharacterSheet characterSheet = null;
+		
+		if (character != null) {
+			characterSheet = character.getCharSheet();
+		}
+		
+		return characterSheet;
+	}
+	
+	public boolean saveCharacterSheet(CharacterSheet characterSheet) {
+		boolean success = false;
+		
+		CharacterSheet savedCharacterSheet = characterSheetRepository.save(characterSheet);
+		
+		if (savedCharacterSheet != null) {
 			success = false;
 		}
 		

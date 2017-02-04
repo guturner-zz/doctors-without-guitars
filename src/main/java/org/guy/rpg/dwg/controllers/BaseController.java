@@ -5,7 +5,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.guy.rpg.dwg.db.DatabaseManager;
 import org.guy.rpg.dwg.security.UserManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.stormpath.sdk.account.Account;
 
@@ -14,8 +17,12 @@ import com.stormpath.sdk.account.Account;
  * 
  * @author Guy
  */
+@Component
 public abstract class BaseController {
 
+	@Autowired
+	DatabaseManager dbManager;
+	
 	/**
 	 * Returns a map of generic attributes.
 	 * Should be overridden for specific Controllers.
@@ -27,6 +34,7 @@ public abstract class BaseController {
 		// Account related:
 		Account account = UserManager.getCurrentUserAccount(request);
 		attributeMap.put("user", UserManager.getUsernameFromAccount(account));
+		attributeMap.put("character", dbManager.getCurrentUserCharacter(request));
 		
 		return attributeMap;
 	}

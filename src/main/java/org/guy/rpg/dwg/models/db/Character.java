@@ -2,6 +2,7 @@ package org.guy.rpg.dwg.models.db;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Character implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "userid")
 	private User user;
 
@@ -27,7 +28,7 @@ public class Character implements Serializable {
 	@JoinColumn(name = "classid")
 	private Class charClass;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "charactersheetid")
 	private CharacterSheet charSheet;
 

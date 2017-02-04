@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Must go here due to a bug with putting fragments in head. -->
+<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
+
+<!-- Page-specific CSS / JS -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
+<script th:src="@{js/form.js}"></script>
+</head>
+<section th:replace="fragments/theme/head :: head('Character Sheet')"></section>
+<body>
+	<section th:replace="fragments/theme/nav('Character Sheet')"></section>
+
+	<div class="single">
+		<div class="container">
+
+			<div class="w3_single_grid">
+				<div class="col-md-6 w3_single_grid_left">
+					<div class="w3_single_grid_left_grid">
+						<div class="wthree_element_grids">
+
+							<div class="col-md-6 wthree_element_grid">
+								<!-- Edit Buttons -->
+								<div th:switch="${editMode}">
+									<div th:case="false" class="wthree_element_grid2">
+										<form id="editForm" method="post" th:action="@{/editCharacterSheet}">
+											<h1>
+												<button id="editBtn" type="submit"
+													class="label label-default">Edit</button>
+											</h1>
+										</form>
+									</div>
+
+									<div th:case="*" class="wthree_element_grid2">
+										<h1>
+											<button id="saveBtn" onclick="postForm('#saveForm');"
+												class="label label-default">Save</button>
+										</h1>
+
+										<form id="cancelForm" method="get" th:action="@{/profile}">
+											<h1>
+												<button id="cancelBtn" type="submit"
+													class="label label-default">Cancel</button>
+											</h1>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 wthree_element_grid">
+								<!-- Character Info -->
+								<div class="col-md-12">
+									<form th:if="${editMode == true}" id="saveForm" method="post"
+										th:action="@{/characterSheet}" th:object="${characterSheetValidator}">
+										<div class="row">
+											<input th:field="*{hitDie}" placeholder="Hit Die" class="long-input" />
+										</div>
+						
+										<div class="row lower">
+											<input th:field="*{strengthBase}" placeholder="Strength Base" class="long-input" />
+											<input th:field="*{strengthEnhance}" placeholder="Strength Enhancement" class="long-input" />
+										</div>
+										
+										<div class="row lower">
+											<input th:field="*{dexterityBase}" placeholder="Dexterity Base" class="long-input" />
+											<input th:field="*{dexterityEnhance}" placeholder="Dexterity Enhancement" class="long-input" />
+										</div>
+										
+										<div class="row lower">
+											<input th:field="*{constitutionBase}" placeholder="Constitution Base" class="long-input" />
+											<input th:field="*{constitutionEnhance}" placeholder="Constitution Enhancement" class="long-input" />
+										</div>
+										
+										<div class="row lower">
+											<input th:field="*{intelligenceBase}" placeholder="Intelligence Base" class="long-input" />
+											<input th:field="*{intelligenceEnhance}" placeholder="Intelligence Enhancement" class="long-input" />
+										</div>
+										
+										<div class="row lower">
+											<input th:field="*{wisdomBase}" placeholder="Wisdom Base" class="long-input" />
+											<input th:field="*{wisdomEnhance}" placeholder="Wisdom Enhancement" class="long-input" />
+										</div>
+										
+										<div class="row lower">
+											<input th:field="*{charismaBase}" placeholder="Charisma Base" class="long-input" />
+											<input th:field="*{charismaEnhance}" placeholder="Charisma Enhancement" class="long-input" />
+										</div>
+									</form>
+									
+									<div th:if="${editMode == false}" class="row">
+										<span th:text="${'Hit Die: ' + character?.charSheet?.hitDie}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="strTotal = ${(character?.charSheet?.strengthBase) + (character?.charSheet?.strengthEnhance)}"
+									     class="row lower">
+										<h4>Strength:</h4>
+										<span th:text="${'Total = ' + strTotal}"></span>
+										<span th:text="${'Mod   = ' + (((strTotal - (strTotal % 2)) - 10) / 2)}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="dexTotal = ${(character?.charSheet?.dexterityBase) + (character?.charSheet?.dexterityEnhance)}"
+									     class="row lower">
+										<h4>Dexterity:</h4>
+										<span th:text="${'Total = ' + dexTotal}"></span>
+										<span th:text="${'Mod   = ' + (((dexTotal - (dexTotal % 2)) - 10) / 2)}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="conTotal = ${(character?.charSheet?.constitutionBase) + (character?.charSheet?.constitutionEnhance)}"
+									     class="row lower">
+										<h4>Constitution:</h4>
+										<span th:text="${'Total = ' + conTotal}"></span>
+										<span th:text="${'Mod   = ' + (((conTotal - (conTotal % 2)) - 10) / 2)}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="intTotal = ${(character?.charSheet?.intelligenceBase) + (character?.charSheet?.intelligenceEnhance)}"
+									     class="row lower">
+										<h4>Intelligence:</h4>
+										<span th:text="${'Total = ' + intTotal}"></span>
+										<span th:text="${'Mod   = ' + (((intTotal - (intTotal % 2)) - 10) / 2)}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="wisTotal = ${(character?.charSheet?.wisdomBase) + (character?.charSheet?.wisdomEnhance)}"
+									     class="row lower">
+										<h4>Wisdom:</h4>
+										<span th:text="${'Total = ' + wisTotal}"></span>
+										<span th:text="${'Mod   = ' + (((wisTotal - (wisTotal % 2)) - 10) / 2)}"></span>
+									</div>
+									
+									<div th:if="${editMode == false}" 
+									     th:with="chaTotal = ${(character?.charSheet?.charismaBase) + (character?.charSheet?.charismaEnhance)}"
+									     class="row lower">
+										<h4>Charisma:</h4>
+										<span th:text="${'Total = ' + chaTotal}"></span>
+										<span th:text="${'Mod   = ' + (((chaTotal - (chaTotal % 2)) - 10) / 2)}"></span>
+									</div>
+								</div>
+
+								<div th:if="${editMode == false}">
+									<script>
+										disableFormElements();
+									</script>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

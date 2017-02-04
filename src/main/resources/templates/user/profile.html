@@ -7,6 +7,7 @@
 
 <!-- Page-specific CSS / JS -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
+<script th:src="@{js/form.js}"></script>
 </head>
 <section th:replace="fragments/theme/head :: head(Profile)"></section>
 <body>
@@ -60,13 +61,8 @@
 									</div>
 
 									<div th:case="*" class="wthree_element_grid2">
-										<script>
-											function postForm() {
-												$('#saveForm').submit();
-											}
-										</script>
 										<h1>
-											<button id="saveBtn" onclick="postForm();"
+											<button id="saveBtn" onclick="postForm('#saveForm');"
 												class="label label-default">Save</button>
 										</h1>
 
@@ -113,19 +109,8 @@
 
 								<div th:if="${editMode == false}">
 									<script>
-										$('input').each(
-												function() {
-													$(this).attr('disabled',
-															'disabled');
-												});
-
-										$('select').each(
-												function() {
-													$(this).attr('disabled',
-															'disabled');
-												});
+										disableFormElements();
 									</script>
-
 								</div>
 							</div>
 

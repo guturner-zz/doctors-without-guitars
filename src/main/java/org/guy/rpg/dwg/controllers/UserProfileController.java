@@ -5,18 +5,16 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.guy.rpg.dwg.db.DatabaseManager;
 import org.guy.rpg.dwg.models.db.Character;
+import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.Class;
 import org.guy.rpg.dwg.validators.CharacterValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for the user profile page.
@@ -26,9 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserProfileController extends BaseController {
 
-	@Autowired
-	DatabaseManager dbManager;
-	
 	@GetMapping("/profile")
 	public String getProfile(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
@@ -51,6 +46,8 @@ public class UserProfileController extends BaseController {
 				newCharacter.setImage(imagePath);
 			}
 			
+			newCharacter.setCharSheet(new CharacterSheet());
+			
 			dbManager.saveCharacter(newCharacter);
 		} else {
 			String name = characterValidator.getName();
@@ -72,12 +69,11 @@ public class UserProfileController extends BaseController {
 		}
 		
 		model.addAllAttributes(getAttributeMap(request));
-		model.addAttribute("editMode", false);
 		
 		return "user/profile";
 	}
 	
-	@RequestMapping("/editProfile")
+	@PostMapping("/editProfile")
 	public String setEditMode(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
 		model.addAttribute("editMode", true);
@@ -90,7 +86,6 @@ public class UserProfileController extends BaseController {
 	protected Map<String, Object> getAttributeMap(HttpServletRequest request) {
 		Map<String, Object> attributeMap = super.getAttributeMap(request);
 		attributeMap.put("editMode", false);
-		attributeMap.put("character", dbManager.getCurrentUserCharacter(request));
 		
 		return attributeMap;
 	}
