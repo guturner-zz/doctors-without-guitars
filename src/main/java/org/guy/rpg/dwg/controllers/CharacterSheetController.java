@@ -115,7 +115,6 @@ public class CharacterSheetController extends BaseController {
 	public String setEditMode(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
 		model.addAttribute("editMode", true);
-		model.addAttribute("characterSheetValidator", new CharacterSheetValidator());
 		
 		return "user/character_sheet";
 	}
@@ -124,6 +123,7 @@ public class CharacterSheetController extends BaseController {
 	protected Map<String, Object> getAttributeMap(HttpServletRequest request) {
 		Map<String, Object> attributeMap = super.getAttributeMap(request);
 		attributeMap.put("editMode", false);
+		attributeMap.put("characterSheetValidator", new CharacterSheetValidator());
 		
 		return attributeMap;
 	}
