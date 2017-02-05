@@ -137,7 +137,15 @@ public class CharacterSheetValidator {
 		// Form violated validators:
 		if (result.hasErrors()) {
     		for (ObjectError e : result.getAllErrors()) {
-    			errors.add(e.getDefaultMessage());
+    			String errorMsg = e.getDefaultMessage();
+    			
+    			if (errorMsg.toLowerCase().contains("hit die")) {
+    				if (getHitDie().equals("")) {
+    					// Not an error, Hit Die just wasn't updated:
+    					continue;
+    				}
+    			}
+    			errors.add(errorMsg);
     		}
     	}
 		
