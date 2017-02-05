@@ -46,6 +46,21 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
+			
+			<div role="tabpanel" class="tab-pane fade in active"
+				style="margin-top: 1em;">
+				<div class="tab_img">
+					<div th:each="i : ${#numbers.sequence(13, 16)}"
+						class="col-md-3 agile_gallery_grids">
+						<a style="cursor: pointer; cursor: hand;" class="jzBoxLink">
+							<div class="view view-sixth">
+								<img th:src="${'img/portraits/' + i + '.png'}" class="img-responsive"></img>
+							</div>
+						</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
 
 		</div>
 	</div>

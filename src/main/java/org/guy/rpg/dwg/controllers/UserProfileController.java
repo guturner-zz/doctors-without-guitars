@@ -24,6 +24,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserProfileController extends BaseController {
 
+	private static String[] classList = {
+			"Select Class", "Barbarian", "Bard", "Cleric",
+			"Druid", "Fighter", "Monk", "Paladin", "Ranger",
+			"Rogue", "Sorceror", "Wizard"
+	};
+	
 	@GetMapping("/profile")
 	public String getProfile(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
@@ -86,6 +92,7 @@ public class UserProfileController extends BaseController {
 	protected Map<String, Object> getAttributeMap(HttpServletRequest request) {
 		Map<String, Object> attributeMap = super.getAttributeMap(request);
 		attributeMap.put("editMode", false);
+		attributeMap.put("classList", classList);
 		
 		return attributeMap;
 	}

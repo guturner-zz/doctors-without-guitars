@@ -33,6 +33,33 @@ public class Class implements Serializable {
 		case 2:
 			this.name = "Bard";
 			break;
+		case 3:
+			this.name = "Cleric";
+			break;
+		case 4:
+			this.name = "Druid";
+			break;
+		case 5:
+			this.name = "Fighter";
+			break;
+		case 6:
+			this.name = "Monk";
+			break;
+		case 7:
+			this.name = "Paladin";
+			break;
+		case 8:
+			this.name = "Ranger";
+			break;
+		case 9:
+			this.name = "Rogue";
+			break;
+		case 10:
+			this.name = "Sorceror";
+			break;
+		case 11:
+			this.name = "Wizard";
+			break;
 		}
 	}
 

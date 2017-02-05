@@ -88,9 +88,8 @@
 
 										<div class="row lower">
 											<select th:field="*{classId}" class="long-input">
-												<option value="0">Select Class</option>
-												<option value="1">Barbarian</option>
-												<option value="2">Bard</option>
+												<option th:each="cls,iter : ${classList}"
+														th:value="${iter.index}" th:text="${cls}" />
 											</select>
 										</div>
 										
