@@ -36,6 +36,13 @@ function getValue(baseEl, enhanceEl) {
 		enhanceVal = $(enhanceEl).attr('placeholder');
 	}
 	
+	// Validation:
+	if ( isNaN(parseInt(baseVal) + parseInt(enhanceVal)) ) {
+		$(baseEl).val("");
+		$(enhanceEl).val("");
+		return getValue(baseEl, enhanceEl);
+	}
+	
 	return parseInt(baseVal) + parseInt(enhanceVal);
 }
 

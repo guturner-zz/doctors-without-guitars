@@ -1,6 +1,7 @@
 package org.guy.rpg.dwg.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,15 @@ public class CharacterSheetController extends BaseController {
 	public String setCharacterSheet(@Valid @ModelAttribute CharacterSheetValidator characterSheetValidator, BindingResult result, HttpServletRequest request, Model model) {
 		Character userCharacter = dbManager.getCurrentUserCharacter(request);
 		CharacterSheet characterSheet = userCharacter.getCharSheet();
+		
+		// Validate Form Result first:
+		List<String> errors = characterSheetValidator.validate(result, request);
+		if (!errors.isEmpty()) {
+			model.addAllAttributes(getAttributeMap(request));
+			model.addAttribute("characterSheetValidator", characterSheetValidator);
+			model.addAttribute("errors", errors);
+			return "user/character_sheet";
+		}
 		
 		if (!characterSheetValidator.getHitDie().equals("")) {
 			characterSheet.setHitDie(characterSheetValidator.getHitDie());

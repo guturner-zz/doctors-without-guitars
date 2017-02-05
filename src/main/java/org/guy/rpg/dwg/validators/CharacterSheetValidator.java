@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Pattern;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 public class CharacterSheetValidator {
 
@@ -21,6 +23,8 @@ public class CharacterSheetValidator {
 	private String wisdomEnhance;
 	private String charismaBase;
 	private String charismaEnhance;
+	
+	@Pattern(regexp="(?i)\\dd\\d{1,2}", message="Hit Die value must match pattern <num>d<num> as in 1d8.")
 	private String hitDie;
 
 	public String getStrengthBase() {
@@ -130,6 +134,13 @@ public class CharacterSheetValidator {
 	public List<String> validate(BindingResult result, HttpServletRequest request) {
 		List<String> errors = new ArrayList<String>();
 
+		// Form violated validators:
+		if (result.hasErrors()) {
+    		for (ObjectError e : result.getAllErrors()) {
+    			errors.add(e.getDefaultMessage());
+    		}
+    	}
+		
 		return errors;
 	}
 }
