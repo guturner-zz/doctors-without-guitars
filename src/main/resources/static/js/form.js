@@ -1,5 +1,5 @@
 function disableFormElements() {
-	$('input').each(
+	$('input:not(:checkbox)').each(
 		function() {
 			$(this).attr('disabled', 'disabled');
 		}

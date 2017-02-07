@@ -11,6 +11,8 @@ import org.springframework.validation.ObjectError;
 
 public class CharacterSheetValidator {
 
+	private static final String HIT_DIE_ERROR_MSG = "Hit Die value must match pattern <num>d<num> as in 1d8.";
+	
 	private String strengthBase;
 	private String strengthEnhance;
 	private String dexterityBase;
@@ -24,7 +26,7 @@ public class CharacterSheetValidator {
 	private String charismaBase;
 	private String charismaEnhance;
 	
-	@Pattern(regexp="(?i)\\dd\\d{1,2}", message="Hit Die value must match pattern <num>d<num> as in 1d8.")
+	@Pattern(regexp="(?i)\\dd\\d{1,2}", message=HIT_DIE_ERROR_MSG)
 	private String hitDie;
 
 	public String getStrengthBase() {
@@ -139,7 +141,7 @@ public class CharacterSheetValidator {
     		for (ObjectError e : result.getAllErrors()) {
     			String errorMsg = e.getDefaultMessage();
     			
-    			if (errorMsg.toLowerCase().contains("hit die")) {
+    			if (errorMsg.equals(HIT_DIE_ERROR_MSG)) {
     				if (getHitDie().equals("")) {
     					// Not an error, Hit Die just wasn't updated:
     					continue;
