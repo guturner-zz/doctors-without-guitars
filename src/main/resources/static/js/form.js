@@ -10,6 +10,9 @@ function disableFormElements() {
 			$(this).attr('disabled', 'disabled');
 		}
 	);
+	
+	// Re-enable DM Search Bar:
+	$('#cd-search-val').removeAttr('disabled');
 }
 
 function postForm(formId) {

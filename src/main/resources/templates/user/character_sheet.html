@@ -133,7 +133,17 @@
 								</tr>
 								<tr>
 									<td>Hit Points</td>
-									<td th:if="${editMode == false}"><span th:text="${character?.charSheet?.currentHp}"></span> / <span name="maxHp"></span></td>
+									<td th:if="${editMode == false}">
+										<div id="progressBarParent" class="progress">
+											<div id="hpProgressBar">
+												<div id="hpText">
+													<center>
+														<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp"></span>
+													</center>
+												</div>
+											</div>
+										</div>
+									</td>
 									<td th:if="${editMode == true}"><input name="currentHp" th:field="*{currentHp}" th:placeholder="${character?.charSheet?.currentHp}" /></td>
 								</tr>
 								<tr th:if="${editMode == true}">

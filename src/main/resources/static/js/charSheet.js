@@ -8,9 +8,11 @@ $(document).ready(function() {
 		calculateAttributeMod('[name=wisMod]', $('#wisTotal').text());
 		calculateAttributeMod('[name=chaMod]', $('#chaTotal').text());
 		
-		toggleRanged();
-		
 		calculateMaxHp('[name=maxHp]', $('#hitDie').text());
+		
+		toggleRanged();
+		setProgressBars();
+		
 
 	// If EditMode == True
 	} else {
@@ -101,6 +103,11 @@ function calculateAttributeMod(el, val) {
 }
 
 function getMaxHp(hitDieVal) {
+	// Validation:
+	if (typeof hitDieVal == "undefined") {
+		return 0;
+	}
+	
 	var numOfDie = parseInt(hitDieVal.substring(0,1));
 	var hpMod = parseInt(hitDieVal.substring(2,4));
 	
@@ -109,6 +116,11 @@ function getMaxHp(hitDieVal) {
 
 function calculateMaxHp(el, hitDieVal) {
 	var maxHpVal = getMaxHp(hitDieVal);
+	
+	// Validation:
+	if (isNaN(maxHpVal)) {
+		maxHpVal = 0;
+	}
 	
 	$(el).each(function() {
 		$(this).text(maxHpVal);
@@ -167,4 +179,31 @@ function toggleRanged() {
 	
 	// Need to recalculate mods used in dynamic fields:
 	calculateSizeMod('[name=sizeMod]', getInputText('#sizeMod'));
+}
+
+function setProgressBars() {
+	var currentHp = parseInt($('#hpBarCurrent').text());
+	var maxHp = parseInt($('#hpBarMax').text());
+	
+	// Validation:
+	if (maxHp == 0) {
+		return "error";
+	}
+	
+	var percentage = Math.round((currentHp / maxHp) * 100);
+	
+	var cssClass = "progress-bar-info";
+	
+	if (percentage > 75) {
+		cssClass = "progress-bar-success";
+	}
+	
+	if (percentage < 25) {
+		cssClass = "progress-bar-danger";
+		var element = $('#hpText').detach();
+		$('#progressBarParent').append(element);
+	}
+	
+	$('#hpProgressBar').addClass('progress-bar ' + cssClass);
+	$('#hpProgressBar').css("width", percentage + "%");
 }
