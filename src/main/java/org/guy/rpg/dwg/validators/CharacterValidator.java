@@ -13,8 +13,8 @@ public class CharacterValidator {
 	@NotNull(message = "Set your character name.")
 	private String name;
 
+	private int size;
 	private int classId;
-
 	private String image;
 
 	public String getName() {
@@ -23,6 +23,14 @@ public class CharacterValidator {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 	public int getClassId() {

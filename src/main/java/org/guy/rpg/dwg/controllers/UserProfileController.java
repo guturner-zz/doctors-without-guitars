@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.Class;
+import org.guy.rpg.dwg.models.db.Size;
 import org.guy.rpg.dwg.validators.CharacterValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,10 @@ public class UserProfileController extends BaseController {
 			"Rogue", "Sorceror", "Wizard"
 	};
 	
+	private static String[] sizeList = {
+			"Select Size", "Small", "Medium", "Large", "Huge"
+	};
+	
 	@GetMapping("/profile")
 	public String getProfile(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
@@ -45,6 +50,7 @@ public class UserProfileController extends BaseController {
 			Character newCharacter = new Character();
 			newCharacter.setUser(dbManager.getCurrentUser(request));
 			newCharacter.setName(characterValidator.getName());
+			newCharacter.setSize(new Size(characterValidator.getSize()));
 			newCharacter.setCharClass(new Class(characterValidator.getClassId()));
 			
 			String imagePath = characterValidator.getImage();
@@ -59,6 +65,11 @@ public class UserProfileController extends BaseController {
 			String name = characterValidator.getName();
 			if (!name.equals("")) {
 				userCharacter.setName(name);
+			}
+			
+			int size = characterValidator.getSize();
+			if (size != 0) {
+				userCharacter.setSize(new Size(size));
 			}
 			
 			int classId = characterValidator.getClassId();
@@ -93,6 +104,7 @@ public class UserProfileController extends BaseController {
 		Map<String, Object> attributeMap = super.getAttributeMap(request);
 		attributeMap.put("editMode", false);
 		attributeMap.put("classList", classList);
+		attributeMap.put("sizeList", sizeList);
 		
 		return attributeMap;
 	}

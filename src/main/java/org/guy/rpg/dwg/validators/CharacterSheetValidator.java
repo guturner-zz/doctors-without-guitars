@@ -28,6 +28,8 @@ public class CharacterSheetValidator {
 	
 	@Pattern(regexp="(?i)\\dd\\d{1,2}", message=HIT_DIE_ERROR_MSG)
 	private String hitDie;
+	
+	private String currentHp;
 
 	public String getStrengthBase() {
 		return strengthBase;
@@ -131,6 +133,14 @@ public class CharacterSheetValidator {
 
 	public void setHitDie(String hitDie) {
 		this.hitDie = hitDie;
+	}
+
+	public String getCurrentHp() {
+		return currentHp;
+	}
+
+	public void setCurrentHp(String currentHp) {
+		this.currentHp = currentHp;
 	}
 
 	public List<String> validate(BindingResult result, HttpServletRequest request) {

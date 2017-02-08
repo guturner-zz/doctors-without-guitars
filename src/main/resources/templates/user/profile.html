@@ -93,6 +93,13 @@
 											</select>
 										</div>
 										
+										<div class="row lower">
+											<select th:field="*{size}" class="long-input">
+												<option th:each="size,iter : ${sizeList}"
+														th:value="${iter.index}" th:text="${size}" />
+											</select>
+										</div>
+										
 										<input id="imageField" type="hidden" th:field="*{image}" />
 									</form>
 									
@@ -103,6 +110,10 @@
 									<div th:if="${editMode == false}" class="row lower">
 										<h4>Class:</h4>
 										<span th:text="${character?.charClass?.name}"></span>
+									</div>
+									<div th:if="${editMode == false}" class="row lower">
+										<h4>Size:</h4>
+										<span th:text="${character?.size?.name}"></span>
 									</div>
 								</div>
 

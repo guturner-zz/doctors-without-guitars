@@ -55,6 +55,11 @@ public class CharacterSheetController extends BaseController {
 			characterSheet.setHitDie(characterSheetValidator.getHitDie());
 		}
 		
+		String currentHp = characterSheetValidator.getCurrentHp();
+		if (!currentHp.equals("")) {
+			characterSheet.setCurrentHp(Integer.parseInt(currentHp));
+		}
+		
 		String strengthBase = characterSheetValidator.getStrengthBase();
 		if (!strengthBase.equals("")) {
 			characterSheet.setStrengthBase(Integer.parseInt(strengthBase));

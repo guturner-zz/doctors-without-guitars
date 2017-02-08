@@ -55,6 +55,9 @@ public class CharacterSheet implements Serializable {
 
 	@Column(name = "hitdie")
 	private String hitDie;
+	
+	@Column(name = "current_hitpoints")
+	private int currentHp;
 
 	public CharacterSheet() {
 
@@ -172,4 +175,12 @@ public class CharacterSheet implements Serializable {
 		this.hitDie = hitDie;
 	}
 
+	public int getCurrentHp() {
+		return currentHp;
+	}
+
+	public void setCurrentHp(int currentHp) {
+		this.currentHp = currentHp;
+	}
+	
 }

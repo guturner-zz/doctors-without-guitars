@@ -35,6 +35,10 @@ public class Character implements Serializable {
 	@Column(name = "name")
 	private String name;
 
+	@OneToOne
+	@JoinColumn(name = "size_value")
+	private Size size;
+	
 	@Column(name = "image")
 	private String image;
 
@@ -88,6 +92,14 @@ public class Character implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Size getSize() {
+		return size;
+	}
+
+	public void setSize(Size size) {
+		this.size = size;
 	}
 
 	public String getImage() {

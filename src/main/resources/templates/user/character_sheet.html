@@ -73,43 +73,43 @@
 								<tr th:with="strTotal = ${(character?.charSheet?.strengthBase) + (character?.charSheet?.strengthEnhance)}">
 									<td><span data-toggle="tooltip" title="Melee attacks.">Strength</span></td>
 									<td id="strTotal" th:if="${editMode == false}" th:text="${strTotal}"></td>
-									<td id="strBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{strengthBase}" th:placeholder="${character?.charSheet?.strengthBase}" /></td>
-									<td id="strEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{strengthEnhance}" th:placeholder="${character?.charSheet?.strengthEnhance}" /></td>
+									<td id="strBase" th:if="${editMode == true}"><input th:field="*{strengthBase}" th:placeholder="${character?.charSheet?.strengthBase}" /></td>
+									<td id="strEnhance" th:if="${editMode == true}"><input th:field="*{strengthEnhance}" th:placeholder="${character?.charSheet?.strengthEnhance}" /></td>
 									<td name="strMod"></td>
 								</tr>
 								<tr th:with="dexTotal = ${(character?.charSheet?.dexterityBase) + (character?.charSheet?.dexterityEnhance)}">
 									<td><span data-toggle="tooltip" title="Ranged Attacks and Armor Class">Dexterity</span></td>
 									<td id="dexTotal" th:if="${editMode == false}" th:text="${dexTotal}"></td>
-									<td id="dexBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{dexterityBase}" th:placeholder="${character?.charSheet?.dexterityBase}" /></td>
-									<td id="dexEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{dexterityEnhance}" th:placeholder="${character?.charSheet?.dexterityEnhance}" /></td>
+									<td id="dexBase" th:if="${editMode == true}"><input th:field="*{dexterityBase}" th:placeholder="${character?.charSheet?.dexterityBase}" /></td>
+									<td id="dexEnhance" th:if="${editMode == true}"><input th:field="*{dexterityEnhance}" th:placeholder="${character?.charSheet?.dexterityEnhance}" /></td>
 									<td name="dexMod"></td>
 								</tr>
 								<tr th:with="conTotal = ${(character?.charSheet?.constitutionBase) + (character?.charSheet?.constitutionEnhance)}">
 									<td><span data-toggle="tooltip" title="Health">Constitution</span></td>
 									<td id="conTotal" th:if="${editMode == false}" th:text="${conTotal}"></td>
-									<td id="conBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{constitutionBase}" th:placeholder="${character?.charSheet?.constitutionBase}" /></td>
-									<td id="conEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{constitutionEnhance}" th:placeholder="${character?.charSheet?.constitutionEnhance}" /></td>
+									<td id="conBase" th:if="${editMode == true}"><input th:field="*{constitutionBase}" th:placeholder="${character?.charSheet?.constitutionBase}" /></td>
+									<td id="conEnhance" th:if="${editMode == true}"><input th:field="*{constitutionEnhance}" th:placeholder="${character?.charSheet?.constitutionEnhance}" /></td>
 									<td name="conMod"></td>
 								</tr>
 								<tr th:with="intTotal = ${(character?.charSheet?.intelligenceBase) + (character?.charSheet?.intelligenceEnhance)}">
 									<td><span data-toggle="tooltip" title="Skill Points">Intelligence</span></td>
 									<td id="intTotal" th:if="${editMode == false}" th:text="${intTotal}"></td>
-									<td id="intBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{intelligenceBase}" th:placeholder="${character?.charSheet?.intelligenceBase}" /></td>
-									<td id="intEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{intelligenceEnhance}" th:placeholder="${character?.charSheet?.intelligenceEnhance}" /></td>
+									<td id="intBase" th:if="${editMode == true}"><input th:field="*{intelligenceBase}" th:placeholder="${character?.charSheet?.intelligenceBase}" /></td>
+									<td id="intEnhance" th:if="${editMode == true}"><input th:field="*{intelligenceEnhance}" th:placeholder="${character?.charSheet?.intelligenceEnhance}" /></td>
 									<td name="intMod"></td>
 								</tr>
 								<tr th:with="wisTotal = ${(character?.charSheet?.wisdomBase) + (character?.charSheet?.wisdomEnhance)}">
 									<td><span data-toggle="tooltip" title="Spell Bonuses for Clerics and Druids">Wisdom</span></td>
 									<td id="wisTotal" th:if="${editMode == false}" th:text="${wisTotal}"></td>
-									<td id="wisBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{wisdomBase}" th:placeholder="${character?.charSheet?.wisdomBase}" /></td>
-									<td id="wisEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{wisdomEnhance}" th:placeholder="${character?.charSheet?.wisdomEnhance}" /></td>
+									<td id="wisBase" th:if="${editMode == true}"><input th:field="*{wisdomBase}" th:placeholder="${character?.charSheet?.wisdomBase}" /></td>
+									<td id="wisEnhance" th:if="${editMode == true}"><input th:field="*{wisdomEnhance}" th:placeholder="${character?.charSheet?.wisdomEnhance}" /></td>
 									<td name="wisMod"></td>
 								</tr>
 								<tr th:with="chaTotal = ${(character?.charSheet?.charismaBase) + (character?.charSheet?.charismaEnhance)}">
 									<td><span data-toggle="tooltip" title="Social Interactions">Charisma</span></td>
 									<td id="chaTotal" th:if="${editMode == false}" th:text="${chaTotal}"></td>
-									<td id="chaBase" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{charismaBase}" th:placeholder="${character?.charSheet?.charismaBase}" /></td>
-									<td id="chaEnhance" th:if="${editMode == true}"><input onblur="calculateEditModeMods();" th:field="*{charismaEnhance}" th:placeholder="${character?.charSheet?.charismaEnhance}" /></td>
+									<td id="chaBase" th:if="${editMode == true}"><input th:field="*{charismaBase}" th:placeholder="${character?.charSheet?.charismaBase}" /></td>
+									<td id="chaEnhance" th:if="${editMode == true}"><input th:field="*{charismaEnhance}" th:placeholder="${character?.charSheet?.charismaEnhance}" /></td>
 									<td name="chaMod"></td>
 								</tr>
 							</tbody>
@@ -128,12 +128,25 @@
 							<tbody>
 								<tr>
 									<td>Hit Die</td>
-									<td th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
-									<td th:if="${editMode == true}"><input th:field="*{hitDie}" th:placeholder="${character?.charSheet?.hitDie}" /></td>
+									<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
+									<td th:if="${editMode == true}"><input id="hitDie" th:field="*{hitDie}" th:placeholder="${character?.charSheet?.hitDie}" /></td>
+								</tr>
+								<tr>
+									<td>Hit Points</td>
+									<td th:if="${editMode == false}"><span th:text="${character?.charSheet?.currentHp}"></span> / <span name="maxHp"></span></td>
+									<td th:if="${editMode == true}"><input name="currentHp" th:field="*{currentHp}" th:placeholder="${character?.charSheet?.currentHp}" /></td>
+								</tr>
+								<tr th:if="${editMode == true}">
+									<td>Max Hit Points</td>
+									<td name="maxHp"></td>
 								</tr>
 								<tr>
 									<td>Initiative</td>
 									<td name="dexMod"></td>
+								</tr>
+								<tr>
+									<td>Size Mod</td>
+									<td id="sizeMod" th:text="${character?.size?.value}"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -142,25 +155,9 @@
 			</div>
 				
 			<p th:if="${editMode == false}" class="dolor"></p>
-				
-			<!-- Combat Pane -->
-			<div th:if="${editMode == false}" class="row" style="margin-top: 2em;">
-				<div class="col-md-1">
-					<h1>
-						<button class="label label-default" onclick="showPane('#combatPane');">
-							Combat
-						</button>
-					</h1>
-				</div>
-				<div id="combatPane" class="col-md-11">
-					<ul class="list-group" style="margin-left: 1em;">
-						<li class="list-group-item"><span data-toggle="tooltip" title="1d20 + Dex Mod">Roll Initiative</span>: 1d20 <span name="dexMod"></span></li>
-						<li class="list-group-item">Consider your weapon. Is this a ranged attack? <input id="rangeChk" type="checkbox" onclick="toggleRanged();" value="" style="margin-left: 0.5em;"/></li>
-						<li class="list-group-item">Roll Attack: <span id="rangeCombat"></span></li>
-						<li class="list-group-item">Roll Damage: </li>
-					</ul>
-				</div>
-			</div>
+			
+			<!-- Tip Panes -->
+			<section th:replace="fragments/ui/user/tips_combat_pane"></section>
 				
 			<div th:if="${editMode == false}">
 				<script>
