@@ -15,6 +15,7 @@ import javax.persistence.Transient;
 public class Size implements Serializable {
 
 	private static Map<Long, Integer> valueMap = new HashMap<Long, Integer>() {{
+		put(0L, 0);
 		put(1L, 1);
 		put(2L, 0);
 		put(3L, -1);
