@@ -1,58 +1,53 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-	<!-- Must go here due to a bug with putting fragments in head. -->
-	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
-</head>
-<section th:replace="fragments/theme/head :: head(Register)"></section>
-<body>
-	<section th:replace="fragments/theme/nav :: nav(Register)"></section>
-
-	<div class="register-page">
-		<div class="container">
-			<!-- Success Messages -->
-			<div class="alert alert-dismissable alert-success"
-				th:if="${not #strings.isEmpty(status)}">
-				<p th:text="${status}">|Login Status|</p>
-			</div>
-
-			<!-- Error Messages -->
-			<div class="alert alert-dismissable alert-danger bad-login"
-				th:if="${errors != null and not #lists.isEmpty(errors)}">
-				<th:block data-th-each="error : ${errors}">
-					<p th:text="${error}">|Error message here.|</p>
-				</th:block>
-			</div>
-
-			<div class="agileits_mail_grids">
-				<div class="col-md-8 agileits_mail_grid_left">
-					<form method="post" th:action="@{/register}" role="form">
-					
-						<!-- Fields -->
-						<div th:each="field : ${visibleFields}">
-							<h4 th:text="${field.label}">|Field label|</h4>
-							<input th:name="${field.name}"
-								th:placeholder="${field.placeholder}"
-								th:required="${field.required}" 
-								th:type="${field.type}"
-								th:classappend="${field.name == 'password'} ? info-enabled : noextra" />
-							<div th:if="${field.name == 'password'}" class="info">* Password must be at least 8 characters and include one capital letter and one number.</div>
-						</div>
-
-						<!-- Submit Button -->
-						<div>
-							<h1>
-								<button type="submit" class="label label-default">Create Account</button>
-							</h1>
-						</div>
-					</form>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<section th:replace="fragments/theme/head :: head(Register)"></section>
+	<body>
+		<section th:replace="fragments/theme/nav :: nav(Register)"></section>
+	
+		<div class="register-page">
+			<div class="container">
+				<!-- Success Messages -->
+				<div class="alert alert-dismissable alert-success"
+					th:if="${not #strings.isEmpty(status)}">
+					<p th:text="${status}">|Login Status|</p>
 				</div>
-				<div class="col-md-4 agileits_mail_grid_right"></div>
-				<div class="clearfix"></div>
+	
+				<!-- Error Messages -->
+				<div class="alert alert-dismissable alert-danger bad-login"
+					th:if="${errors != null and not #lists.isEmpty(errors)}">
+					<th:block data-th-each="error : ${errors}">
+						<p th:text="${error}">|Error message here.|</p>
+					</th:block>
+				</div>
+	
+				<div class="agileits_mail_grids">
+					<div class="col-md-8 agileits_mail_grid_left">
+						<form method="post" th:action="@{/register}" role="form">
+						
+							<!-- Fields -->
+							<div th:each="field : ${visibleFields}">
+								<h4 th:text="${field.label}">|Field label|</h4>
+								<input th:name="${field.name}"
+									th:placeholder="${field.placeholder}"
+									th:required="${field.required}" 
+									th:type="${field.type}"
+									th:classappend="${field.name == 'password'} ? info-enabled : noextra" />
+								<div th:if="${field.name == 'password'}" class="info">* Password must be at least 8 characters and include one capital letter and one number.</div>
+							</div>
+	
+							<!-- Submit Button -->
+							<div>
+								<h1>
+									<button type="submit" class="label label-default">Create Account</button>
+								</h1>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-4 agileits_mail_grid_right"></div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
 		</div>
-	</div>
-
-</body>
+	
+	</body>
 </html>

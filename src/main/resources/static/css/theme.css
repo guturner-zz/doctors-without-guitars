@@ -1,5 +1,6 @@
 /*--
 Author: W3layouts
+Modified By: Guy Turner
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
@@ -16,6 +17,14 @@ html, body{
 .info-enabled {
 	margin-bottom: 0.5em !important;
 }
+.center-contents {
+	text-align: center;
+}
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+.
 p{
 	margin:0;
 	font-size:14px;

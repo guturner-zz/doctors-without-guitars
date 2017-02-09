@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-	<!-- Must go here due to a bug with putting fragments in head. -->
-	<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
-</head>
-<section th:replace="fragments/theme/head :: head(Home)"></section>
-<body>
-	<section th:replace="fragments/theme/nav(Home)"></section>
-
-	<th:block th:if="${user == null}">
-		<section th:replace="fragments/ui/main/welcome"></section>
-	</th:block>
-
-	<th:block th:if="${user != null}">
-		<section th:replace="fragments/ui/main/tips"></section>
-	</th:block>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<section th:replace="fragments/theme/head :: head(Home)"></section>
+	<body>
+		<section th:replace="fragments/theme/nav(Home)"></section>
 	
-</body>
+		<th:block th:if="${user == null}">
+			<section th:replace="fragments/ui/main/welcome"></section>
+		</th:block>
+	
+		<th:block th:if="${user != null}">
+			<section th:replace="fragments/ui/main/tips"></section>
+		</th:block>
+		
+	</body>
 </html>

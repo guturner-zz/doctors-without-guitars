@@ -24,6 +24,10 @@ $(document).ready(function() {
 		calculateAttributeMod('[name=chaMod]', parseInt($('#charismaBase').attr('placeholder')) + parseInt($('#charismaEnhance').attr('placeholder')));
 		
 		calculateMaxHp('[name=maxHp]', getInputValue('#hitDie'));
+		
+		$('#saveBtn').click(function() {
+			postForm('#saveForm');
+		});
 	}
 	
 	// Hide panes:

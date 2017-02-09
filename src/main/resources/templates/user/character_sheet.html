@@ -1,183 +1,169 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- Must go here due to a bug with putting fragments in head. -->
-<link rel="icon" type="image/x-icon" href="img/icon.ico"></link>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<section th:replace="fragments/theme/head :: head('Character Sheet')"></section>
+	<head>
+		<!-- Page-specific CSS / JS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
+		<script th:src="@{js/form.js}"></script>
+		<script th:src="@{js/charSheet.js}"></script>
+	</head>
 
-<!-- Page-specific CSS / JS -->
-<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
-<script th:src="@{js/form.js}"></script>
-</head>
-<section th:replace="fragments/theme/head :: head('Character Sheet')"></section>
-<body>
-	<section th:replace="fragments/theme/nav('Character Sheet')"></section>
-
-	<div class="single">
-		<div class="container">
-
-			<!-- Error Messages -->
-			<div class="row">
-				<div class="alert alert-dismissable alert-danger bad-login"
-					th:if="${errors != null and not #lists.isEmpty(errors)}">
-					<th:block data-th-each="error : ${errors}">
-						<p th:text="${error}">|Error message here.|</p>
-					</th:block>
+	<body>
+		<section th:replace="fragments/theme/nav('Character Sheet')"></section>
+	
+		<div class="single">
+			<div class="container">
+	
+				<!-- Error Messages -->
+				<div class="row">
+					<div class="alert alert-dismissable alert-danger bad-login"
+						th:if="${errors != null and not #lists.isEmpty(errors)}">
+						<th:block data-th-each="error : ${errors}">
+							<p th:text="${error}">|Error message here.|</p>
+						</th:block>
+					</div>
 				</div>
-			</div>
-
-			<!-- Edit Buttons -->
-			<div th:switch="${editMode}">
-				<center>
+	
+				<!-- Edit Buttons -->
+				<div th:switch="${editMode}" class="center-contents">
 					<div th:case="false" class="row">
 						<form id="editForm" method="post" th:action="@{/editCharacterSheet}">
-							<h1>
-								<button id="editBtn" type="submit"
-									class="label label-default">Edit</button>
-							</h1>
+							<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
 						</form>
 					</div>
-	
+		
 					<div th:case="*" class="row">
-						<h1>
-							<button id="saveBtn" onclick="postForm('#saveForm');"
-								class="label label-default">Save</button>
-						</h1>
+						<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
 	
 						<form id="cancelForm" method="get" th:action="@{/characterSheet}">
-							<h1>
-								<button id="cancelBtn" type="submit"
-									class="label label-default">Cancel</button>
-							</h1>
+							<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
 						</form>
 					</div>
-				</center>
-			</div>
-
-			<!-- Character Info -->
-			<div class="row">
-				<form id="saveForm" method="post" th:action="@{/characterSheet}" th:object="${characterSheetValidator}">
-					<div class="col-md-6">
-						<table class="table table-hover lower">
-							<thead>
-								<tr>
-									<th>Attribute</th>
-									<th th:if="${editMode == true}">Base Value</th>
-									<th th:if="${editMode == true}">Enhancement Value</th>
-									<th id="totalHeader" th:if="${editMode == false}">Total Value</th>
-									<th>Mod</th>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<tr th:with="strTotal = ${(character?.charSheet?.strengthBase) + (character?.charSheet?.strengthEnhance)}">
-									<td><span data-toggle="tooltip" title="Melee attacks.">Strength</span></td>
-									<td id="strTotal" th:if="${editMode == false}" th:text="${strTotal}"></td>
-									<td id="strBase" th:if="${editMode == true}"><input th:field="*{strengthBase}" th:placeholder="${character?.charSheet?.strengthBase}" /></td>
-									<td id="strEnhance" th:if="${editMode == true}"><input th:field="*{strengthEnhance}" th:placeholder="${character?.charSheet?.strengthEnhance}" /></td>
-									<td name="strMod"></td>
-								</tr>
-								<tr th:with="dexTotal = ${(character?.charSheet?.dexterityBase) + (character?.charSheet?.dexterityEnhance)}">
-									<td><span data-toggle="tooltip" title="Ranged Attacks and Armor Class">Dexterity</span></td>
-									<td id="dexTotal" th:if="${editMode == false}" th:text="${dexTotal}"></td>
-									<td id="dexBase" th:if="${editMode == true}"><input th:field="*{dexterityBase}" th:placeholder="${character?.charSheet?.dexterityBase}" /></td>
-									<td id="dexEnhance" th:if="${editMode == true}"><input th:field="*{dexterityEnhance}" th:placeholder="${character?.charSheet?.dexterityEnhance}" /></td>
-									<td name="dexMod"></td>
-								</tr>
-								<tr th:with="conTotal = ${(character?.charSheet?.constitutionBase) + (character?.charSheet?.constitutionEnhance)}">
-									<td><span data-toggle="tooltip" title="Health">Constitution</span></td>
-									<td id="conTotal" th:if="${editMode == false}" th:text="${conTotal}"></td>
-									<td id="conBase" th:if="${editMode == true}"><input th:field="*{constitutionBase}" th:placeholder="${character?.charSheet?.constitutionBase}" /></td>
-									<td id="conEnhance" th:if="${editMode == true}"><input th:field="*{constitutionEnhance}" th:placeholder="${character?.charSheet?.constitutionEnhance}" /></td>
-									<td name="conMod"></td>
-								</tr>
-								<tr th:with="intTotal = ${(character?.charSheet?.intelligenceBase) + (character?.charSheet?.intelligenceEnhance)}">
-									<td><span data-toggle="tooltip" title="Skill Points">Intelligence</span></td>
-									<td id="intTotal" th:if="${editMode == false}" th:text="${intTotal}"></td>
-									<td id="intBase" th:if="${editMode == true}"><input th:field="*{intelligenceBase}" th:placeholder="${character?.charSheet?.intelligenceBase}" /></td>
-									<td id="intEnhance" th:if="${editMode == true}"><input th:field="*{intelligenceEnhance}" th:placeholder="${character?.charSheet?.intelligenceEnhance}" /></td>
-									<td name="intMod"></td>
-								</tr>
-								<tr th:with="wisTotal = ${(character?.charSheet?.wisdomBase) + (character?.charSheet?.wisdomEnhance)}">
-									<td><span data-toggle="tooltip" title="Spell Bonuses for Clerics and Druids">Wisdom</span></td>
-									<td id="wisTotal" th:if="${editMode == false}" th:text="${wisTotal}"></td>
-									<td id="wisBase" th:if="${editMode == true}"><input th:field="*{wisdomBase}" th:placeholder="${character?.charSheet?.wisdomBase}" /></td>
-									<td id="wisEnhance" th:if="${editMode == true}"><input th:field="*{wisdomEnhance}" th:placeholder="${character?.charSheet?.wisdomEnhance}" /></td>
-									<td name="wisMod"></td>
-								</tr>
-								<tr th:with="chaTotal = ${(character?.charSheet?.charismaBase) + (character?.charSheet?.charismaEnhance)}">
-									<td><span data-toggle="tooltip" title="Social Interactions">Charisma</span></td>
-									<td id="chaTotal" th:if="${editMode == false}" th:text="${chaTotal}"></td>
-									<td id="chaBase" th:if="${editMode == true}"><input th:field="*{charismaBase}" th:placeholder="${character?.charSheet?.charismaBase}" /></td>
-									<td id="chaEnhance" th:if="${editMode == true}"><input th:field="*{charismaEnhance}" th:placeholder="${character?.charSheet?.charismaEnhance}" /></td>
-									<td name="chaMod"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				
-					<div class="col-md-6">
-						<table class="table table-hover lower">
-							<thead>
-								<tr>
-									<th>Property Name</th>
-									<th>Property Value</th>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<tr>
-									<td>Hit Die</td>
-									<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
-									<td th:if="${editMode == true}"><input id="hitDie" th:field="*{hitDie}" th:placeholder="${character?.charSheet?.hitDie}" /></td>
-								</tr>
-								<tr>
-									<td>Hit Points</td>
-									<td th:if="${editMode == false}">
-										<div id="progressBarParent" class="progress">
-											<div id="hpProgressBar">
-												<div id="hpText">
-													<center>
-														<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp"></span>
-													</center>
+				</div>
+	
+				<!-- Character Info -->
+				<div class="row">
+					<form id="saveForm" method="post" th:action="@{/characterSheet}" th:object="${characterSheetValidator}">
+						<div class="col-md-6">
+							<table class="table table-hover lower">
+								<thead>
+									<tr>
+										<th>Attribute</th>
+										<th th:if="${editMode == true}">Base Value</th>
+										<th th:if="${editMode == true}">Enhancement Value</th>
+										<th id="totalHeader" th:if="${editMode == false}">Total Value</th>
+										<th>Mod</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr th:with="strTotal = ${(character?.charSheet?.strengthBase) + (character?.charSheet?.strengthEnhance)}">
+										<td><span data-toggle="tooltip" title="Melee attacks.">Strength</span></td>
+										<td id="strTotal" th:if="${editMode == false}" th:text="${strTotal}"></td>
+										<td id="strBase" th:if="${editMode == true}"><input th:field="*{strengthBase}" th:placeholder="${character?.charSheet?.strengthBase}" /></td>
+										<td id="strEnhance" th:if="${editMode == true}"><input th:field="*{strengthEnhance}" th:placeholder="${character?.charSheet?.strengthEnhance}" /></td>
+										<td name="strMod"></td>
+									</tr>
+									<tr th:with="dexTotal = ${(character?.charSheet?.dexterityBase) + (character?.charSheet?.dexterityEnhance)}">
+										<td><span data-toggle="tooltip" title="Ranged Attacks and Armor Class">Dexterity</span></td>
+										<td id="dexTotal" th:if="${editMode == false}" th:text="${dexTotal}"></td>
+										<td id="dexBase" th:if="${editMode == true}"><input th:field="*{dexterityBase}" th:placeholder="${character?.charSheet?.dexterityBase}" /></td>
+										<td id="dexEnhance" th:if="${editMode == true}"><input th:field="*{dexterityEnhance}" th:placeholder="${character?.charSheet?.dexterityEnhance}" /></td>
+										<td name="dexMod"></td>
+									</tr>
+									<tr th:with="conTotal = ${(character?.charSheet?.constitutionBase) + (character?.charSheet?.constitutionEnhance)}">
+										<td><span data-toggle="tooltip" title="Health">Constitution</span></td>
+										<td id="conTotal" th:if="${editMode == false}" th:text="${conTotal}"></td>
+										<td id="conBase" th:if="${editMode == true}"><input th:field="*{constitutionBase}" th:placeholder="${character?.charSheet?.constitutionBase}" /></td>
+										<td id="conEnhance" th:if="${editMode == true}"><input th:field="*{constitutionEnhance}" th:placeholder="${character?.charSheet?.constitutionEnhance}" /></td>
+										<td name="conMod"></td>
+									</tr>
+									<tr th:with="intTotal = ${(character?.charSheet?.intelligenceBase) + (character?.charSheet?.intelligenceEnhance)}">
+										<td><span data-toggle="tooltip" title="Skill Points">Intelligence</span></td>
+										<td id="intTotal" th:if="${editMode == false}" th:text="${intTotal}"></td>
+										<td id="intBase" th:if="${editMode == true}"><input th:field="*{intelligenceBase}" th:placeholder="${character?.charSheet?.intelligenceBase}" /></td>
+										<td id="intEnhance" th:if="${editMode == true}"><input th:field="*{intelligenceEnhance}" th:placeholder="${character?.charSheet?.intelligenceEnhance}" /></td>
+										<td name="intMod"></td>
+									</tr>
+									<tr th:with="wisTotal = ${(character?.charSheet?.wisdomBase) + (character?.charSheet?.wisdomEnhance)}">
+										<td><span data-toggle="tooltip" title="Spell Bonuses for Clerics and Druids">Wisdom</span></td>
+										<td id="wisTotal" th:if="${editMode == false}" th:text="${wisTotal}"></td>
+										<td id="wisBase" th:if="${editMode == true}"><input th:field="*{wisdomBase}" th:placeholder="${character?.charSheet?.wisdomBase}" /></td>
+										<td id="wisEnhance" th:if="${editMode == true}"><input th:field="*{wisdomEnhance}" th:placeholder="${character?.charSheet?.wisdomEnhance}" /></td>
+										<td name="wisMod"></td>
+									</tr>
+									<tr th:with="chaTotal = ${(character?.charSheet?.charismaBase) + (character?.charSheet?.charismaEnhance)}">
+										<td><span data-toggle="tooltip" title="Social Interactions">Charisma</span></td>
+										<td id="chaTotal" th:if="${editMode == false}" th:text="${chaTotal}"></td>
+										<td id="chaBase" th:if="${editMode == true}"><input th:field="*{charismaBase}" th:placeholder="${character?.charSheet?.charismaBase}" /></td>
+										<td id="chaEnhance" th:if="${editMode == true}"><input th:field="*{charismaEnhance}" th:placeholder="${character?.charSheet?.charismaEnhance}" /></td>
+										<td name="chaMod"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					
+						<div class="col-md-6">
+							<table class="table table-hover lower">
+								<thead>
+									<tr>
+										<th>Property Name</th>
+										<th>Property Value</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td>Hit Die</td>
+										<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
+										<td th:if="${editMode == true}"><input id="hitDie" th:field="*{hitDie}" th:placeholder="${character?.charSheet?.hitDie}" /></td>
+									</tr>
+									<tr>
+										<td>Hit Points</td>
+										<td th:if="${editMode == false}">
+											<div id="progressBarParent" class="progress">
+												<div id="hpProgressBar">
+													<div id="hpText">
+														<center>
+															<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp"></span>
+														</center>
+													</div>
 												</div>
 											</div>
-										</div>
-									</td>
-									<td th:if="${editMode == true}"><input name="currentHp" th:field="*{currentHp}" th:placeholder="${character?.charSheet?.currentHp}" /></td>
-								</tr>
-								<tr th:if="${editMode == true}">
-									<td>Max Hit Points</td>
-									<td name="maxHp"></td>
-								</tr>
-								<tr>
-									<td>Initiative</td>
-									<td name="dexMod"></td>
-								</tr>
-								<tr>
-									<td>Size Mod</td>
-									<td id="sizeMod" th:text="${character?.size?.value}"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
-			</div>
+										</td>
+										<td th:if="${editMode == true}"><input name="currentHp" th:field="*{currentHp}" th:placeholder="${character?.charSheet?.currentHp}" /></td>
+									</tr>
+									<tr th:if="${editMode == true}">
+										<td>Max Hit Points</td>
+										<td name="maxHp"></td>
+									</tr>
+									<tr>
+										<td>Initiative</td>
+										<td name="dexMod"></td>
+									</tr>
+									<tr>
+										<td>Size Mod</td>
+										<td id="sizeMod" th:text="${character?.size?.value}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+					
+				<p th:if="${editMode == false}" class="dolor"></p>
 				
-			<p th:if="${editMode == false}" class="dolor"></p>
-			
-			<!-- Tip Panes -->
-			<section th:replace="fragments/ui/user/tips_combat_pane"></section>
-				
-			<div th:if="${editMode == false}">
-				<script>
-					disableFormElements();
-				</script>
+				<!-- Tip Panes -->
+				<section th:replace="fragments/ui/user/tips_combat_pane"></section>
+					
+				<div th:if="${editMode == false}">
+					<script>
+						disableFormElements();
+					</script>
+				</div>
+	
 			</div>
-
 		</div>
-	</div>
-
-	<script th:src="@{js/charSheet.js}"></script>
-</body>
+	
+	</body>
 </html>
