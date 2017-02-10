@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 public class CharacterValidator {
 
-	@NotNull(message = "Set your character name.")
+	@Pattern(regexp = "([a-z]|[A-Z])+", message = "Set your character name (no numbers or special characters).")
 	private String name;
 
+	@Min(value = 1, message = "Select a character size.")
 	private int size;
+	
+	@Min(value = 1, message = "Select a character class.")
 	private int classId;
+	
+	@Pattern(regexp = "^((?!unknown).)+$", message = "Select a character portrait.")
 	private String image;
 
 	public String getName() {
@@ -52,6 +59,13 @@ public class CharacterValidator {
 	public List<String> validate(BindingResult result, HttpServletRequest request) {
 		List<String> errors = new ArrayList<String>();
 
+		// Form violated validators:
+		if (result.hasErrors()) {
+    		for (ObjectError e : result.getAllErrors()) {
+    			errors.add(e.getDefaultMessage());
+    		}
+    	}
+		
 		return errors;
 	}
 }

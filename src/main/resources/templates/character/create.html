@@ -6,6 +6,14 @@
 	
 		<div class="single">
 			<div class="container">
+			
+				<!-- Error Messages -->
+				<div class="alert alert-dismissable alert-danger bad-login"
+					th:if="${errors != null and not #lists.isEmpty(errors)}">
+					<th:block data-th-each="error : ${errors}">
+						<p th:text="${error}">|Error message here.|</p>
+					</th:block>
+				</div>
 	
 				<div class="w3_single_grid">
 					<div class="col-md-6 w3_single_grid_left">

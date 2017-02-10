@@ -1,6 +1,7 @@
 package org.guy.rpg.dwg.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +66,20 @@ public class CharacterController extends BaseController {
 	
 	@PostMapping("/createCharacter")
 	public ModelAndView setCharacterCreate(@Valid @ModelAttribute CharacterValidator characterValidator, BindingResult result, HttpServletRequest request, RedirectAttributes redir, Model model) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// Validate Form Result first:
+		List<String> errors = characterValidator.validate(result, request);
+		if (!errors.isEmpty()) {
+			model.addAllAttributes(getAttributeMap(request));
+			model.addAttribute("characterValidator", characterValidator);
+			model.addAttribute("classList", classList);
+			model.addAttribute("sizeList", sizeList);
+			model.addAttribute("errors", errors);
+			modelAndView.setViewName("character/create");
+			return modelAndView;
+		}
+		
 		Character newCharacter = new Character();
 		newCharacter.setUser(dbManager.getCurrentUser(request));
 		newCharacter.setName(characterValidator.getName());
@@ -78,7 +93,6 @@ public class CharacterController extends BaseController {
 		model.addAllAttributes(getAttributeMap(request));
 		String successMsg = "Character " + newCharacter.getName() + " was created!";
 		
-		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/characters");
 	    redir.addFlashAttribute("successMsg", successMsg);
 	    return modelAndView;
