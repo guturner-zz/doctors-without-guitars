@@ -1,0 +1,196 @@
+/* CSS for Character Portraits. */
+
+/*--
+Character portrait usage.
+
+	<div class="row pane">
+		<div class="col-md-1 pane-btn"> Button To Hide/Show Pane </div>
+		<div class="col-md-11">
+			<ul class="list-group pane-steps">
+				<li class="list-group-item"> Step 1. </li>
+				<li class="list-group-item"> Step 2. </li>
+				<li class="list-group-item"> Step 3. </li>
+			</ul>
+		</div>
+	</div>
+
+--*/
+
+.portrait-container {
+	position       : relative;
+}
+
+.portrait-container figure {	
+	background     : white;
+	margin         : 0;
+	overflow       : hidden;
+	padding        : 0;
+}
+
+.portrait-container img {
+	margin         : 0 auto;
+}
+
+img.portrait {
+	border         : 1px solid orange;
+	border-radius  : 50px 50px 0px 0px;
+}
+
+.portrait-label {
+	bottom         : -6.5%;
+	left           : 10%;
+	position       : absolute;
+    width          : 80%;
+    z-index        : 9;
+}
+
+.portrait-label h4 {
+	background     : orange;
+	color          : white;
+	font-size      : 1em;
+    padding        : .5em;
+	position       :relative;
+	text-align     : center;
+	text-transform : uppercase;
+}
+
+.portrait-label h4:before {
+	content        : '';
+    border-bottom  : 17px solid transparent;
+    border-right   : 17px solid orange;
+    border-top     : 17px solid transparent;
+    position       : absolute;
+    left           : -6%;
+    top            : 0%;
+}
+
+.portrait-label h4:after {
+	content        : '';
+	border-bottom  : 17px solid transparent;
+    border-left    : 17px solid orange;
+    border-top     : 17px solid transparent;
+    position       : absolute;
+    right          : -6%;
+    top            : 0%;
+    
+}
+
+/* Shine Animation */
+.shine-on-hover figure {
+	position          : relative;
+}
+
+.shine-on-hover figure::before {
+	background        : -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background        : linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	content           : '';
+	left              : -75%;
+	position          : absolute;
+	display           : block;
+	top               : 0;
+	width             : 50%;
+	height            : 100%;
+	z-index           : 2;
+	transform         : skewX(-25deg);
+	-moz-transform    : skewX(-25deg);
+	-ms-transform     : skewX(-25deg);
+	-o-transform      : skewX(-25deg);
+	-webkit-transform : skewX(-25deg);
+}
+
+.shine-on-hover figure:hover::before {
+	animation         : shine .75s;
+	-moz-animation    : shine .75s;
+	-ms-animation     : shine .75s;
+	-o-animation      : shine .75s;
+	-webkit-animation : shine .75s;
+}
+
+/* Legacy Browser Support */
+@-webkit-keyframes shine {
+	to {
+		left: 125%;
+	}
+}
+
+@keyframes shine {
+	to {
+		left: 125%;
+	}
+}
+
+@media (max-width: 1080px) {
+
+	.portrait-label h4 {
+		font-size     : 13px;
+	}
+	
+	.portrait-label h4:before {
+		border-top    : 14px solid transparent;
+		border-right  : 14px solid orange;
+		border-bottom : 14px solid transparent;
+		left          : -6%;
+		top           : -3%;
+	}
+	
+	.portrait-label h4:after {
+		border-top    : 14px solid transparent;
+		border-left   : 14px solid orange;
+		border-bottom : 14px solid transparent;
+		right         : -6%;
+		top           : -3%;
+	}
+	
+}
+
+@media (max-width: 991px) {
+
+	.portrait-column {
+		float         : left;
+		width         : 50%;
+	}
+	
+	.portrait-label {
+		bottom        : -4.5%;
+		left          : 21%;
+		width         : 60%;
+	}
+	
+	.portrait-label h4:before {
+		left          : -7%;
+	}
+	
+	.portrait-label h4:after {
+		right         : -7%;
+	}
+	
+}
+
+@media (max-width: 600px) {
+
+	.portrait-label {
+		bottom        : -5.5%;
+		left          : 18%;
+		width         : 67%;
+	}
+	
+}
+
+@media (max-width: 568px) {
+
+	.portrait-label {
+	    left          : 11%;
+		width         : 80%;
+	}
+	
+}
+
+@media (max-width: 480px) {
+	
+	.portrait-column {
+		float        : none;
+		margin       : 0 auto;
+		width        : 60%;
+	}
+	
+}

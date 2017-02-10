@@ -1,0 +1,36 @@
+/* CSS for Character Sheet screen. */
+
+.pane {
+	margin-top    : 2em;
+}
+
+.pane-btn {
+	margin-bottom : 0.5em;
+}
+
+.pane-chkBox {
+	height        : 15px;
+	width         : 15px;
+	margin-left   : 0.5em;
+}
+
+.pane-steps {
+	margin-left   : 1em;
+}
+
+/*--
+Pane usage.
+
+	<!-- Some Info Pane -->
+	<div class="row pane">
+		<div class="col-md-1 pane-btn"> Button To Hide/Show Pane </div>
+		<div class="col-md-11">
+			<ul class="list-group pane-steps">
+				<li class="list-group-item"> Step 1. </li>
+				<li class="list-group-item"> Step 2. </li>
+				<li class="list-group-item"> Step 3. </li>
+			</ul>
+		</div>
+	</div>
+
+--*/

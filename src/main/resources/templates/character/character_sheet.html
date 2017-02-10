@@ -3,7 +3,6 @@
 	<section th:replace="fragments/theme/head :: head('Character Sheet')"></section>
 	<head>
 		<!-- Page-specific CSS / JS -->
-		<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
 		<script th:src="@{js/form.js}"></script>
 		<script th:src="@{js/character-sheet.js}"></script>
 	</head>
@@ -22,6 +21,46 @@
 							<p th:text="${error}">|Error message here.|</p>
 						</th:block>
 					</div>
+				</div>
+	
+				<!-- Character Portrait -->
+				<div class="row center-contents">
+					<!-- Character Portrait -->
+					<div class="row">
+					
+						<!-- 
+						<div class="col-md-2 col-md-offset-5">
+							<div class="shine-on-hover column">
+								<figure>
+									<img id="charPortrait" th:src="${character?.image}" class="img-responsive portrait"></img>
+								</figure>
+							</div>
+						</div>
+						-->
+						
+						<div class="wthree_element_grids">
+							<div class="col-md-6 wthree_element_grid">
+								<div class="wthree_element_grid1">
+									<!-- Character Portrait -->
+									<div class="shine-on-hover column">
+										<!-- Character Portrait -->
+										<figure>
+											<img id="charPortrait" th:src="${character?.image}" class="img-responsive portrait"></img>
+										</figure>
+									</div>
+		
+									<!-- Character Class -->
+									<div class="wthree_element_grid1_pos">
+										<h4><span th:text="${character?.name}"></span></h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+					</div>
+				
 				</div>
 	
 				<!-- Edit Buttons -->

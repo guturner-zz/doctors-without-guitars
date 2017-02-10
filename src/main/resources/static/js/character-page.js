@@ -1,7 +1,3 @@
-$(document).ready(function() {
-	
-});
-
 function selectCharacterOption(index, characterId, characterName) {
 	switch (index) {
 	case 0:
