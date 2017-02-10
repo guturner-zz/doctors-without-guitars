@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<section th:replace="fragments/theme/head :: head('Character Select')"></section>
+	<head>
+		<!-- Page-specific JS -->
+		<script th:src="@{js/character-page.js}"></script>
+	</head>
+	<body>
+		<section th:replace="fragments/theme/nav('Character Select')"></section>
+	
+		<div class="single">
+			<div class="container">
+			
+				<!-- Success Messages -->
+				<div class="alert alert-dismissable alert-success upper"
+					th:if="${not #strings.isEmpty(successMsg)}">
+					<p th:text="${successMsg}">|msg|</p>
+				</div>
+	
+				<div th:each="character : ${characters}" class="row upper orange-border center-contents-vertically">
+					<div class="col-md-2">
+						<img th:src="${character?.image}" class="small" />
+					</div>
+					
+					<div class="col-md-8">
+						<span th:text="${character?.name} + ' the ' + ${character?.charClass?.name}" class="name-plate"/> 
+					</div>
+					
+					<div th:with="characterName = '\'' + ${character?.name} + '\''" class="col-md-2">
+						<select th:onchange="'selectCharacterOption(this.selectedIndex, ' + ${character?.id} + ', ' + ${characterName} + ');'" class="long-input">
+							<option>Select Action</option>
+							<option>Character Sheet</option>
+							<option>Delete Character</option>
+						</select>
+						<form id="deleteCharacterForm" method="post" th:action="'/deleteCharacter?id=' + ${character?.id}"></form>
+					</div>
+				</div>
+	
+				<!-- Create Character Button -->
+				<div class="row center-contents">
+					<form id="createCharacterForm" method="get" th:action="@{/createCharacter}">
+						<h1 th:replace="fragments/theme/elements :: button(createCharacterBtn, 'Create New Character')"></h1>
+					</form>
+				</div>
+	
+			</div>
+		</div>
+	
+	</body>
+</html>

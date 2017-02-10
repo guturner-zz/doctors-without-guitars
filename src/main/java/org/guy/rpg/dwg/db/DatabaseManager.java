@@ -77,15 +77,13 @@ public class DatabaseManager {
 		return success;
 	}
 	
-	public CharacterSheet getCurrentUserCharacterSheet(HttpServletRequest request) {
-		Character character = getCurrentUserCharacter(request);
-		CharacterSheet characterSheet = null;
+	public boolean deleteCharacter(Character character) {
+		boolean success = false;
 		
-		if (character != null) {
-			characterSheet = character.getCharSheet();
-		}
+		characterRepository.delete(character);
+		success = true;
 		
-		return characterSheet;
+		return success;
 	}
 	
 	public boolean saveCharacterSheet(CharacterSheet characterSheet) {

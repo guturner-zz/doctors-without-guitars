@@ -5,11 +5,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.guy.rpg.dwg.models.db.Character;
-import org.guy.rpg.dwg.models.db.CharacterSheet;
-import org.guy.rpg.dwg.models.db.Class;
-import org.guy.rpg.dwg.models.db.Size;
-import org.guy.rpg.dwg.validators.CharacterValidator;
+import org.guy.rpg.dwg.models.db.User;
+import org.guy.rpg.dwg.validators.UserProfileValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,16 +22,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserProfileController extends BaseController {
 
-	private static String[] classList = {
-			"Select Class", "Barbarian", "Bard", "Cleric",
-			"Druid", "Fighter", "Monk", "Paladin", "Ranger",
-			"Rogue", "Sorceror", "Wizard"
-	};
-	
-	private static String[] sizeList = {
-			"Select Size", "Small", "Medium", "Large", "Huge"
-	};
-	
 	@GetMapping("/profile")
 	public String getProfile(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
@@ -44,47 +31,7 @@ public class UserProfileController extends BaseController {
 	}
 	
 	@PostMapping("/profile")
-	public String setProfile(@Valid @ModelAttribute CharacterValidator characterValidator, BindingResult result, HttpServletRequest request, Model model) {
-		Character userCharacter = dbManager.getCurrentUserCharacter(request);
-		if (userCharacter == null) {
-			Character newCharacter = new Character();
-			newCharacter.setUser(dbManager.getCurrentUser(request));
-			newCharacter.setName(characterValidator.getName());
-			newCharacter.setSize(new Size(characterValidator.getSize()));
-			newCharacter.setCharClass(new Class(characterValidator.getClassId()));
-			
-			String imagePath = characterValidator.getImage();
-			if (!imagePath.equals("")) {
-				newCharacter.setImage(imagePath);
-			}
-			
-			newCharacter.setCharSheet(new CharacterSheet());
-			
-			dbManager.saveCharacter(newCharacter);
-		} else {
-			String name = characterValidator.getName();
-			if (!name.equals("")) {
-				userCharacter.setName(name);
-			}
-			
-			int size = characterValidator.getSize();
-			if (size != 0) {
-				userCharacter.setSize(new Size(size));
-			}
-			
-			int classId = characterValidator.getClassId();
-			if (classId != 0) {
-				userCharacter.setCharClass(new Class(classId));
-			}
-			
-			String imagePath = characterValidator.getImage();
-			if (!imagePath.equals("")) {
-				userCharacter.setImage(imagePath);
-			}
-			
-			dbManager.saveCharacter(userCharacter);
-		}
-		
+	public String setProfile(@Valid @ModelAttribute UserProfileValidator profileValidator, BindingResult result, HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
 		
 		return "user/profile";
@@ -94,7 +41,7 @@ public class UserProfileController extends BaseController {
 	public String setEditMode(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
 		model.addAttribute("editMode", true);
-		model.addAttribute("characterValidator", new CharacterValidator());
+		model.addAttribute("profileValidator", new UserProfileValidator());
 		
 		return "user/profile";
 	}
@@ -103,8 +50,6 @@ public class UserProfileController extends BaseController {
 	protected Map<String, Object> getAttributeMap(HttpServletRequest request) {
 		Map<String, Object> attributeMap = super.getAttributeMap(request);
 		attributeMap.put("editMode", false);
-		attributeMap.put("classList", classList);
-		attributeMap.put("sizeList", sizeList);
 		
 		return attributeMap;
 	}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<section th:replace="fragments/theme/head :: head('Create Character')"></section>
+	<body>
+		<section th:replace="fragments/theme/nav('Create Character')"></section>
+	
+		<div class="single">
+			<div class="container">
+	
+				<div class="w3_single_grid">
+					<div class="col-md-6 w3_single_grid_left">
+						<div class="w3_single_grid_left_grid">
+							<div class="wthree_element_grids">
+	
+								<div class="col-md-6 wthree_element_grid">
+									<div class="wthree_element_grid1">
+										<!-- Character Portrait -->
+										<div class="hover14 column">
+										
+											<div>
+												<!-- Character Portrait -->
+												<figure>
+													<img id="charPortrait" src="img/portraits/unknown.png" class="img-responsive portrait"></img>
+												</figure>
+											</div>
+	
+										</div>
+	
+										<!-- Character Class -->
+										<div class="wthree_element_grid1_pos">
+											<h4><span>Adventurer</span></h4>
+										</div>
+										
+									</div>
+	
+									<!-- Save Button -->
+									<div class="wthree_element_grid2">
+										<h1>
+											<button id="saveBtn" type="submit" onclick="postForm('#saveForm');" class="label label-default">Create Character</button>
+										</h1>
+									</div>
+								</div>
+	
+								<div class="col-md-6 wthree_element_grid">
+									<!-- Character Info -->
+									<div class="col-md-12">
+										<form id="saveForm" method="post" th:action="@{/createCharacter}" th:object="${characterValidator}">
+											<div class="row">
+												<input th:field="*{name}" placeholder="Character Name" class="long-input" />
+											</div>
+	
+											<div class="row lower">
+												<select th:field="*{classId}" class="long-input">
+													<option th:each="cls,iter : ${classList}"
+															th:value="${iter.index}" th:text="${cls}" />
+												</select>
+											</div>
+											
+											<div class="row lower">
+												<select th:field="*{size}" class="long-input">
+													<option th:each="size,iter : ${sizeList}"
+															th:value="${iter.index}" th:text="${size}" />
+												</select>
+											</div>
+											
+											<input id="imageField" type="hidden" th:field="*{image}" />
+										</form>
+									</div>
+								</div>
+	
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<section th:replace="fragments/ui/user/choose_portrait"></section>
+		</div>
+	
+	</body>
+</html>

@@ -43,6 +43,10 @@ $(document).ready(function() {
 	);
 });
 
+function cancelCharacterSheet(characterId) {
+	window.location.href = 'characterSheet?id=' + characterId;
+}
+
 function recalculateVals() {
 	calculateAttributeMod('[name=strMod]', getValue('#strengthBase', '#strengthEnhance'));
 	calculateAttributeMod('[name=dexMod]', getValue('#dexterityBase', '#dexterityEnhance'));

@@ -5,7 +5,7 @@
 		<!-- Page-specific CSS / JS -->
 		<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
 		<script th:src="@{js/form.js}"></script>
-		<script th:src="@{js/charSheet.js}"></script>
+		<script th:src="@{js/character-sheet.js}"></script>
 	</head>
 
 	<body>
@@ -27,23 +27,27 @@
 				<!-- Edit Buttons -->
 				<div th:switch="${editMode}" class="center-contents">
 					<div th:case="false" class="row">
-						<form id="editForm" method="post" th:action="@{/editCharacterSheet}">
+						<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
 							<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
 						</form>
 					</div>
 		
 					<div th:case="*" class="row">
 						<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
-	
-						<form id="cancelForm" method="get" th:action="@{/characterSheet}">
-							<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
-						</form>
+						<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
+						<script th:inline="javascript">
+							/*<![CDATA[*/
+							$('#cancelBtn').click(function() {
+								cancelCharacterSheet(/*[[${character?.id}]]*/);
+							});
+							/*]]>*/
+						</script>
 					</div>
 				</div>
 	
 				<!-- Character Info -->
 				<div class="row">
-					<form id="saveForm" method="post" th:action="@{/characterSheet}" th:object="${characterSheetValidator}">
+					<form id="saveForm" method="post" th:action="'/characterSheet?id=' + ${character?.id}" th:object="${characterSheetValidator}">
 						<div class="col-md-6">
 							<table class="table table-hover lower">
 								<thead>

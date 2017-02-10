@@ -20,11 +20,46 @@ html, body{
 .center-contents {
 	text-align: center;
 }
+.center-contents-vertically {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .centered {
 	margin-left: auto;
 	margin-right: auto;
 }
-.
+.long-input {
+	width: 100%;
+}
+.lower {
+	margin-top: 2em;
+}
+.upper {
+	margin-bottom: 2em;
+}
+.orange-border {
+	border-style: solid;
+    border-width: 1px;
+    border-color: orange;
+}
+.name-plate {
+	font-family: 'MedievalSharp', cursive;
+	font-size: 3em;
+	color: orange;
+}
+.portrait {
+	border-color: orange;
+	border-style: solid;
+    border-width: 1px;
+}
+img.small {
+	height: 20vh;
+}
+img.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
 p{
 	margin:0;
 	font-size:14px;

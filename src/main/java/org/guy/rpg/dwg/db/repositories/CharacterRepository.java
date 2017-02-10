@@ -10,4 +10,6 @@ public interface CharacterRepository extends CrudRepository<Character, Long> {
 	
 	Character getCharacterByUser(User user);
 	
+	Character getCharacterById(Long id);
+	
 }

@@ -1,22 +1,25 @@
 package org.guy.rpg.dwg.controllers;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.guy.rpg.dwg.db.repositories.CharacterRepository;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
+import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.validators.CharacterSheetValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Controller for the character sheet page.
@@ -26,21 +29,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CharacterSheetController extends BaseController {
 	
+	@Autowired
+	CharacterRepository characterRepository;
+	
 	@GetMapping("/characterSheet")
-	public String getCharacterSheet(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
-		// Redirect if no character:
-		if (dbManager.getCurrentUserCharacter(request) == null) {
-			response.sendRedirect("/profile");
+	public ModelAndView getCharacterSheet(@RequestParam("id") Long characterId, HttpServletRequest request, Model model) {
+		// Validate that this is the current user's character:
+		User user = dbManager.getCurrentUser(request);
+		Character characterFromId = characterRepository.getCharacterById(characterId);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (!user.getCharacters().contains(characterFromId)) {
+			modelAndView.setViewName("redirect:/");
+			return modelAndView;
 		}
 		
 		model.addAllAttributes(getAttributeMap(request));
-		return "user/character_sheet";
+		model.addAttribute("character", characterFromId);
+		modelAndView.setViewName("character/character_sheet");
+		return modelAndView;
 	}
 	
 	@PostMapping("/characterSheet")
-	public String setCharacterSheet(@Valid @ModelAttribute CharacterSheetValidator characterSheetValidator, BindingResult result, HttpServletRequest request, Model model) {
-		Character userCharacter = dbManager.getCurrentUserCharacter(request);
-		CharacterSheet characterSheet = userCharacter.getCharSheet();
+	public ModelAndView setCharacterSheet(@RequestParam("id") Long characterId, @Valid @ModelAttribute CharacterSheetValidator characterSheetValidator, BindingResult result, HttpServletRequest request, Model model) {
+		// Validate that this is the current user's character:
+		User user = dbManager.getCurrentUser(request);
+		Character characterFromId = characterRepository.getCharacterById(characterId);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (!user.getCharacters().contains(characterFromId)) {
+			modelAndView.setViewName("redirect:/");
+			return modelAndView;
+		}
+		
+		CharacterSheet characterSheet = characterFromId.getCharSheet();
 		
 		// Validate Form Result first:
 		List<String> errors = characterSheetValidator.validate(result, request);
@@ -48,7 +70,9 @@ public class CharacterSheetController extends BaseController {
 			model.addAllAttributes(getAttributeMap(request));
 			model.addAttribute("characterSheetValidator", characterSheetValidator);
 			model.addAttribute("errors", errors);
-			return "user/character_sheet";
+			model.addAttribute("character", characterFromId);
+			modelAndView.setViewName("character/character_sheet");
+			return modelAndView;
 		}
 		
 		if (!characterSheetValidator.getHitDie().equals("")) {
@@ -123,15 +147,28 @@ public class CharacterSheetController extends BaseController {
 		dbManager.saveCharacterSheet(characterSheet);
 		
 		model.addAllAttributes(getAttributeMap(request));
-		return "user/character_sheet";
+		model.addAttribute("character", characterFromId);
+		modelAndView.setViewName("character/character_sheet");
+		return modelAndView;
 	}
 	
 	@PostMapping("/editCharacterSheet")
-	public String setEditMode(HttpServletRequest request, Model model) {
+	public ModelAndView setEditMode(@RequestParam("id") Long characterId, HttpServletRequest request, Model model) {
+		// Validate that this is the current user's character:
+		User user = dbManager.getCurrentUser(request);
+		Character characterFromId = characterRepository.getCharacterById(characterId);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (!user.getCharacters().contains(characterFromId)) {
+			modelAndView.setViewName("redirect:/");
+			return modelAndView;
+		}
+		
 		model.addAllAttributes(getAttributeMap(request));
 		model.addAttribute("editMode", true);
-		
-		return "user/character_sheet";
+		model.addAttribute("character", characterFromId);
+		modelAndView.setViewName("character/character_sheet");
+		return modelAndView;
 	}
 	
 	@Override

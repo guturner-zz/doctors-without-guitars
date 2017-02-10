@@ -34,7 +34,6 @@ public abstract class BaseController {
 		// Account related:
 		Account account = UserManager.getCurrentUserAccount(request);
 		attributeMap.put("user", UserManager.getUsernameFromAccount(account));
-		attributeMap.put("character", dbManager.getCurrentUserCharacter(request));
 		
 		return attributeMap;
 	}

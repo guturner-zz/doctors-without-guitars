@@ -5,10 +5,12 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,7 +22,7 @@ public class Character implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userid")
 	private User user;
 
@@ -28,7 +30,7 @@ public class Character implements Serializable {
 	@JoinColumn(name = "classid")
 	private Class charClass;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "charactersheetid")
 	private CharacterSheet charSheet;
 
@@ -38,7 +40,7 @@ public class Character implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "size_value")
 	private Size size;
-	
+
 	@Column(name = "image")
 	private String image;
 
@@ -93,7 +95,7 @@ public class Character implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Size getSize() {
 		return size;
 	}
