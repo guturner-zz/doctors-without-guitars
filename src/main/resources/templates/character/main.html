@@ -32,7 +32,7 @@
 							<option>Character Sheet</option>
 							<option>Delete Character</option>
 						</select>
-						<form id="deleteCharacterForm" method="post" th:action="'/deleteCharacter?id=' + ${character?.id}"></form>
+						<form th:id="'deleteCharacterForm-' + ${character?.id}" method="post" th:action="'/deleteCharacter?id=' + ${character?.id}"></form>
 					</div>
 				</div>
 	

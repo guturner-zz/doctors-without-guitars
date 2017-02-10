@@ -22,6 +22,6 @@ function navigateToCharacterSheet(characterId) {
 function deleteCharacter(characterId, characterName) {
 	var response = confirm("Are you sure you wish to delete " + characterName + "? This cannot be undone.");
 	if (response == true) {
-		postForm('#deleteCharacterForm');
+		postForm('#deleteCharacterForm-' + characterId);
 	}
 }
