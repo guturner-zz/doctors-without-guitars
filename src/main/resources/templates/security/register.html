@@ -4,7 +4,7 @@
 	<body>
 		<section th:replace="fragments/theme/nav :: nav(Register)"></section>
 	
-		<div class="register-page">
+		<div class="single">
 			<div class="container">
 				<!-- Success Messages -->
 				<div class="alert alert-dismissable alert-success"
@@ -20,8 +20,9 @@
 					</th:block>
 				</div>
 	
-				<div class="agileits_mail_grids">
-					<div class="col-md-8 agileits_mail_grid_left">
+				<div class="row">
+					<div class="col-md-8 form-col-left">
+					
 						<form method="post" th:action="@{/register}" role="form" th:object="${stormpathAccountValidator}">
 						
 							<!-- Fields -->
@@ -32,8 +33,8 @@
 									th:placeholder="${field.placeholder}"
 									th:required="${field.required}" 
 									th:type="${field.type}"
-									th:classappend="${field.name == 'password'} ? info-enabled : noextra" />
-								<div th:if="${field.name == 'password'}" class="info">* Password must be at least 8 characters and include one capital letter and one number.</div>
+									th:classappend="${field.name == 'password'} ? input-hint-enabled : noextra" />
+								<div th:if="${field.name == 'password'}" class="input-hint">* Password must be at least 8 characters and include one capital letter and one number.</div>
 							</div>
 	
 							<!-- Submit Button -->
@@ -43,9 +44,8 @@
 								</h1>
 							</div>
 						</form>
+						
 					</div>
-					<div class="col-md-4 agileits_mail_grid_right"></div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<!-- Page-specific CSS / JS -->
-		<link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"></link>
 		<script th:src="@{js/form.js}"></script>
 	</head>
 	<section th:replace="fragments/theme/head :: head(Profile)"></section>
@@ -13,7 +12,18 @@
 			<div class="container">
 	
 				<div class="row">
-					<span th:text="'Username: ' + ${account.email}"></span>
+					<div class="col-md-4 form-col-left">
+					
+						<h4 class="lower">Username: </h4>
+						<input th:value="${account.email}" class="long-input" disabled="true" />
+						
+						<h4 class="lower">First Name: </h4>
+						<input th:value="${account.givenName}" class="long-input" disabled="true" />
+						
+						<h4 class="lower">Last Name: </h4>
+						<input th:value="${account.surname}" class="long-input" disabled="true" />
+						
+					</div>
 				</div>
 				
 			</div>

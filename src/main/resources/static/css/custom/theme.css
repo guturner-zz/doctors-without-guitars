@@ -1,81 +1,158 @@
 /* Main CSS. Heavily modified version of the 'Domicile Real Estate' theme from https://w3layouts.com. */
+
 html, body{
-    font-size: 100%;
-	font-family: 'Open Sans', sans-serif;
-	background:#ffffff;
-}
-.character-info {
-	margin-left: -20%;
-}
-@media (max-width:991px){
-	.character-info {
-		margin-left: 0;
-		margin-top: 50%;
-	}
+	background         : white;
+	font-family        : 'Open Sans', sans-serif;
+    font-size          : 100%;
 }
 
-.info {
-	font-size: 12px;
-	margin-bottom: 2.5em;
-}
-.info-enabled {
-	margin-bottom: 0.5em !important;
-}
-.center-contents {
-	text-align: center;
-}
-.center-contents-vertically {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.centered {
-	margin-left: auto;
-	margin-right: auto;
-}
-.long-input {
-	width: 100%;
-}
-.lower {
-	margin-top: 2em;
-}
-.upper {
-	margin-bottom: 2em;
-}
-.orange-border {
-	border-style: solid;
-    border-width: 1px;
-    border-color: orange;
-}
-.name-plate {
-	font-family: 'MedievalSharp', cursive;
-	font-size: 3em;
-	color: orange;
-	margin-left: 0.5em;
-}
-
-img.small {
-	height: 20vh;
-}
-img.centered {
-	margin-left: auto;
-	margin-right: auto;
-}
-p{
+p {
 	margin:0;
 	font-size:14px;
 }
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Josefin Sans', sans-serif;
-	margin:0;
+
+h1, h2, h3, h4, h5, h6 {
+	font-family        : 'Josefin Sans', sans-serif;
+	margin             : 0;
 }
-ul,label{
-	margin:0;
-	padding:0;
+
+ul, label{
+	margin             : 0;
+	padding            : 0;
 }
-body a:hover{
-	text-decoration:none;
+
+body a:hover {
+	text-decoration    : none;
 }
+
+/** Highest-level container div for a page. **/
+
+.single {
+	padding            : 5em 0;
+}
+
+.single h2 {
+	color              : orange;
+	text-align         : center;
+}
+
+/** Small text under inputs for validation hints. **/
+.input-hint {
+	font-size          : 12px;
+	margin-bottom      : 2.5em;
+}
+
+.input-hint-enabled {
+	margin-bottom      : 0.5em !important;
+}
+
+/** For manipulating div location. **/
+.center-contents {
+	text-align         : center;
+}
+
+.centered {
+	margin-left        : auto;
+	margin-right       : auto;
+}
+
+.center-contents-vertically {
+	align-items        : center;
+	display            : flex;
+	justify-content    : center;
+}
+
+.lower {
+	margin-top         : 2em;
+}
+
+.upper {
+	margin-bottom      : 2em;
+}
+
+/** Forms. **/
+.long-input {
+	width              : 100%;
+}
+
+.orange-border {
+	border-color       : orange;
+	border-style       : solid;
+    border-width       : 1px;
+    
+}
+
+/** Character Select screen custom font. **/
+.name-plate {
+	color              : orange;
+	font-family        : 'MedievalSharp', cursive;
+	font-size          : 3em;
+	margin-left        : 0.5em;
+}
+
+img.small {
+	height             : 20vh;
+}
+
+img.centered {
+	margin-left        : auto;
+	margin-right       : auto;
+}
+
+.character-info {
+	margin-left        : -20%;
+}
+
+/** Different resolutions. See above for relevant comments on specific classes. **/
+@media (max-width: 1280px){
+	.single {
+		padding        : 4em 0;
+	}
+	
+	.name-plate {
+		font-size      : 2.5em;
+	}
+}
+
+@media (max-width: 991px){
+	.character-info {
+		margin-left    : 0;
+		margin-top     : 0;
+	}
+}
+
+@media (max-width: 768px){
+	.single {
+		padding        : 3em 0;
+	}
+	
+	.name-plate {
+		font-size      : 1.5em;
+	}
+	
+	.character-info {
+		margin-top     : 65%;
+	}
+}
+
+@media (max-width:480px){
+	.single {
+		padding        : 2em 0;
+	}
+	
+	.character-info {
+		margin-top     : 5%;
+	}
+	
+	.cd-search input {
+		font-size      : 1em;
+	}
+	
+	.form-col-left input[type="text"], .form-col-left input[type="email"], .form-col-left textarea {
+		margin-bottom: 2em;
+	}
+}
+
 .w3l_header_left{
 	float:left;
 	margin: .3em 0 0;
@@ -473,11 +550,7 @@ ul li a {
 	-moz-transition: opacity .3s 0s, visibility 0s 0s;
 	transition: opacity .3s 0s, visibility 0s 0s;
 }
-/*-- //header --*/
-/*-- about --*/
-.about,.team,.testimonials,.comments,.single,.services,.services-bottom,.services-icons,.register-page,.typo,.login-page{
-	padding:5em 0;
-}
+
 .about h3,.team h3,.testimonials h3,.newsletter h3,.services h3,.services-bottom h3,.register-page h3,h3.title,.login-page h3{
 	font-size: 2.5em;
     color: #212121;
@@ -1633,15 +1706,12 @@ h2.typoh2{
 }
 /*--//Typography --*/
 /*-- mail --*/
-.agileits_mail_grids{
-	margin:3em 0 0;
-}
-.agileits_mail_grid_left h4{
+.form-col-left h4{
 	font-size:1.2em;
 	color:#F58703;
 	margin-bottom:1em;
 }
-.agileits_mail_grid_left input[type="text"],.agileits_mail_grid_left input[type="email"],.agileits_mail_grid_left input[type="password"]{
+.form-col-left input[type="text"],.form-col-left input[type="email"],.form-col-left input[type="password"]{
 	outline: none;
     background: #f5f5f5;
     border: 1px solid #E8E8E8;
@@ -1651,20 +1721,20 @@ h2.typoh2{
     width: 100%;
     margin-bottom: 3em;
 }
-.agileits_mail_grid_left textarea{
+.form-col-left textarea{
 	min-height:150px;
 }
-.agileits_mail_grid_right_grid{
+.form-col-right_grid{
 	text-align: right;
 }
-.agileits_mail_grid_right_grid h4{
+.form-col-right_grid h4{
 	font-size: 1.7em;
     color: #212121;
     padding-bottom: .5em;
     position: relative;
 	margin:0 0 1em;
 }
-.agileits_mail_grid_right_grid h4:before{
+.form-col-right_grid h4:before{
 	content: '';
     background: #F58703;
     width: 15%;
@@ -1673,11 +1743,11 @@ h2.typoh2{
     bottom: 0%;
     right: 0%;
 }
-.agileits_mail_grid_right_grid p{
+.form-col-right_grid p{
 	color:#999;
 	line-height:1.8em;
 }
-.agileits_mail_grid_right_grid:nth-child(2){
+.form-col-right_grid:nth-child(2){
 	margin:3em 0;
 }
 ul.contact_info li {
@@ -1923,23 +1993,7 @@ a.pa_italic:focus {
 		font-size: 2.5em;
 	}
 }
-@media (max-width: 1280px){
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
-		padding: 4em 0;
-	}
-	.agileits_about_bottom_left {
-		padding: 2em 2em 1.8em 4em;
-	}
-	.agileits_about_bottom_left ul {
-		padding: 2.8em 0 0;
-	}
-	.agileits_newsletter_grids {
-		width: 53%;
-	}
-	.agile_testimonials_grid1:before {
-		bottom: -9%;
-	}
-}
+
 @media (max-width: 1080px){
 	.navbar-nav {
 		margin: 0 0 0 3em;
@@ -2009,7 +2063,7 @@ a.pa_italic:focus {
 	ul.contact_info {
 		padding-left: 4em;
 	}
-	.agileits_mail_grid_right_grid h4 {
+	.form-col-right_grid h4 {
 		font-size: 1.6em;
 	}
 	.map iframe {
@@ -2151,10 +2205,10 @@ a.pa_italic:focus {
 	.agile_gallery_grids:nth-child(2) {
 		margin-bottom: 2em;
 	}
-	.agileits_mail_grid_right_grid {
+	.form-col-right_grid {
 		text-align: left;
 	}
-	.agileits_mail_grid_right_grid h4:before {
+	.form-col-right_grid h4:before {
 		right: auto;
 		left: 0%;
 	}
@@ -2170,35 +2224,7 @@ a.pa_italic:focus {
 		width: 70%;
 	}
 }
-@media (max-width: 768px){
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
-		padding: 3em 0;
-	}
-	.agile_testimonials_grid1:before {
-		bottom: -11%;
-	}
-	.footer-logo h2 a {
-		font-size: 1.8em;
-	}
-	.agileinfo_footer_grid:nth-child(2) {
-		margin-bottom: 1em;
-	}
-	.comments-grid1 {
-		padding-left: 5em;
-	}
-	.wthree_write_reply input[type="text"], .wthree_write_reply input[type="email"], .wthree_write_reply textarea {
-		margin-bottom: 2em;
-	}
-	.more,.w3ls_services_bottom_grids,.wthree_gallery_grids {
-		margin: 2em 0 0;
-	}
-	.nav-tabs > li:first-child {
-		margin-left: 4em;
-	}
-	.nav-tabs {
-		margin-bottom: 2em;
-	}
-}
+
 @media (max-width: 767px){
 	.navbar-toggle {
 		margin:.8em 21em 0 0;
@@ -2379,118 +2405,7 @@ a.pa_italic:focus {
 	}
 	
 }
-@media (max-width:480px){
-	.cd-search input {
-		font-size: 1em;
-	}
-	.w3l_header_left {
-		float: none;
-		margin: 0 0 1em;
-		text-align: center;
-	}
-	.w3l_header_right {
-		float: none;
-		text-align: center;
-	}
-	.navbar-toggle {
-		margin: .6em 11.9em 0 0;
-	}
-	.about h3, .team h3, .testimonials h3, .newsletter h3, .services h3, .services-bottom h3, .register-page h3, h3.title, .login-page h3 {
-		font-size: 1.6em;
-	}
-	.about, .team, .testimonials, .comments, .single, .services, .services-bottom, .services-icons, .register-page, .typo, .login-page {
-		padding: 2em 0;
-	}
-	.about-grid-right {
-		padding: 2em 2em 2em 2em;
-	}
-	.about-grid-left h4 {
-		font-size: 1.3em;
-	}
-	.agileits_about_bottom_left {
-		padding: 2em 2em 2em;
-	}
-	.agileits_about_bottom_left h3 {
-		font-size: 1.43em;
-	}
-	.agileits_about_bottom_left p {
-		margin: 1em 0;
-	}
-	.w3_updates_bottom_grid1 p {
-		margin: 0 !important;
-	}
-	.agileits_about_bottom_left1 {
-		float: none;
-		width: 100%;
-	}
-	.agileits_about_bottom_left1:nth-child(4){
-		margin:2em 0;
-	}
-	.agileits_about_bottom_right {
-		width: 100%;
-	}
-	
-	.agileits_newsletter_grids {
-		width: 100%;
-	}
-	.agile_testimonials_grid {
-		width: 90%;
-	}
-	.agileinfo_footer_grid {
-		float: none;
-		width: 100%;
-	}
-	.agileinfo_footer_grid:nth-child(3) {
-		margin-bottom: 2em;
-	}
-	.w3l_services_grids {
-		margin: 2em 0 0;
-	}
-	.w3l_services_grid {
-		width: 100%;
-	}
-	.related-post-right h4 a {
-		margin: 0;
-	}
-	.comments-grid1 {
-		padding-left: 0;
-	}
-	.wthree_write_reply {
-		margin: 1em 0 0;
-	}
-	.wthree_write_reply input[type="submit"] {
-		width: 100%;
-	}
-	.nav-tabs > li > a {
-		font-size: 13px;
-		padding: 10px 1px;
-	}
-	.agile_gallery_grids {
-		float: none;
-		width: 100%;
-	}
-	.agile_gallery_grids:nth-child(2) {
-		margin: 2em 0;
-	}
-	.agile_gallery_grids:nth-child(3) {
-		margin-bottom: 2em;
-	}
-	.view p {
-		padding: 8.5em 1em 0;
-	}
-	.agileits_mail_grid_left input[type="text"], .agileits_mail_grid_left input[type="email"], .agileits_mail_grid_left textarea {
-		margin-bottom: 2em;
-	}
-	.agileits_mail_grid_right_grid h4 {
-		font-size: 1.3em;
-	}
-	.agileits_mail_grid_right_grid:nth-child(2) {
-		margin: 2em 0;
-	}
-	.newsletter {
-		padding: 2em 0;
-	}
-}
+
 @media (max-width: 414px){
 	.navbar-toggle {
 		margin: .6em 7.9em 0 0;
@@ -2581,10 +2496,7 @@ a.pa_italic:focus {
 	.view p {
 		padding: 6.5em 1em 0;
 	}
-	.agileits_mail_grids {
-		margin: 2em 0 0;
-	}
-	.agileits_mail_grid_left {
+	.form-col-left {
 		padding: 0;
 	}
 	.w3l_header_left ul li {
@@ -2645,7 +2557,7 @@ a.pa_italic:focus {
 	.map iframe {
 		min-height: 150px;
 	}
-	.agileits_mail_grid_left h4,.wthree_write_reply h4 {
+	.form-col-left h4,.wthree_write_reply h4 {
 		font-size: 1em;
 	}
 	.view p {
