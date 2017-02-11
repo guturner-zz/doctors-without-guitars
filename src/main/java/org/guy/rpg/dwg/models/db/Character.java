@@ -44,6 +44,9 @@ public class Character implements Serializable {
 	@Column(name = "image")
 	private String image;
 
+	@Column(name = "new_character", columnDefinition = "INT")
+	private boolean newCharacterFlag;
+
 	public Character() {
 
 	}
@@ -112,4 +115,11 @@ public class Character implements Serializable {
 		this.image = image;
 	}
 
+	public boolean isNewCharacterFlag() {
+		return newCharacterFlag;
+	}
+
+	public void setNewCharacterFlag(boolean newCharacterFlag) {
+		this.newCharacterFlag = newCharacterFlag;
+	}
 }

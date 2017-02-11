@@ -75,9 +75,7 @@ public class CharacterController extends BaseController {
 			return modelAndView;
 		}
 		
-		Character newCharacter = new Character();
-		modifyCharacterByValidator(newCharacter, characterValidator, request);
-		newCharacter.setCharSheet(new CharacterSheet());			
+		Character newCharacter = generateNewCharacter(characterValidator, request);
 		dbManager.saveCharacter(newCharacter);
 		
 		model.addAllAttributes(getAttributeMap(request));
@@ -161,7 +159,8 @@ public class CharacterController extends BaseController {
 	}
 	
 	/**
-	 * Takes a character to modify and modifies it using the CharacterValidator.
+	 * Takes a character object and modifies it according to its characterValidator.
+	 * Notice that this method uses side effects.
 	 */
 	private void modifyCharacterByValidator(Character character, CharacterValidator characterValidator, HttpServletRequest request) {
 		character.setUser(dbManager.getCurrentUser(request));
@@ -169,6 +168,20 @@ public class CharacterController extends BaseController {
 		character.setSize(new Size(characterValidator.getSize()));
 		character.setCharClass(new Class(characterValidator.getClassId()));
 		character.setImage(characterValidator.getImage());
+	}
+	
+	/**
+	 * Create a new character object according to a characterValidator.
+	 */
+	private Character generateNewCharacter(CharacterValidator characterValidator, HttpServletRequest request) {
+		Character newCharacter = new Character();
+		modifyCharacterByValidator(newCharacter, characterValidator, request);
+		
+		// Properties on new characters:
+		newCharacter.setNewCharacterFlag(true);
+		newCharacter.setCharSheet(new CharacterSheet());
+		
+		return newCharacter;
 	}
 	
 	private Map<String, Object> getEditCharacterAttributeMap(HttpServletRequest request) {

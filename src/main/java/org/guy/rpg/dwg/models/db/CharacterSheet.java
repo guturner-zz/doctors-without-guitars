@@ -55,9 +55,12 @@ public class CharacterSheet implements Serializable {
 
 	@Column(name = "hitdie")
 	private String hitDie;
-	
+
 	@Column(name = "current_hitpoints")
 	private int currentHp;
+
+	@Column(name = "max_hitpoints")
+	private int maxHp;
 
 	public CharacterSheet() {
 
@@ -182,5 +185,12 @@ public class CharacterSheet implements Serializable {
 	public void setCurrentHp(int currentHp) {
 		this.currentHp = currentHp;
 	}
-	
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
 }

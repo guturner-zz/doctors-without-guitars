@@ -8,8 +8,6 @@ $(document).ready(function() {
 		calculateAttributeMod('[name=wisMod]', $('#wisTotal').text());
 		calculateAttributeMod('[name=chaMod]', $('#chaTotal').text());
 		
-		calculateMaxHp('[name=maxHp]', $('#hitDie').text());
-		
 		toggleRanged();
 		setProgressBars();
 		
@@ -22,8 +20,6 @@ $(document).ready(function() {
 		calculateAttributeMod('[name=intMod]', parseInt($('#intelligenceBase').attr('placeholder')) + parseInt($('#intelligenceEnhance').attr('placeholder')));
 		calculateAttributeMod('[name=wisMod]', parseInt($('#wisdomBase').attr('placeholder')) + parseInt($('#wisdomEnhance').attr('placeholder')));
 		calculateAttributeMod('[name=chaMod]', parseInt($('#charismaBase').attr('placeholder')) + parseInt($('#charismaEnhance').attr('placeholder')));
-		
-		calculateMaxHp('[name=maxHp]', getInputValue('#hitDie'));
 		
 		$('#saveBtn').click(function() {
 			postForm('#saveForm');
@@ -55,7 +51,6 @@ function recalculateVals() {
 	calculateAttributeMod('[name=wisMod]', getValue('#wisdomBase', '#wisdomEnhance'));
 	calculateAttributeMod('[name=chaMod]', getValue('#charismaBase', '#charismaEnhance'));
 	
-	calculateMaxHp('[name=maxHp]', getInputValue('#hitDie'));
 	validateHp('[name=currentHp]', getInputValue('[name=currentHp]'), getInputValue('#hitDie'));
 }
 
@@ -110,31 +105,6 @@ function calculateAttributeMod(el, val) {
 	});
 }
 
-function getMaxHp(hitDieVal) {
-	// Validation:
-	if (typeof hitDieVal == "undefined") {
-		return 0;
-	}
-	
-	var numOfDie = parseInt(hitDieVal.substring(0,1));
-	var hpMod = parseInt(hitDieVal.substring(2,4));
-	
-	return (numOfDie * hpMod);
-}
-
-function calculateMaxHp(el, hitDieVal) {
-	var maxHpVal = getMaxHp(hitDieVal);
-	
-	// Validation:
-	if (isNaN(maxHpVal)) {
-		maxHpVal = 0;
-	}
-	
-	$(el).each(function() {
-		$(this).text(maxHpVal);
-	});
-}
-
 function calculateSizeMod(el, sizeModVal) {
 	var sizeModCalculatedVal = parseInt(sizeModVal);
 	
@@ -147,8 +117,8 @@ function calculateSizeMod(el, sizeModVal) {
 	});
 }
 
-function validateHp(el, currentHp, hitDieVal) {
-	var maxHp = getMaxHp(hitDieVal);
+function validateHp(el, currentHp) {
+	var maxHp = getInputValue('#maxHp');
 	var calculatedHp = currentHp;
 	
 	if (currentHp < 0) {
