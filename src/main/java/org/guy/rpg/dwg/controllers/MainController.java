@@ -18,6 +18,7 @@ public class MainController extends BaseController {
 	@RequestMapping("/")
 	public String main(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
+		model.addAttribute("characters", dbManager.getCurrentUser(request).getCharacters());
 		
 		return "main/main";
 	}

@@ -56,10 +56,7 @@ public class CharacterController extends BaseController {
 	
 	@GetMapping("/createCharacter")
 	public String getCharacterCreate(HttpServletRequest request, Model model) {
-		model.addAllAttributes(getAttributeMap(request));
-		model.addAttribute("characterValidator", new CharacterValidator());
-		model.addAttribute("classList", classList);
-		model.addAttribute("sizeList", sizeList);
+		model.addAllAttributes(getEditCharacterAttributeMap(request));
 		
 		return "character/create";
 	}
@@ -71,27 +68,72 @@ public class CharacterController extends BaseController {
 		// Validate Form Result first:
 		List<String> errors = characterValidator.validate(result, request);
 		if (!errors.isEmpty()) {
-			model.addAllAttributes(getAttributeMap(request));
+			model.addAllAttributes(getEditCharacterAttributeMap(request));
 			model.addAttribute("characterValidator", characterValidator);
-			model.addAttribute("classList", classList);
-			model.addAttribute("sizeList", sizeList);
 			model.addAttribute("errors", errors);
 			modelAndView.setViewName("character/create");
 			return modelAndView;
 		}
 		
 		Character newCharacter = new Character();
-		newCharacter.setUser(dbManager.getCurrentUser(request));
-		newCharacter.setName(characterValidator.getName());
-		newCharacter.setSize(new Size(characterValidator.getSize()));
-		newCharacter.setCharClass(new Class(characterValidator.getClassId()));
-		newCharacter.setImage(characterValidator.getImage());
-			
+		modifyCharacterByValidator(newCharacter, characterValidator, request);
 		newCharacter.setCharSheet(new CharacterSheet());			
 		dbManager.saveCharacter(newCharacter);
 		
 		model.addAllAttributes(getAttributeMap(request));
 		String successMsg = "Character " + newCharacter.getName() + " was created!";
+		
+		modelAndView.setViewName("redirect:/characters");
+	    redir.addFlashAttribute("successMsg", successMsg);
+	    return modelAndView;
+	}
+	
+	@GetMapping("/editCharacter")
+	public ModelAndView getEditCharacter(@RequestParam("id") Long characterId, HttpServletRequest request, Model model) {
+		// Validate that this is the current user's character:
+		User user = dbManager.getCurrentUser(request);
+		Character characterFromId = characterRepository.getCharacterById(characterId);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (!user.getCharacters().contains(characterFromId)) {
+			modelAndView.setViewName("redirect:/");
+			return modelAndView;
+		}
+		
+		model.addAllAttributes(getEditCharacterAttributeMap(request));
+		model.addAttribute("character", characterFromId);
+		modelAndView.setViewName("character/edit");
+		return modelAndView;
+	}
+	
+	@PostMapping("/editCharacter")
+	public ModelAndView setEditCharacter(@RequestParam("id") Long characterId, @Valid @ModelAttribute CharacterValidator characterValidator, BindingResult result, HttpServletRequest request, RedirectAttributes redir, Model model) {
+		// Validate that this is the current user's character:
+		User user = dbManager.getCurrentUser(request);
+		Character characterFromId = characterRepository.getCharacterById(characterId);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		if (!user.getCharacters().contains(characterFromId)) {
+			modelAndView.setViewName("redirect:/");
+			return modelAndView;
+		}
+		
+		// Validate Form Result first:
+		List<String> errors = characterValidator.validate(result, request);
+		if (!errors.isEmpty()) {
+			model.addAllAttributes(getEditCharacterAttributeMap(request));
+			model.addAttribute("character", characterFromId);
+			model.addAttribute("characterValidator", characterValidator);
+			model.addAttribute("errors", errors);
+			modelAndView.setViewName("character/edit");
+			return modelAndView;
+		}
+		
+		modifyCharacterByValidator(characterFromId, characterValidator, request);
+		dbManager.saveCharacter(characterFromId);
+		
+		model.addAllAttributes(getAttributeMap(request));
+		String successMsg = "Character " + characterFromId.getName() + " was updated!";
 		
 		modelAndView.setViewName("redirect:/characters");
 	    redir.addFlashAttribute("successMsg", successMsg);
@@ -116,6 +158,26 @@ public class CharacterController extends BaseController {
 		modelAndView.setViewName("redirect:/characters");
 	    redir.addFlashAttribute("successMsg", successMsg);
 	    return modelAndView;
+	}
+	
+	/**
+	 * Takes a character to modify and modifies it using the CharacterValidator.
+	 */
+	private void modifyCharacterByValidator(Character character, CharacterValidator characterValidator, HttpServletRequest request) {
+		character.setUser(dbManager.getCurrentUser(request));
+		character.setName(characterValidator.getName());
+		character.setSize(new Size(characterValidator.getSize()));
+		character.setCharClass(new Class(characterValidator.getClassId()));
+		character.setImage(characterValidator.getImage());
+	}
+	
+	private Map<String, Object> getEditCharacterAttributeMap(HttpServletRequest request) {
+		Map<String, Object> attributeMap = getAttributeMap(request);
+		attributeMap.put("characterValidator", new CharacterValidator());
+		attributeMap.put("classList", classList);
+		attributeMap.put("sizeList", sizeList);
+		
+		return attributeMap;
 	}
 	
 	@Override

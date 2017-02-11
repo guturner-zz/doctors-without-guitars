@@ -3,14 +3,28 @@
 /*--
 Character portrait usage.
 
-	<div class="row pane">
-		<div class="col-md-1 pane-btn"> Button To Hide/Show Pane </div>
-		<div class="col-md-11">
-			<ul class="list-group pane-steps">
-				<li class="list-group-item"> Step 1. </li>
-				<li class="list-group-item"> Step 2. </li>
-				<li class="list-group-item"> Step 3. </li>
-			</ul>
+	<div class="row">
+		<div class="col-md-6"> <!-- Half the whole page. -->
+			<div class="col-md-6 portrait-column"> <!-- Half of the half. -->
+				<div class="portrait-container">
+					<!-- Character Portrait -->
+					<div class="shine-on-hover column">
+						<figure>
+							<img class="img-responsive portrait" />
+						</figure>
+					</div>
+	
+					<!-- Character Class -->
+					<div class="portrait-label">
+						<h4><span>Barbarian</span></h4>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Optional -->
+			<div class="portrait-element">
+				<button>Edit Character</button>
+			</div>
 		</div>
 	</div>
 
@@ -73,6 +87,11 @@ img.portrait {
     right          : -6%;
     top            : 0%;
     
+}
+
+.portrait-element {
+	margin-top     : 1em;
+	text-align     : center;
 }
 
 /* Shine Animation */

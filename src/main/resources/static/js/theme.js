@@ -90,7 +90,7 @@ jQuery(document).ready(function($){
 	});
 	
 	function updatePortrait(selectedPortrait) {
-		var mainPortrait = $('#charPortrait');
+		var mainPortrait = $('#characterPortrait');
 		
 		var selectedPortraitSrc = $(selectedPortrait).attr('src');
 		mainPortrait.attr('src', selectedPortraitSrc);

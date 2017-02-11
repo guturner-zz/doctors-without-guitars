@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.guy.rpg.dwg.models.db.User;
+import org.guy.rpg.dwg.security.UserManager;
 import org.guy.rpg.dwg.validators.UserProfileValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ public class UserProfileController extends BaseController {
 	public String getProfile(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
 		model.addAttribute("editMode", false);
+		model.addAttribute("account", UserManager.getCurrentUserAccount(request));
 		
 		return "user/profile";
 	}

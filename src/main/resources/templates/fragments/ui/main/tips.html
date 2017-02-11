@@ -11,8 +11,8 @@
 						<div class="hover15 column">
 							<div>
 								<figure>
-									<img th:if="${character == null}" th:src="@{img/numbers/one.png}" style="height: 200px; width: 200px;" class="img-responsive" />
-									<img th:if="${character != null}" th:src="@{img/numbers/checkmark.png}" style="height: 200px; width: 200px;" class="img-responsive" />
+									<img th:if="${characters == null or #lists.isEmpty(characters)}" th:src="@{img/numbers/one.png}" style="height: 200px; width: 200px;" class="img-responsive" />
+									<img th:if="${characters != null and not #lists.isEmpty(characters)}" th:src="@{img/numbers/checkmark.png}" style="height: 200px; width: 200px;" class="img-responsive" />
 								</figure>
 							</div>
 						</div>

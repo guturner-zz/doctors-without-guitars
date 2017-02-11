@@ -82,6 +82,7 @@ public class SecurityController extends BaseController {
 
 		if (hasError) {
 			model.addAttribute("errors", errors);
+			model.addAttribute("stormpathAccountValidator", accountValidator);
 			return "security/register";
 		}
 

@@ -54,17 +54,6 @@ public class DatabaseManager {
 		return user;
 	}
 	
-	public Character getCurrentUserCharacter(HttpServletRequest request) {
-		User user = getCurrentUser(request);
-		Character character = null;
-		
-		if (user != null) {
-			character = characterRepository.getCharacterByUser(user);
-		}
-		
-		return character;
-	}
-	
 	public boolean saveCharacter(Character character) {
 		boolean success = false;
 		

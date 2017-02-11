@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<section th:replace="fragments/theme/head :: head('Create Character')"></section>
+	<section th:replace="fragments/theme/head :: head('Edit Character')"></section>
 	<head>
 		<!-- Page-specific JS -->
 		<script th:src="@{js/character-page.js}"></script>
 	</head>
 	<body>
-		<section th:replace="fragments/theme/nav('Create Character')"></section>
+		<section th:replace="fragments/theme/nav('Edit Character')"></section>
 	
 		<div class="single">
 			<div class="container">
@@ -26,19 +26,25 @@
 								<!-- Character Portrait -->
 								<div class="shine-on-hover column">
 									<figure>
-										<img id="characterPortrait" src="img/portraits/unknown.png" class="img-responsive portrait" />
+										<img id="characterPortrait" th:src="${character?.image}" class="img-responsive portrait" />
 									</figure>
 								</div>
 					
 								<!-- Character Class -->
 								<div class="portrait-label">
-									<h4><span id="classLabel">Adventurer</span></h4>
+									<h4><span id="classLabel" th:text="${character?.charClass?.name}"></span></h4>
 								</div>			
 							</div>
 							
 							<div class="portrait-element">
 								<h1>
-									<button id="saveBtn" type="submit" onclick="postForm('#saveForm');" class="label label-default">Create Character</button>
+									<button id="saveBtn" type="submit" onclick="postForm('#saveForm');" class="label label-default">Save Character</button>
+								</h1>
+							</div>
+							
+							<div class="portrait-element">
+								<h1>
+									<button id="cancelBtn" type="submit" onclick="returnToCharacterSelect();" class="label label-default">Cancel</button>
 								</h1>
 							</div>
 						</div>
@@ -47,26 +53,28 @@
 	
 					<div class="col-md-4 character-info">
 						<!-- Character Info -->
-						<form id="saveForm" method="post" th:action="@{/createCharacter}" th:object="${characterValidator}">
+						<form id="saveForm" method="post" th:action="'/editCharacter?id=' + ${character?.id}" th:object="${characterValidator}">
 							<div class="row">
-								<input th:field="*{name}" placeholder="Character Name" class="long-input" />
+								<input id="name" name="name" th:value="${character?.name}" th:placeholder="${character?.name}" class="long-input" />
 							</div>
 	
 							<div class="row lower">
-								<select th:field="*{classId}" class="long-input">
+								<select id="classId" name="classId" class="long-input">
 									<option th:each="cls,iter : ${classList}"
-											th:value="${iter.index}" th:text="${cls}" />
+											th:value="${iter.index}" th:text="${cls}"
+											th:selected="${iter.index == character?.charClass?.id}" />
 								</select>
 							</div>
 							
 							<div class="row lower">
-								<select th:field="*{size}" class="long-input">
+								<select id="size" name="size" class="long-input">
 									<option th:each="size,iter : ${sizeList}"
-											th:value="${iter.index}" th:text="${size}" />
+											th:value="${iter.index}" th:text="${size}"
+											th:selected="${iter.index == character?.size?.id}" />
 								</select>
 							</div>
 							
-							<input id="imageField" type="hidden" th:field="*{image}" />
+							<input id="image" name="image" type="hidden" th:value="${character?.image}"  />
 						</form>
 					</div>
 				</div>

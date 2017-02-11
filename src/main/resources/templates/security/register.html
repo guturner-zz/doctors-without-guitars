@@ -22,12 +22,13 @@
 	
 				<div class="agileits_mail_grids">
 					<div class="col-md-8 agileits_mail_grid_left">
-						<form method="post" th:action="@{/register}" role="form">
+						<form method="post" th:action="@{/register}" role="form" th:object="${stormpathAccountValidator}">
 						
 							<!-- Fields -->
-							<div th:each="field : ${visibleFields}">
+							<div th:each="field : ${visibleFields}" th:with="fieldName = __${field.name}__">
 								<h4 th:text="${field.label}">|Field label|</h4>
 								<input th:name="${field.name}"
+									th:field="*{__${fieldName}__}"
 									th:placeholder="${field.placeholder}"
 									th:required="${field.required}" 
 									th:type="${field.type}"

@@ -23,64 +23,44 @@
 					</div>
 				</div>
 	
-				<!-- Character Portrait -->
-				<div class="row center-contents">
-					<!-- Character Portrait -->
-					<div class="row">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-4"> <!-- Half the whole page. -->
+						<div class="col-md-6 portrait-column"> <!-- Half of the half. -->
+							<div class="portrait-container">
+								<!-- Character Portrait -->
+								<div class="shine-on-hover column">
+									<figure>
+										<img id="characterPortrait" th:src="${character?.image}" class="img-responsive portrait" />
+									</figure>
+								</div>
 					
-						<!-- 
-						<div class="col-md-2 col-md-offset-5">
-							<div class="shine-on-hover column">
-								<figure>
-									<img id="charPortrait" th:src="${character?.image}" class="img-responsive portrait"></img>
-								</figure>
+								<!-- Character Class -->
+								<div class="portrait-label">
+									<h4><span id="classLabel" th:text="${character?.charClass?.name}"></span></h4>
+								</div>			
 							</div>
-						</div>
-						-->
-						
-						<div class="wthree_element_grids">
-							<div class="col-md-6 wthree_element_grid">
-								<div class="wthree_element_grid1">
-									<!-- Character Portrait -->
-									<div class="shine-on-hover column">
-										<!-- Character Portrait -->
-										<figure>
-											<img id="charPortrait" th:src="${character?.image}" class="img-responsive portrait"></img>
-										</figure>
-									</div>
-		
-									<!-- Character Class -->
-									<div class="wthree_element_grid1_pos">
-										<h4><span th:text="${character?.name}"></span></h4>
-									</div>
+							
+							<div th:switch="${editMode}"  class="portrait-element">
+								<!-- Edit Buttons -->
+								<div th:case="false" class="row">
+									<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
+										<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
+									</form>
+								</div>
+					
+								<div th:case="*" class="row">
+									<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
+									<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
+									<script th:inline="javascript">
+										/*<![CDATA[*/
+										$('#cancelBtn').click(function() {
+											cancelCharacterSheet(/*[[${character?.id}]]*/);
+										});
+										/*]]>*/
+									</script>
 								</div>
 							</div>
 						</div>
-						
-						
-						
-					</div>
-				
-				</div>
-	
-				<!-- Edit Buttons -->
-				<div th:switch="${editMode}" class="center-contents">
-					<div th:case="false" class="row">
-						<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
-							<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
-						</form>
-					</div>
-		
-					<div th:case="*" class="row">
-						<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
-						<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
-						<script th:inline="javascript">
-							/*<![CDATA[*/
-							$('#cancelBtn').click(function() {
-								cancelCharacterSheet(/*[[${character?.id}]]*/);
-							});
-							/*]]>*/
-						</script>
 					</div>
 				</div>
 	
