@@ -13,7 +13,8 @@ Demonstrates knowledge of:
 - Stormpath (User Authentication)
 - Web APIs (HTTP)
 - Test-Driven Development (JUnit 4 and Mockito)
-- HTML5 and Twitter Bootstrap
+- Automated UI Testing (Selenium)
+- HTML5 and CSS3 / Twitter Bootstrap
 - Heroku (Platform as a Service)
 
 # Dev Notes
@@ -30,4 +31,10 @@ Add a datasource.properties file under src/main/resource/properties:
 mysql.url=jdbc:mysql://host:3306/databasename
 mysql.username=username
 mysql.password=password
+```
+
+
+Add an apiai.properties file under src/main/resource/properties:
+```
+api.ai.apikey=abcdefg123456
 ```
