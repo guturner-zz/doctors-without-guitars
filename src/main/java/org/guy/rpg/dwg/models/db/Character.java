@@ -30,6 +30,10 @@ public class Character implements Serializable {
 	@JoinColumn(name = "classid")
 	private Class charClass;
 
+	@OneToOne
+	@JoinColumn(name = "raceid")
+	private Race race;
+
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "charactersheetid")
 	private CharacterSheet charSheet;
@@ -73,6 +77,14 @@ public class Character implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Race getRace() {
+		return race;
+	}
+
+	public void setRace(Race race) {
+		this.race = race;
 	}
 
 	public Class getCharClass() {

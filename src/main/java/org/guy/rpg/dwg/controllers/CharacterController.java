@@ -11,6 +11,7 @@ import org.guy.rpg.dwg.db.repositories.CharacterRepository;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.Class;
+import org.guy.rpg.dwg.models.db.Race;
 import org.guy.rpg.dwg.models.db.Size;
 import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.validators.CharacterValidator;
@@ -40,6 +41,11 @@ public class CharacterController extends BaseController {
 			"Select Class", "Barbarian", "Bard", "Cleric",
 			"Druid", "Fighter", "Monk", "Paladin", "Ranger",
 			"Rogue", "Sorceror", "Wizard"
+	};
+	
+	private static String[] raceList = {
+			"Select Race", "Dwarf", "Elf", "Gnome", "Half-Elf",
+			"Half-Orc", "Halfling", "Human"
 	};
 	
 	private static String[] sizeList = {
@@ -166,6 +172,7 @@ public class CharacterController extends BaseController {
 		character.setUser(dbManager.getCurrentUser(request));
 		character.setName(characterValidator.getName());
 		character.setSize(new Size(characterValidator.getSize()));
+		character.setRace(new Race(characterValidator.getRaceId()));
 		character.setCharClass(new Class(characterValidator.getClassId()));
 		character.setImage(characterValidator.getImage());
 	}
@@ -188,6 +195,7 @@ public class CharacterController extends BaseController {
 		Map<String, Object> attributeMap = getAttributeMap(request);
 		attributeMap.put("characterValidator", new CharacterValidator());
 		attributeMap.put("classList", classList);
+		attributeMap.put("raceList", raceList);
 		attributeMap.put("sizeList", sizeList);
 		
 		return attributeMap;

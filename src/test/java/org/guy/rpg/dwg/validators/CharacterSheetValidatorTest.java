@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.validation.constraints.Pattern;
 
+import org.guy.rpg.dwg.validators.annotations.HitDie;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -46,6 +47,7 @@ MockHttpServletRequest mockRequest;
 	
 	@Test
 	public void testInvalidHitDie() throws Exception {
+		hitDieRegex("", false);
 		hitDieRegex("abc", false);
 		hitDieRegex("1d500", false);
 		hitDieRegex("1d8", true);
@@ -57,8 +59,8 @@ MockHttpServletRequest mockRequest;
 	 */
 	private void hitDieRegex(String hitDie, boolean valid) throws Exception {
 	    Field field = CharacterSheetValidator.class.getDeclaredField("hitDie");
-	    Pattern[] annotations = field.getDeclaredAnnotationsByType(Pattern.class);
-	    assertEquals(hitDie.matches(annotations[0].regexp()), valid);
+	    HitDie[] annotations = field.getDeclaredAnnotationsByType(HitDie.class);
+	    assertEquals(valid, hitDie.matches(annotations[0].regexp()));
 	}
 	
 }

@@ -59,6 +59,14 @@
 							</div>
 	
 							<div class="row lower">
+								<select id="raceId" name="raceId" class="long-input">
+									<option th:each="race,iter : ${raceList}"
+											th:value="${iter.index}" th:text="${race}" 
+											th:selected="${iter.index == character?.race?.id}"/>
+								</select>
+							</div>
+	
+							<div class="row lower">
 								<select id="classId" name="classId" class="long-input">
 									<option th:each="cls,iter : ${classList}"
 											th:value="${iter.index}" th:text="${cls}"

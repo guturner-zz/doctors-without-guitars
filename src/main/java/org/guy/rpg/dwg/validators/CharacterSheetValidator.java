@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Pattern;
 
+import org.guy.rpg.dwg.validators.annotations.HitDie;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 public class CharacterSheetValidator {
 
-	private static final String HIT_DIE_ERROR_MSG = "Hit Die value must match pattern <num>d<num> as in 1d8.";
-	
 	private String strengthBase;
 	private String strengthEnhance;
 	private String dexterityBase;
@@ -25,11 +23,12 @@ public class CharacterSheetValidator {
 	private String wisdomEnhance;
 	private String charismaBase;
 	private String charismaEnhance;
-	
-	@Pattern(regexp="(?i)\\dd\\d{1,2}", message=HIT_DIE_ERROR_MSG)
+
+	@HitDie
 	private String hitDie;
-	
+
 	private String currentHp;
+	private String maxHp;
 
 	public String getStrengthBase() {
 		return strengthBase;
@@ -143,24 +142,24 @@ public class CharacterSheetValidator {
 		this.currentHp = currentHp;
 	}
 
+	public String getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(String maxHp) {
+		this.maxHp = maxHp;
+	}
+
 	public List<String> validate(BindingResult result, HttpServletRequest request) {
 		List<String> errors = new ArrayList<String>();
 
 		// Form violated validators:
 		if (result.hasErrors()) {
-    		for (ObjectError e : result.getAllErrors()) {
-    			String errorMsg = e.getDefaultMessage();
-    			
-    			if (errorMsg.equals(HIT_DIE_ERROR_MSG)) {
-    				if (getHitDie().equals("")) {
-    					// Not an error, Hit Die just wasn't updated:
-    					continue;
-    				}
-    			}
-    			errors.add(errorMsg);
-    		}
-    	}
-		
+			for (ObjectError e : result.getAllErrors()) {
+				errors.add(e.getDefaultMessage());
+			}
+		}
+
 		return errors;
 	}
 }

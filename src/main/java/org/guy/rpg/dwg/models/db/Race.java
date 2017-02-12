@@ -10,21 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "classes")
-public class Class implements Serializable {
+@Table(name = "races")
+public class Race implements Serializable {
 
 	private static Map<Long, String> valueMap = new HashMap<Long, String>() {{
-		put(1L, "Barbarian");
-		put(2L, "Bard");
-		put(3L, "Cleric");
-		put(4L, "Druid");
-		put(5L, "Fighter");
-		put(6L, "Monk");
-		put(7L, "Paladin");
-		put(8L, "Ranger");
-		put(9L, "Rogue");
-		put(10L, "Sorceror");
-		put(11L, "Wizard");
+		put(1L, "Dwarf");
+		put(2L, "Elf");
+		put(3L, "Gnome");
+		put(4L, "Half-Elf");
+		put(5L, "Half-Orc");
+		put(6L, "Halfling");
+		put(7L, "Human");
 	}};
 	
 	@Id
@@ -33,11 +29,11 @@ public class Class implements Serializable {
 	@Column(name = "name")
 	private String name;
 
-	public Class() {
+	public Race() {
 
 	}
 
-	public Class(int id) {
+	public Race(int id) {
 		this.id = (long) id;
 		this.name = valueMap.get(id);
 	}

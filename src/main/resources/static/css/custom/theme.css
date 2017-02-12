@@ -25,6 +25,11 @@ body a:hover {
 	text-decoration    : none;
 }
 
+.hand-cursor {
+	cursor             : pointer; 
+	cursor             : hand;
+}
+
 /** Highest-level container div for a page. **/
 
 .single {
@@ -103,6 +108,12 @@ img.centered {
 	margin-left        : -20%;
 }
 
+.portrait-option {
+	display            : inline-block;
+	float              : left;
+	margin-left        : 3em;
+}
+
 /** Different resolutions. See above for relevant comments on specific classes. **/
 @media (max-width: 1280px){
 	.single {
@@ -118,6 +129,10 @@ img.centered {
 	.character-info {
 		margin-left    : 0;
 		margin-top     : 0;
+	}
+	
+	.portrait-option {
+		margin-left    : 1.5em;
 	}
 }
 
@@ -2197,13 +2212,11 @@ a.pa_italic:focus {
 	}
 	.agile_gallery_grids {
 		float: left;
+		margin-bottom: 2em;
 		width: 50%;
 	}
 	.view p {
 		padding: 6.7em 1em 0;
-	}
-	.agile_gallery_grids:nth-child(2) {
-		margin-bottom: 2em;
 	}
 	.form-col-right_grid {
 		text-align: left;

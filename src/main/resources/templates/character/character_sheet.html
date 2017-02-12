@@ -82,7 +82,7 @@
 									<tr>
 										<td>Hit Die</td>
 										<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
-										<td th:if="${editMode == true}"><input id="hitDie" th:field="*{hitDie}" th:placeholder="${character?.charSheet?.hitDie}" /></td>
+										<td th:if="${editMode == true}"><input id="hitDie" name="hitDie" th:value="${character?.charSheet?.hitDie}" /></td>
 									</tr>
 									<tr>
 										<td>Hit Points</td>
@@ -91,17 +91,17 @@
 												<div id="hpProgressBar">
 													<div id="hpText">
 														<center>
-															<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp"></span>
+															<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp" th:text="${character?.charSheet?.maxHp}"></span>
 														</center>
 													</div>
 												</div>
 											</div>
 										</td>
-										<td th:if="${editMode == true}"><input name="currentHp" th:field="*{currentHp}" th:placeholder="${character?.charSheet?.currentHp}" /></td>
+										<td th:if="${editMode == true}"><input id="currentHp" name="currentHp" th:value="${character?.charSheet?.currentHp}" /></td>
 									</tr>
 									<tr th:if="${editMode == true}">
 										<td>Max Hit Points</td>
-										<td name="maxHp"></td>
+										<td th:if="${editMode == true}"><input id="maxHp" name="maxHp" th:value="${character?.charSheet?.maxHp}" /></td>
 									</tr>
 									<tr>
 										<td>Initiative</td>

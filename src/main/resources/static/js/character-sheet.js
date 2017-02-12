@@ -37,6 +37,11 @@ $(document).ready(function() {
 			});
 		}
 	);
+	
+	$('#hitDieHint').click(function() {
+		var hitDieVal = $('#hitDieHint').text();
+		$('#hitDie').val(hitDieVal);
+	});
 });
 
 function cancelCharacterSheet(characterId) {
@@ -51,7 +56,7 @@ function recalculateVals() {
 	calculateAttributeMod('[name=wisMod]', getValue('#wisdomBase', '#wisdomEnhance'));
 	calculateAttributeMod('[name=chaMod]', getValue('#charismaBase', '#charismaEnhance'));
 	
-	validateHp('[name=currentHp]', getInputValue('[name=currentHp]'), getInputValue('#hitDie'));
+	validateHp('[name=currentHp]', getInputValue('#currentHp'), getInputValue('#maxHp'));
 }
 
 function getInputText(valEl) {
@@ -117,20 +122,21 @@ function calculateSizeMod(el, sizeModVal) {
 	});
 }
 
-function validateHp(el, currentHp) {
-	var maxHp = getInputValue('#maxHp');
-	var calculatedHp = currentHp;
+function validateHp(el, currentHp, maxHp) {
+	var currentHpVal = parseInt(currentHp);
+	var maxHpVal = parseInt(maxHp);
+	var calculatedHp = currentHpVal;
 	
-	if (currentHp < 0) {
+	if (isNaN(currentHpVal) || isNaN(maxHpVal)) {
 		calculatedHp = 0;
 	}
 	
-	if (currentHp > maxHp) {
-		calculatedHp = maxHp;
+	if (currentHpVal < 0) {
+		calculatedHp = 0;
 	}
 	
-	if (isNaN(parseInt(currentHp))) {
-		calculatedHp = 0;
+	if (currentHpVal > maxHpVal) {
+		calculatedHp = maxHpVal;
 	}
 	
 	$(el).each(function() {

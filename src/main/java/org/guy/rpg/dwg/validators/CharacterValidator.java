@@ -18,6 +18,9 @@ public class CharacterValidator {
 	@Min(value = 1, message = "Select a character size.")
 	private int size;
 	
+	@Min(value = 1, message = "Select a character race.")
+	private int raceId;
+	
 	@Min(value = 1, message = "Select a character class.")
 	private int classId;
 	
@@ -38,6 +41,14 @@ public class CharacterValidator {
 
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+	public int getRaceId() {
+		return raceId;
+	}
+
+	public void setRaceId(int raceId) {
+		this.raceId = raceId;
 	}
 
 	public int getClassId() {

@@ -40,6 +40,7 @@
 						
 						<div class="col-md-6 center-contents lower">
 							<input id="hitDie" th:field="*{hitDie}" />
+							<div class="input-hint">Hint: <span th:text="${character?.charClass?.name}"></span>s typically use <span id="hitDieHint" class="hand-cursor" th:text="${hitDieHint}"></span>.</div>
 						</div>
 					</div>
 					

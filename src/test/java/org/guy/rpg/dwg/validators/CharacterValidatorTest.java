@@ -48,7 +48,7 @@ MockHttpServletRequest mockRequest;
 	private void imageRegex(String image, boolean valid) throws Exception {
 	    Field field = CharacterValidator.class.getDeclaredField("image");
 	    Pattern[] annotations = field.getDeclaredAnnotationsByType(Pattern.class);
-	    assertEquals(image.matches(annotations[0].regexp()), valid);
+	    assertEquals(valid, image.matches(annotations[0].regexp()));
 	}
 	
 	/**
@@ -57,7 +57,7 @@ MockHttpServletRequest mockRequest;
 	private void nameRegex(String name, boolean valid) throws Exception {
 	    Field field = CharacterValidator.class.getDeclaredField("name");
 	    Pattern[] annotations = field.getDeclaredAnnotationsByType(Pattern.class);
-	    assertEquals(name.matches(annotations[0].regexp()), valid);
+	    assertEquals(valid, name.matches(annotations[0].regexp()));
 	}
 	
 }
