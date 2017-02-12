@@ -25,7 +25,7 @@
 			<artifactId>libai</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-	
+
 		<!-- Core Spring Libraries -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,12 +57,6 @@
 			<version>2.3</version>
 		</dependency>
 
-		<!-- JSP API for Custom TLD -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
 
 		<!-- Misc. -->
 		<dependency>
@@ -128,6 +122,11 @@
 			<artifactId>easymock</artifactId>
 			<version>3.4</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.ddavison</groupId>
+			<artifactId>conductor</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 	</dependencies>
 
