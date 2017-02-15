@@ -1,0 +1,43 @@
+<div th:fragment="properties_table" class="col-md-6">
+
+	<table class="table table-hover lower">
+		<thead>
+			<tr>
+				<th>Property Name</th>
+				<th>Property Value</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>Base Attack Bonus</td>
+				<td th:if="${editMode == false}" th:text="${character?.charSheet?.baseAttackBonus}"></td>
+				<td th:if="${editMode == true}">
+					<input id="baseAttackBonus" name="baseAttackBonus" th:value="${character?.charSheet?.baseAttackBonus}" />
+				</td> 
+			</tr>
+			<tr>
+				<td>Fortitude</td>
+				<td th:if="${editMode == false}" th:text="${character?.charSheet?.fortitude}"></td>
+				<td th:if="${editMode == true}">
+					<input id="fortitude" name="fortitude" th:value="${character?.charSheet?.fortitude}" />
+				</td> 
+			</tr>
+			<tr>
+				<td>Reflex</td>
+				<td th:if="${editMode == false}" th:text="${character?.charSheet?.reflex}"></td>
+				<td th:if="${editMode == true}">
+					<input id="reflex" name="reflex" th:value="${character?.charSheet?.reflex}" />
+				</td> 
+			</tr>
+			<tr>
+				<td>Willpower</td>
+				<td th:if="${editMode == false}" th:text="${character?.charSheet?.willpower}"></td>
+				<td th:if="${editMode == true}">
+					<input id="willpower" name="willpower" th:value="${character?.charSheet?.willpower}" />
+				</td> 
+			</tr>
+		</tbody>
+	</table>
+
+</div>

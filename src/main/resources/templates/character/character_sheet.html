@@ -24,7 +24,7 @@
 				</div>
 	
 				<div class="row">
-					<div class="col-md-6 col-md-offset-4"> <!-- Half the whole page. -->
+					<div class="col-md-8 col-md-offset-4"> <!-- Half the whole page. -->
 						<div class="col-md-6 portrait-column"> <!-- Half of the half. -->
 							<div class="portrait-container">
 								<!-- Character Portrait -->
@@ -64,59 +64,22 @@
 					</div>
 				</div>
 	
-				<!-- Character Info -->
-				<div class="row">
-					<form id="saveForm" method="post" th:action="'/characterSheet?id=' + ${character?.id}" th:object="${characterSheetValidator}">
+				<!-- Attributes -->
+				<form id="saveForm" method="post" th:action="'/characterSheet?id=' + ${character?.id}" th:object="${characterSheetValidator}">
+					<div class="row">
 						<section th:replace="fragments/ui/character/stats_table :: stats_table('false')"></section>
+						<section th:replace="fragments/ui/character/properties_table"></section>
+					</div>
 					
-						<div class="col-md-6">
-							<table class="table table-hover lower">
-								<thead>
-									<tr>
-										<th>Property Name</th>
-										<th>Property Value</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<tr>
-										<td>Hit Die</td>
-										<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
-										<td th:if="${editMode == true}"><input id="hitDie" name="hitDie" th:value="${character?.charSheet?.hitDie}" /></td>
-									</tr>
-									<tr>
-										<td>Hit Points</td>
-										<td th:if="${editMode == false}">
-											<div id="progressBarParent" class="progress">
-												<div id="hpProgressBar">
-													<div id="hpText">
-														<center>
-															<span id="hpBarCurrent" th:text="${character?.charSheet?.currentHp}"></span> / <span id="hpBarMax" name="maxHp" th:text="${character?.charSheet?.maxHp}"></span>
-														</center>
-													</div>
-												</div>
-											</div>
-										</td>
-										<td th:if="${editMode == true}"><input id="currentHp" name="currentHp" th:value="${character?.charSheet?.currentHp}" /></td>
-									</tr>
-									<tr th:if="${editMode == true}">
-										<td>Max Hit Points</td>
-										<td th:if="${editMode == true}"><input id="maxHp" name="maxHp" th:value="${character?.charSheet?.maxHp}" /></td>
-									</tr>
-									<tr>
-										<td>Initiative</td>
-										<td name="dexMod"></td>
-									</tr>
-									<tr>
-										<td>Size Mod</td>
-										<td id="sizeMod" th:text="${character?.size?.value}"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</form>
-				</div>
-					
+					<p class="dolor"></p>
+				
+					<!-- Damage Attributes -->
+					<div class="row">
+						<section th:replace="fragments/ui/character/attack_properties_table"></section>
+						<section th:replace="fragments/ui/character/weapon_table"></section>
+					</div>
+				</form>
+				
 				<p th:if="${editMode == false}" class="dolor"></p>
 				
 				<!-- Tip Panes -->

@@ -62,6 +62,18 @@ public class CharacterSheet implements Serializable {
 	@Column(name = "max_hitpoints")
 	private int maxHp;
 
+	@Column(name = "base_attack_bonus")
+	private int baseAttackBonus;
+
+	@Column(name = "fortitude")
+	private int fortitude;
+
+	@Column(name = "reflex")
+	private int reflex;
+
+	@Column(name = "willpower")
+	private int willpower;
+
 	public CharacterSheet() {
 
 	}
@@ -192,5 +204,37 @@ public class CharacterSheet implements Serializable {
 
 	public void setMaxHp(int maxHp) {
 		this.maxHp = maxHp;
+	}
+
+	public int getBaseAttackBonus() {
+		return baseAttackBonus;
+	}
+
+	public void setBaseAttackBonus(int baseAttackBonus) {
+		this.baseAttackBonus = baseAttackBonus;
+	}
+
+	public int getFortitude() {
+		return fortitude;
+	}
+
+	public void setFortitude(int fortitude) {
+		this.fortitude = fortitude;
+	}
+
+	public int getReflex() {
+		return reflex;
+	}
+
+	public void setReflex(int reflex) {
+		this.reflex = reflex;
+	}
+
+	public int getWillpower() {
+		return willpower;
+	}
+
+	public void setWillpower(int willpower) {
+		this.willpower = willpower;
 	}
 }

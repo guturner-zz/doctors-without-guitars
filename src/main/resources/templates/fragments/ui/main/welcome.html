@@ -7,6 +7,13 @@
 				th:if="${not #strings.isEmpty(status)}">
 				<p th:text="${status}">|Login Status|</p>
 			</div>
+			
+			<div class="alert alert-dismissable alert-warning" th:if="${isHttp}">
+				<p>
+					Doctors Without Guitars currently does not support HTTP. Please
+					navigate to <a href="https://doctors-without-guitars.herokuapp.com/">https://doctors-without-guitars.herokuapp.com/</a>.
+				</p>
+			</div>
 		
 			<h2>Doctors without Guitars</h2>
 			<p class="dolor">is a Pathfinder management system.</p>

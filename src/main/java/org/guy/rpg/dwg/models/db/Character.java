@@ -38,6 +38,10 @@ public class Character implements Serializable {
 	@JoinColumn(name = "charactersheetid")
 	private CharacterSheet charSheet;
 
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "weaponid")
+	private Weapon weapon;
+
 	@Column(name = "name")
 	private String name;
 
@@ -101,6 +105,14 @@ public class Character implements Serializable {
 
 	public void setCharSheet(CharacterSheet charSheet) {
 		this.charSheet = charSheet;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 
 	public String getName() {

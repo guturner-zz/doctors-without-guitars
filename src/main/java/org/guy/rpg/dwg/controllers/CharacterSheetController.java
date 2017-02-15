@@ -11,6 +11,7 @@ import org.guy.rpg.dwg.db.repositories.CharacterRepository;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.User;
+import org.guy.rpg.dwg.models.db.Weapon;
 import org.guy.rpg.dwg.validators.CharacterSheetValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,7 +100,8 @@ public class CharacterSheetController extends BaseController {
 		}
 		
 		CharacterSheet characterSheet = new CharacterSheet();
-		modifyCharacterSheetByValidator(characterSheet, characterSheetValidator, request);
+		Weapon weapon = characterFromId.getWeapon();
+		modifyCharacterSheetByValidator(characterSheet, weapon, characterSheetValidator, request);
 		
 		// Calculate starting HP:
 		int maxHp = calculateMaxHpFromHitDie(characterSheetValidator.getHitDie());
@@ -153,6 +155,7 @@ public class CharacterSheetController extends BaseController {
 		}
 		
 		CharacterSheet characterSheet = characterFromId.getCharSheet();
+		Weapon weapon = characterFromId.getWeapon();
 		
 		// Validate Form Result first:
 		List<String> errors = characterSheetValidator.validate(result, request);
@@ -166,7 +169,7 @@ public class CharacterSheetController extends BaseController {
 			return modelAndView;
 		}
 		
-		modifyCharacterSheetByValidator(characterSheet, characterSheetValidator, request);
+		modifyCharacterSheetByValidator(characterSheet, weapon, characterSheetValidator, request);
 		dbManager.saveCharacterSheet(characterSheet);
 		
 		model.addAllAttributes(getAttributeMap(request));
@@ -209,7 +212,7 @@ public class CharacterSheetController extends BaseController {
 	 * Takes a CharacterSheet object and modifies it according to its characterSheetValidator.
 	 * Notice that this method uses side effects.
 	 */
-	private void modifyCharacterSheetByValidator(CharacterSheet characterSheet, CharacterSheetValidator characterSheetValidator, HttpServletRequest request) {
+	private void modifyCharacterSheetByValidator(CharacterSheet characterSheet, Weapon weapon, CharacterSheetValidator characterSheetValidator, HttpServletRequest request) {
 		String hitDie = characterSheetValidator.getHitDie();
 		if (hitDie != null && !hitDie.equals("")) {
 			characterSheet.setHitDie(characterSheetValidator.getHitDie());
@@ -283,6 +286,41 @@ public class CharacterSheetController extends BaseController {
 		String charismaEnhance = characterSheetValidator.getCharismaEnhance();
 		if (charismaEnhance != null && !charismaEnhance.equals("")) {
 			characterSheet.setCharismaEnhance(Integer.parseInt(charismaEnhance));
+		}
+		
+		String baseAttackBonus = characterSheetValidator.getBaseAttackBonus();
+		if (baseAttackBonus != null && !baseAttackBonus.equals("")) {
+			characterSheet.setBaseAttackBonus(Integer.parseInt(baseAttackBonus));
+		}
+
+		String fortitude = characterSheetValidator.getFortitude();
+		if (fortitude != null && !fortitude.equals("")) {
+			characterSheet.setFortitude(Integer.parseInt(fortitude));
+		}
+		
+		String reflex = characterSheetValidator.getReflex();
+		if (reflex != null && !reflex.equals("")) {
+			characterSheet.setReflex(Integer.parseInt(reflex));
+		}
+		
+		String willpower = characterSheetValidator.getWillpower();
+		if (willpower != null && !willpower.equals("")) {
+			characterSheet.setWillpower(Integer.parseInt(willpower));
+		}
+		
+		String weaponName = characterSheetValidator.getWeaponName();
+		if (weaponName != null) {
+			weapon.setName(weaponName);
+		}
+		
+		String weaponDamage = characterSheetValidator.getWeaponDamage();
+		if (weaponDamage != null) {
+			weapon.setDamage(weaponDamage);
+		}
+		
+		String weaponCrit = characterSheetValidator.getWeaponCrit();
+		if (weaponCrit != null) {
+			weapon.setCrit(weaponCrit);
 		}
 	}
 	

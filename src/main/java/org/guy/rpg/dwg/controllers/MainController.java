@@ -19,6 +19,7 @@ public class MainController extends BaseController {
 	@RequestMapping("/")
 	public String main(HttpServletRequest request, Model model) {
 		model.addAllAttributes(getAttributeMap(request));
+		model.addAttribute("isHttp", isHttp(request));
 		
 		User user = dbManager.getCurrentUser(request);
 		if (user != null) {

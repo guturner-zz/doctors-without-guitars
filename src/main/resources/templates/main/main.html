@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<section th:replace="fragments/theme/head :: head(Home)"></section>
-	<body>
-		<section th:replace="fragments/theme/nav(Home)"></section>
-	
-		<th:block th:if="${user == null}">
-			<section th:replace="fragments/ui/main/welcome"></section>
-		</th:block>
-	
-		<th:block th:if="${user != null}">
-			<section th:replace="fragments/ui/main/tips"></section>
-		</th:block>
-		
-	</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<section th:replace="fragments/theme/head :: head(Home)"></section>
+<body>
+	<section th:replace="fragments/theme/nav(Home)"></section>
+
+	<th:block th:if="${user == null}">
+		<section th:replace="fragments/ui/main/welcome"></section>
+	</th:block>
+
+	<th:block th:if="${user != null}">
+		<section th:replace="fragments/ui/main/tips"></section>
+	</th:block>
+
+</body>
 </html>

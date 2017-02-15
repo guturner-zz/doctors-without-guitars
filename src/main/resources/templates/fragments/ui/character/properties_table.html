@@ -1,0 +1,56 @@
+<div th:fragment="properties_table" class="col-md-6">
+	<table class="table table-hover lower">
+		<thead>
+			<tr>
+				<th>Property Name</th>
+				<th>Property Value</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>Hit Die</td>
+				<td id="hitDie" th:if="${editMode == false}" th:text="${character?.charSheet?.hitDie}"></td>
+				<td th:if="${editMode == true}">
+					<input id="hitDie" name="hitDie" th:value="${character?.charSheet?.hitDie}" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Hit Points</td>
+				<td th:if="${editMode == false}">
+					<div id="progressBarParent" class="progress">
+						<div id="hpProgressBar">
+							<div id="hpText center-contents">
+								<span id="hpBarCurrent"
+									th:text="${character?.charSheet?.currentHp}"></span> / <span
+									id="hpBarMax" name="maxHp"
+									th:text="${character?.charSheet?.maxHp}"></span>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td th:if="${editMode == true}">
+					<input id="currentHp" name="currentHp" th:value="${character?.charSheet?.currentHp}" />
+				</td>
+			</tr>
+			
+			<tr th:if="${editMode == true}">
+				<td>Max Hit Points</td>
+				<td th:if="${editMode == true}">
+					<input id="maxHp" name="maxHp" th:value="${character?.charSheet?.maxHp}" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Initiative</td>
+				<td name="dexMod"></td>
+			</tr>
+			
+			<tr>
+				<td>Size Mod</td>
+				<td id="sizeMod" th:text="${character?.size?.value}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -14,6 +14,7 @@ import org.guy.rpg.dwg.models.db.Class;
 import org.guy.rpg.dwg.models.db.Race;
 import org.guy.rpg.dwg.models.db.Size;
 import org.guy.rpg.dwg.models.db.User;
+import org.guy.rpg.dwg.models.db.Weapon;
 import org.guy.rpg.dwg.validators.CharacterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -187,6 +188,7 @@ public class CharacterController extends BaseController {
 		// Properties on new characters:
 		newCharacter.setNewCharacterFlag(true);
 		newCharacter.setCharSheet(new CharacterSheet());
+		newCharacter.setWeapon(new Weapon());
 		
 		return newCharacter;
 	}

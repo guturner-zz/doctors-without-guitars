@@ -38,4 +38,11 @@ public abstract class BaseController {
 		return attributeMap;
 	}
 	
+	/**
+	 * Used to alert user that they're using HTTP.
+	 * 
+	 */
+	protected boolean isHttp(HttpServletRequest request) {
+		return request.getRequestURL().toString().contains("http://");
+	}
 }

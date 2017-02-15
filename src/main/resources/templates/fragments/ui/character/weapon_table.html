@@ -1,0 +1,30 @@
+<div th:fragment="weapon_table" class="col-md-6">
+	<table class="table table-hover lower">
+		<thead>
+			<tr>
+				<th>Weapon Name</th>
+				<th>Damage</th>
+				<th>Crit</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td th:if="${editMode == false}" th:text="${character?.weapon?.name}"></td>
+				<td th:if="${editMode == true}">
+					<input id="weaponName" name="weaponName" th:value="${character?.weapon?.name}" />
+				</td>
+				
+				<td th:if="${editMode == false}" th:text="${character?.weapon?.damage}"></td>
+				<td th:if="${editMode == true}">
+					<input id="weaponDamage" name="weaponDamage" th:value="${character?.weapon?.damage}" />
+				</td>
+				
+				<td th:if="${editMode == false}" th:text="${character?.weapon?.crit}"></td>
+				<td th:if="${editMode == true}">
+					<input id="weaponCrit" name="weaponCrit" th:value="${character?.weapon?.crit}" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

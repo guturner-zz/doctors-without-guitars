@@ -30,6 +30,15 @@ public class CharacterSheetValidator {
 	private String currentHp;
 	private String maxHp;
 
+	private String baseAttackBonus;
+	private String fortitude;
+	private String reflex;
+	private String willpower;
+
+	private String weaponName;
+	private String weaponDamage;
+	private String weaponCrit;
+
 	public String getStrengthBase() {
 		return strengthBase;
 	}
@@ -148,6 +157,62 @@ public class CharacterSheetValidator {
 
 	public void setMaxHp(String maxHp) {
 		this.maxHp = maxHp;
+	}
+
+	public String getBaseAttackBonus() {
+		return baseAttackBonus;
+	}
+
+	public void setBaseAttackBonus(String baseAttackBonus) {
+		this.baseAttackBonus = baseAttackBonus;
+	}
+
+	public String getFortitude() {
+		return fortitude;
+	}
+
+	public void setFortitude(String fortitude) {
+		this.fortitude = fortitude;
+	}
+
+	public String getReflex() {
+		return reflex;
+	}
+
+	public void setReflex(String reflex) {
+		this.reflex = reflex;
+	}
+
+	public String getWillpower() {
+		return willpower;
+	}
+
+	public void setWillpower(String willpower) {
+		this.willpower = willpower;
+	}
+
+	public String getWeaponName() {
+		return weaponName;
+	}
+
+	public void setWeaponName(String weaponName) {
+		this.weaponName = weaponName;
+	}
+
+	public String getWeaponDamage() {
+		return weaponDamage;
+	}
+
+	public void setWeaponDamage(String weaponDamage) {
+		this.weaponDamage = weaponDamage;
+	}
+
+	public String getWeaponCrit() {
+		return weaponCrit;
+	}
+
+	public void setWeaponCrit(String weaponCrit) {
+		this.weaponCrit = weaponCrit;
 	}
 
 	public List<String> validate(BindingResult result, HttpServletRequest request) {
