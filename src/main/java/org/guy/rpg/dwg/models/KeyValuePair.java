@@ -1,5 +1,10 @@
 package org.guy.rpg.dwg.models;
 
+/**
+ * Used primarily for two-column CSVs.
+ * 
+ * @author Guy
+ */
 public class KeyValuePair {
 
 	private String key;

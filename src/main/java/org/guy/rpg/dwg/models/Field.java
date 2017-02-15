@@ -1,5 +1,11 @@
 package org.guy.rpg.dwg.models;
 
+/**
+ * Represents an HTML input field.
+ * Used primarily for screens with Stormpath integration.
+ * 
+ * @author Guy
+ */
 public class Field {
 	private String label;
 	private String name;

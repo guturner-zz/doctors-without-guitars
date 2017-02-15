@@ -1,30 +1,14 @@
 $(document).ready(function() {
 	// If EditMode == False
 	if ($('#totalHeader').length) {
-		calculateAttributeMod('[name=strMod]', $('#strTotal').text());
-		calculateAttributeMod('[name=dexMod]', $('#dexTotal').text());
-		calculateAttributeMod('[name=conMod]', $('#conTotal').text());
-		calculateAttributeMod('[name=intMod]', $('#intTotal').text());
-		calculateAttributeMod('[name=wisMod]', $('#wisTotal').text());
-		calculateAttributeMod('[name=chaMod]', $('#chaTotal').text());
+		prepareViewCharacterSheetFields();
 		
-		toggleRanged();
-		setProgressBars();
-		
-
 	// If EditMode == True
 	} else {
-		calculateAttributeMod('[name=strMod]', parseInt($('#strengthBase').attr('placeholder')) + parseInt($('#strengthEnhance').attr('placeholder')));
-		calculateAttributeMod('[name=dexMod]', parseInt($('#dexterityBase').attr('placeholder')) + parseInt($('#dexterityEnhance').attr('placeholder')));
-		calculateAttributeMod('[name=conMod]', parseInt($('#constitutionBase').attr('placeholder')) + parseInt($('#constitutionEnhance').attr('placeholder')));
-		calculateAttributeMod('[name=intMod]', parseInt($('#intelligenceBase').attr('placeholder')) + parseInt($('#intelligenceEnhance').attr('placeholder')));
-		calculateAttributeMod('[name=wisMod]', parseInt($('#wisdomBase').attr('placeholder')) + parseInt($('#wisdomEnhance').attr('placeholder')));
-		calculateAttributeMod('[name=chaMod]', parseInt($('#charismaBase').attr('placeholder')) + parseInt($('#charismaEnhance').attr('placeholder')));
-		
-		$('#saveBtn').click(function() {
-			postForm('#saveForm');
-		});
+		prepareEditCharacterSheetFields();
 	}
+	
+	calculateBaseAttackBonus('[name=bab]', getInputText('#baseAttackBonus'));
 	
 	// Hide panes:
 	$('#combatPane').hide();
@@ -38,11 +22,53 @@ $(document).ready(function() {
 		}
 	);
 	
+	// Used on 'First Steps' screen to auto set Hit Die:
 	$('#hitDieHint').click(function() {
 		var hitDieVal = $('#hitDieHint').text();
 		$('#hitDie').val(hitDieVal);
 	});
 });
+
+function prepareViewCharacterSheetFields() {
+	// Formats attribute mods:
+	calculateAttributeMod('[name=strMod]', $('#strTotal').text());
+	calculateAttributeMod('[name=dexMod]', $('#dexTotal').text());
+	calculateAttributeMod('[name=conMod]', $('#conTotal').text());
+	calculateAttributeMod('[name=intMod]', $('#intTotal').text());
+	calculateAttributeMod('[name=wisMod]', $('#wisTotal').text());
+	calculateAttributeMod('[name=chaMod]', $('#chaTotal').text());
+	
+	// Sets the 'Melee / Ranged' combat tip values:
+	toggleRanged();
+	
+	// Sets the HP bars:
+	setProgressBars();
+}
+
+function prepareEditCharacterSheetFields() {
+	// Formats attribute mods based on base and enhance vlaues:
+	calculateAttributeMod('[name=strMod]', parseInt($('#strengthBase').attr('placeholder')) + parseInt($('#strengthEnhance').attr('placeholder')));
+	calculateAttributeMod('[name=dexMod]', parseInt($('#dexterityBase').attr('placeholder')) + parseInt($('#dexterityEnhance').attr('placeholder')));
+	calculateAttributeMod('[name=conMod]', parseInt($('#constitutionBase').attr('placeholder')) + parseInt($('#constitutionEnhance').attr('placeholder')));
+	calculateAttributeMod('[name=intMod]', parseInt($('#intelligenceBase').attr('placeholder')) + parseInt($('#intelligenceEnhance').attr('placeholder')));
+	calculateAttributeMod('[name=wisMod]', parseInt($('#wisdomBase').attr('placeholder')) + parseInt($('#wisdomEnhance').attr('placeholder')));
+	calculateAttributeMod('[name=chaMod]', parseInt($('#charismaBase').attr('placeholder')) + parseInt($('#charismaEnhance').attr('placeholder')));
+	
+	// Add submit form event to save button:
+	$('#saveBtn').click(function() {
+		postForm('#saveForm');
+	});
+	
+	// Guarantees weapon fields aren't inconsistent:
+	$('[name^=weapon]').blur(function() {
+		var weaponNameVal = $('#weaponName').val();
+		
+		if (weaponNameVal == null || weaponNameVal == '') {
+			$('#weaponDamage').val('');
+			$('#weaponCrit').val('');
+		}
+	});
+}
 
 function cancelCharacterSheet(characterId) {
 	window.location.href = 'characterSheet?id=' + characterId;
@@ -119,6 +145,18 @@ function calculateSizeMod(el, sizeModVal) {
 	
 	$(el).each(function() {
 		$(this).text(sizeModCalculatedVal);
+	});
+}
+
+function calculateBaseAttackBonus(el, bab) {
+	var babVal = bab;
+	
+	if (babVal > -1) {
+		babVal = '+' + babVal;
+	}
+	
+	$(el).each(function() {
+		$(this).text(babVal);
 	});
 }
 

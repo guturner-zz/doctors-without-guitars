@@ -14,10 +14,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Represents a user's character.
+ * Via the character object, a user can access a character sheet, weapon, and more.
+ * 
+ * @author Guy
+ */
+
 @Entity
 @Table(name = "characters")
 public class Character implements Serializable {
 
+	private static final String SMALL_UNARMED_DAMAGE = "1D2";
+	private static final String MEDIUM_UNARMED_DAMAGE = "1D3";
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -145,5 +155,17 @@ public class Character implements Serializable {
 
 	public void setNewCharacterFlag(boolean newCharacterFlag) {
 		this.newCharacterFlag = newCharacterFlag;
+	}
+	
+	/**
+	 * Returns a die value corresponding to the character's unarmed damage.
+	 * Small characters deal 1D2 damage, Medium and larger deal 1D3 damage.
+	 */
+	public String getUnarmedDamage(Long sizeId) {
+		if (sizeId == 1L) {
+			return SMALL_UNARMED_DAMAGE;
+		} else {
+			return MEDIUM_UNARMED_DAMAGE;
+		}
 	}
 }

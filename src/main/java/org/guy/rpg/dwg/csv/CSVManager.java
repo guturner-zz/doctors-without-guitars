@@ -16,11 +16,21 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 
+/**
+ * A helper for reading CSVs.
+ * Used primarily for API.AI integration.
+ * 
+ * @author Guy
+ */
 @Component
 public class CSVManager {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CSVManager.class);
 	
+	/**
+	 * Reads a CSV with columns corresponding to POJO attributes.
+	 * Returns a list of POJOs with attributes populated by CSV.
+	 */
 	public <T> List<T> getCSVAsListOfPOJOs(Class<T> resultClass, String fileName, String ... colNames) {
 		List<T> resultList = new ArrayList<T>();
 		CSVReader csvReader = null;
@@ -50,6 +60,9 @@ public class CSVManager {
 		return resultList;
 	}
 	
+	/**
+	 * Reads a two-column CSV (key / value) and returns a populated map.
+	 */
 	public Map<String, String> getKeyValuePairsFromCSVAsMap(String fileName) {
 		List<KeyValuePair> list = getCSVAsListOfPOJOs(KeyValuePair.class, fileName, "key", "value");
 		return list.stream().collect(Collectors.toMap( x -> x.getKey(), x -> x.getValue()));

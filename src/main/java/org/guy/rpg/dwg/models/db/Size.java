@@ -10,6 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+/**
+ * Represents a character's size.
+ * Small, Medium, Large, Huge.
+ * 
+ * @author Guy
+ */
+
 @Entity
 @Table(name = "sizes")
 public class Size implements Serializable {

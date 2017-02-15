@@ -9,8 +9,18 @@ import org.guy.rpg.dwg.validators.annotations.HitDie;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
+import com.mysql.jdbc.StringUtils;
+
+/**
+ * Used to validate character sheets upon form submit.
+ * This includes Weapon values.
+ * 
+ * @author Guy
+ */
 public class CharacterSheetValidator {
 
+	private static final String WEAPON_DAMAGE_ERROR = "Weapon Damage value must match pattern <num>d<num> as in 1d8.";
+	
 	private String strengthBase;
 	private String strengthEnhance;
 	private String dexterityBase;
@@ -36,6 +46,8 @@ public class CharacterSheetValidator {
 	private String willpower;
 
 	private String weaponName;
+	
+	@HitDie(message=WEAPON_DAMAGE_ERROR)
 	private String weaponDamage;
 	private String weaponCrit;
 
@@ -215,16 +227,36 @@ public class CharacterSheetValidator {
 		this.weaponCrit = weaponCrit;
 	}
 
+	/**
+	 * Validates character sheet objects on form submit.
+	 */
 	public List<String> validate(BindingResult result, HttpServletRequest request) {
 		List<String> errors = new ArrayList<String>();
 
 		// Form violated validators:
 		if (result.hasErrors()) {
 			for (ObjectError e : result.getAllErrors()) {
+				if (StringUtils.isNullOrEmpty(getWeaponName()) &&
+					e.getDefaultMessage().equals(WEAPON_DAMAGE_ERROR)) {
+					// Ignore - this is a valid scenario.
+					continue;
+				}
+				
 				errors.add(e.getDefaultMessage());
 			}
 		}
+		
+		// Weapon damage and crit cannot be null if weapon is set:
+		if (!StringUtils.isNullOrEmpty(getWeaponName())) {
+			Boolean isWeaponDamageSet = !StringUtils.isNullOrEmpty(getWeaponDamage());
+			Boolean isWeaponCritSet = !StringUtils.isNullOrEmpty(getWeaponCrit());
+			
+			if (!isWeaponDamageSet || !isWeaponCritSet) {
+				errors.add("Weapon damage and crit values must be set.");
+			}
+		}
 
+		
 		return errors;
 	}
 }

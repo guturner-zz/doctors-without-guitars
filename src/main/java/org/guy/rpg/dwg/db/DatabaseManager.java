@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.stormpath.sdk.account.Account;
 
 /**
- * Logic for database interactions.
+ * Helper for database interactions.
  * 
  * @author Guy
  */

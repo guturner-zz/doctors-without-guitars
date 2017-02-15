@@ -1,5 +1,9 @@
 package org.guy.rpg.dwg.models;
 
+/**
+ * Represents an OpenLayers3 landmark.
+ * @author Guy
+ */
 public class Landmark {
 
 	private String name;

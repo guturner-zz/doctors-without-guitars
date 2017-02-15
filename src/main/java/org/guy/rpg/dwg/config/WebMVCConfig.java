@@ -8,6 +8,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor;
 
+/**
+ * Used to declare MVC related config.
+ * Includes interceptors.
+ * 
+ * @author Guy
+ */
+
 @Configuration
 public class WebMVCConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 

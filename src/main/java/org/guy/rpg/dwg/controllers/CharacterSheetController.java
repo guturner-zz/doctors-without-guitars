@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.jdbc.StringUtils;
+
 /**
  * Controller for the character sheet page.
  * 
@@ -31,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CharacterSheetController extends BaseController {
 	
+	// Mapping of character class ID to hit die:
 	private static Map<Long, String> hitDieMapping = new HashMap<Long, String>() {{
 		put(1L, "1D12");
 		put(2L, "1D8");
@@ -66,9 +69,8 @@ public class CharacterSheetController extends BaseController {
 			return modelAndView;
 		}
 		
-		model.addAllAttributes(getAttributeMap(request));
+		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		model.addAttribute("editMode", true);
-		model.addAttribute("character", characterFromId);
 		model.addAttribute("hitDieHint", hitDieMapping.get(characterFromId.getCharClass().getId()));
 		modelAndView.setViewName("character/start_character");
 		return modelAndView;
@@ -89,11 +91,10 @@ public class CharacterSheetController extends BaseController {
 		// Validate Form Result first:
 		List<String> errors = characterSheetValidator.validate(result, request);
 		if (!errors.isEmpty()) {
-			model.addAllAttributes(getAttributeMap(request));
+			model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 			model.addAttribute("characterSheetValidator", characterSheetValidator);
 			model.addAttribute("editMode", true);
 			model.addAttribute("errors", errors);
-			model.addAttribute("character", characterFromId);
 			model.addAttribute("hitDieHint", hitDieMapping.get(characterFromId.getCharClass().getId()));
 			modelAndView.setViewName("character/start_character");
 			return modelAndView;
@@ -112,8 +113,7 @@ public class CharacterSheetController extends BaseController {
 		characterFromId.setCharSheet(characterSheet);
 		dbManager.saveCharacter(characterFromId);
 		
-		model.addAllAttributes(getAttributeMap(request));
-		model.addAttribute("character", characterFromId);
+		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		modelAndView.setViewName("character/character_sheet");
 		return modelAndView;
 	}
@@ -136,8 +136,7 @@ public class CharacterSheetController extends BaseController {
 			return modelAndView;
 		}
 		
-		model.addAllAttributes(getAttributeMap(request));
-		model.addAttribute("character", characterFromId);
+		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		modelAndView.setViewName("character/character_sheet");
 		return modelAndView;
 	}
@@ -172,8 +171,7 @@ public class CharacterSheetController extends BaseController {
 		modifyCharacterSheetByValidator(characterSheet, weapon, characterSheetValidator, request);
 		dbManager.saveCharacterSheet(characterSheet);
 		
-		model.addAllAttributes(getAttributeMap(request));
-		model.addAttribute("character", characterFromId);
+		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		modelAndView.setViewName("character/character_sheet");
 		return modelAndView;
 	}
@@ -190,9 +188,8 @@ public class CharacterSheetController extends BaseController {
 			return modelAndView;
 		}
 		
-		model.addAllAttributes(getAttributeMap(request));
+		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		model.addAttribute("editMode", true);
-		model.addAttribute("character", characterFromId);
 		modelAndView.setViewName("character/character_sheet");
 		return modelAndView;
 	}
@@ -219,92 +216,92 @@ public class CharacterSheetController extends BaseController {
 		}
 		
 		String currentHp = characterSheetValidator.getCurrentHp();
-		if (currentHp != null && !currentHp.equals("")) {
+		if (!StringUtils.isNullOrEmpty(currentHp)) {
 			characterSheet.setCurrentHp(Integer.parseInt(currentHp));
 		}
 		
 		String maxHp = characterSheetValidator.getMaxHp();
-		if (maxHp != null && !maxHp.equals("")) {
+		if (!StringUtils.isNullOrEmpty(maxHp)) {
 			characterSheet.setMaxHp(Integer.parseInt(maxHp));
 		}
 		
 		String strengthBase = characterSheetValidator.getStrengthBase();
-		if (strengthBase != null && !strengthBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(strengthBase)) {
 			characterSheet.setStrengthBase(Integer.parseInt(strengthBase));
 		}
 		
 		String strengthEnhance = characterSheetValidator.getStrengthEnhance();
-		if (strengthEnhance != null && !strengthEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(strengthEnhance)) {
 			characterSheet.setStrengthEnhance(Integer.parseInt(strengthEnhance));
 		}
 		
 		String dexterityBase = characterSheetValidator.getDexterityBase();
-		if (dexterityBase != null && !dexterityBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(dexterityBase)) {
 			characterSheet.setDexterityBase(Integer.parseInt(dexterityBase));
 		}
 		
 		String dexterityEnhance = characterSheetValidator.getDexterityEnhance();
-		if (dexterityEnhance != null && !dexterityEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(dexterityEnhance)) {
 			characterSheet.setDexterityEnhance(Integer.parseInt(dexterityEnhance));
 		}
 		
 		String constitutionBase = characterSheetValidator.getConstitutionBase();
-		if (constitutionBase != null && !constitutionBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(constitutionBase)) {
 			characterSheet.setConstitutionBase(Integer.parseInt(constitutionBase));
 		}
 		
 		String constitutionEnhance = characterSheetValidator.getConstitutionEnhance();
-		if (constitutionEnhance != null && !constitutionEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(constitutionEnhance)) {
 			characterSheet.setConstitutionEnhance(Integer.parseInt(constitutionEnhance));
 		}
 		
 		String intelligenceBase = characterSheetValidator.getIntelligenceBase();
-		if (intelligenceBase != null && !intelligenceBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(intelligenceBase)) {
 			characterSheet.setIntelligenceBase(Integer.parseInt(intelligenceBase));
 		}
 		
 		String intelligenceEnhance = characterSheetValidator.getIntelligenceEnhance();
-		if (intelligenceEnhance != null && !intelligenceEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(intelligenceEnhance)) {
 			characterSheet.setIntelligenceEnhance(Integer.parseInt(intelligenceEnhance));
 		}
 		
 		String wisdomBase = characterSheetValidator.getWisdomBase();
-		if (wisdomBase != null && !wisdomBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(wisdomBase)) {
 			characterSheet.setWisdomBase(Integer.parseInt(wisdomBase));
 		}
 		
 		String wisdomEnhance = characterSheetValidator.getWisdomEnhance();
-		if (wisdomEnhance != null && !wisdomEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(wisdomEnhance)) {
 			characterSheet.setWisdomEnhance(Integer.parseInt(wisdomEnhance));
 		}
 		
 		String charismaBase = characterSheetValidator.getCharismaBase();
-		if (charismaBase != null && !charismaBase.equals("")) {
+		if (!StringUtils.isNullOrEmpty(charismaBase)) {
 			characterSheet.setCharismaBase(Integer.parseInt(charismaBase));
 		}
 		
 		String charismaEnhance = characterSheetValidator.getCharismaEnhance();
-		if (charismaEnhance != null && !charismaEnhance.equals("")) {
+		if (!StringUtils.isNullOrEmpty(charismaEnhance)) {
 			characterSheet.setCharismaEnhance(Integer.parseInt(charismaEnhance));
 		}
 		
 		String baseAttackBonus = characterSheetValidator.getBaseAttackBonus();
-		if (baseAttackBonus != null && !baseAttackBonus.equals("")) {
+		if (!StringUtils.isNullOrEmpty(baseAttackBonus)) {
 			characterSheet.setBaseAttackBonus(Integer.parseInt(baseAttackBonus));
 		}
 
 		String fortitude = characterSheetValidator.getFortitude();
-		if (fortitude != null && !fortitude.equals("")) {
+		if (!StringUtils.isNullOrEmpty(fortitude)) {
 			characterSheet.setFortitude(Integer.parseInt(fortitude));
 		}
 		
 		String reflex = characterSheetValidator.getReflex();
-		if (reflex != null && !reflex.equals("")) {
+		if (!StringUtils.isNullOrEmpty(reflex)) {
 			characterSheet.setReflex(Integer.parseInt(reflex));
 		}
 		
 		String willpower = characterSheetValidator.getWillpower();
-		if (willpower != null && !willpower.equals("")) {
+		if (!StringUtils.isNullOrEmpty(willpower)) {
 			characterSheet.setWillpower(Integer.parseInt(willpower));
 		}
 		
@@ -322,6 +319,29 @@ public class CharacterSheetController extends BaseController {
 		if (weaponCrit != null) {
 			weapon.setCrit(weaponCrit);
 		}
+	}
+	
+	/**
+	 * Returns a map of model attributes including those specific to the current character.
+	 * For example: character, isUnarmed, etc.
+	 */
+	private Map<String, Object> getCharacterSpecificAttributeMap(Character character, HttpServletRequest request) {
+		Map<String, Object> attributeMap = getAttributeMap(request);
+		attributeMap.put("character", character);
+		
+		Boolean isUnarmed = true;
+		if (character.getWeapon() != null) {
+			Weapon weapon = character.getWeapon();
+			if (weapon.getName() != null && !weapon.getName().equals("")) {
+				isUnarmed = false;
+			}
+		}
+		attributeMap.put("isUnarmed", isUnarmed);
+		
+		Long sizeId = character.getSize().getId();
+		attributeMap.put("unarmedDamage", character.getUnarmedDamage(sizeId));
+		
+		return attributeMap;
 	}
 	
 	@Override

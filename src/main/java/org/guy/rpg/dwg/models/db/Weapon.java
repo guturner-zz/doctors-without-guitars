@@ -8,6 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Represents a character's weapon.
+ * Used for calculating damage.
+ * 
+ * @author Guy
+ */
+
 @Entity
 @Table(name = "weapons")
 public class Weapon implements Serializable {
@@ -55,5 +62,5 @@ public class Weapon implements Serializable {
 	public void setCrit(String crit) {
 		this.crit = crit;
 	}
-
+	
 }

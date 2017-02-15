@@ -65,8 +65,11 @@
 						<div class="col-md-3">
 							Roll Damage!
 						</div>
-						<div class="col-md-8">
-							<span th:if="${character?.weapon?.name == null || character?.weapon?.name == ''}">You need a weapon to attack!</span>
+						<div th:if="${isUnarmed}" class="col-md-8">
+							<span th:text="${unarmedDamage} + ' (Unarmed) '"></span> <span name="bab"></span> (Base Attack Bonus)
+						</div>
+						<div th:if="${!isUnarmed}" class="col-md-8">
+							<span th:text="${character?.weapon?.damage}"></span> <span name="bab"></span> (Base Attack Bonus)
 						</div>
 					</div>
 				</li>

@@ -193,6 +193,10 @@ public class CharacterController extends BaseController {
 		return newCharacter;
 	}
 	
+	/**
+	 * Returns a map of model attributes including those specific to editing characters.
+	 * For example: classList, raceList
+	 */
 	private Map<String, Object> getEditCharacterAttributeMap(HttpServletRequest request) {
 		Map<String, Object> attributeMap = getAttributeMap(request);
 		attributeMap.put("characterValidator", new CharacterValidator());
