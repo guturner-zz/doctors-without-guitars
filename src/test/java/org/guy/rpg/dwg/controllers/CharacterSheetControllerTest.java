@@ -3,6 +3,7 @@ package org.guy.rpg.dwg.controllers;
 import static org.junit.Assert.assertEquals;
 
 import org.guy.rpg.dwg.models.db.CharacterSheet;
+import org.guy.rpg.dwg.models.db.Weapon;
 import org.guy.rpg.dwg.validators.CharacterSheetValidator;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,8 +53,10 @@ public class CharacterSheetControllerTest {
 		existingCharacterSheet.setStrengthBase(10);
 		existingCharacterSheet.setDexterityEnhance(15);
 		
+		Weapon existingWeapon = new Weapon();
+		
 		// When
-		Whitebox.invokeMethod(controller, "modifyCharacterSheetByValidator", existingCharacterSheet, validator, mockRequest);
+		Whitebox.invokeMethod(controller, "modifyCharacterSheetByValidator", existingCharacterSheet, existingWeapon, validator, mockRequest);
 		
 		// Then
 		assertEquals(5, existingCharacterSheet.getCurrentHp());

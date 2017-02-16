@@ -87,4 +87,14 @@ public class DatabaseManager {
 		return success;
 	}
 	
+	public boolean deleteUser(String email) {
+		boolean success = false;
+		
+		User user = userRepository.getUserByEmail(email);
+		userRepository.delete(user);
+		success = true;
+		
+		return success;
+	}
+	
 }

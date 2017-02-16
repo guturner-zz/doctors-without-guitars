@@ -22,8 +22,6 @@ public class AccountManager {
 	
 	/**
 	 * Retrieves the Stormpath Account object.
-	 * 
-	 * @return
 	 */
 	public static Application getApplication() {
 		ClientBuilder builder = Clients.builder(); 

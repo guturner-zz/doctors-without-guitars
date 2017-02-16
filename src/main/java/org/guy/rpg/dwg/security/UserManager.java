@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.stormpath.sdk.account.Account;
+import com.stormpath.sdk.account.AccountList;
 import com.stormpath.sdk.application.Application;
 import com.stormpath.sdk.client.Client;
 import com.stormpath.sdk.client.ClientBuilder;
@@ -79,5 +80,22 @@ public class UserManager {
 		}
 		
 		return account;
+	}
+	
+	/**
+	 * Deletes the Stormpath account with the given email.
+	 */
+	public static boolean deleteAccount(String email) {
+		Application app = AccountManager.getApplication();
+		
+		AccountList accounts = app.getAccounts();
+		for (Account account : accounts) {
+			if (account.getEmail().equals(email)) {
+				account.delete();
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }
