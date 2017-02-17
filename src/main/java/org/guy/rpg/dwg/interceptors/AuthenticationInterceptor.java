@@ -18,7 +18,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	// Collection of pages that should not require authentication:
 	private final ArrayList<String> UNSECURED_PAGES = new ArrayList<String>() {{
 		add("/");
-		add("/error");
+		add("/404");
+		add("/500");
 		add("/login");
 		add("/logout");
 		add("/register");
