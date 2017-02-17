@@ -4,17 +4,15 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.guy.rpg.dwg.Application;
 import org.guy.rpg.dwg.models.Landmark;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith( SpringJUnit4ClassRunner.class )
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes={Application.class})
+@SpringBootTest
 public class MapManagerTest {
 
 	@Autowired

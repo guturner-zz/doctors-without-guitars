@@ -27,7 +27,7 @@
 					</div>
 					
 					<div th:with="characterName = '\'' + ${character?.name} + '\''" class="col-md-2">
-						<select th:onchange="'selectCharacterOption(this.selectedIndex, ' + ${character?.id} + ', ' + ${characterName} + ');'" class="long-input">
+						<select name="actionsDrp" th:onchange="'selectCharacterOption(this.selectedIndex, ' + ${character?.id} + ', ' + ${characterName} + ');'" class="long-input">
 							<option>Select Action</option>
 							<option>Edit Character</option>
 							<option>Character Sheet</option>
