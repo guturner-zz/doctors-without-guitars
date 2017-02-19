@@ -8,6 +8,10 @@
 	margin-bottom : 0.5em;
 }
 
+.pane-btn button {
+	width         : 100px;
+}
+
 .pane-chkBox {
 	height        : 15px;
 	width         : 15px;

@@ -7,7 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.guy.rpg.dwg.csv.CSVManager;
 import org.guy.rpg.dwg.db.repositories.CharacterRepository;
+import org.guy.rpg.dwg.models.KeyValuePair;
+import org.guy.rpg.dwg.models.Tip;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.SkillBook;
@@ -51,6 +54,9 @@ public class CharacterSheetController extends BaseController {
 	
 	@Autowired
 	CharacterRepository characterRepository;
+	
+	@Autowired
+	CSVManager csvManager;
 	
 	@GetMapping("/firstSteps")
 	public ModelAndView getFirstSteps(@RequestParam("id") Long characterId, HttpServletRequest request, Model model) {
@@ -357,6 +363,16 @@ public class CharacterSheetController extends BaseController {
 		
 		Long sizeId = character.getSize().getId();
 		attributeMap.put("unarmedDamage", character.getUnarmedDamage(sizeId));
+		
+		String raceTipsCSV = "/properties/tips/race_tips.csv";
+		List<Tip> raceTips = csvManager.getTipsByKey(character.getRace().getName(), raceTipsCSV);
+		
+		String classTipsCSV = "/properties/tips/class_tips.csv";
+		List<Tip> classTips = csvManager.getTipsByKey(character.getCharClass().getName(), classTipsCSV);
+		
+		
+		attributeMap.put("raceTips", raceTips);
+		attributeMap.put("classTips", classTips);
 		
 		return attributeMap;
 	}

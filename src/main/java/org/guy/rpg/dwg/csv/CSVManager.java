@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.guy.rpg.dwg.models.KeyValuePair;
+import org.guy.rpg.dwg.models.Tip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -66,6 +68,12 @@ public class CSVManager {
 	public Map<String, String> getKeyValuePairsFromCSVAsMap(String fileName) {
 		List<KeyValuePair> list = getCSVAsListOfPOJOs(KeyValuePair.class, fileName, "key", "value");
 		return list.stream().collect(Collectors.toMap( x -> x.getKey(), x -> x.getValue()));
-
 	}
+	
+	public List<Tip> getTipsByKey(String key, String fileName) {
+		List<Tip> tips = getCSVAsListOfPOJOs(Tip.class, fileName, "key", "traitName", "traitDescription");
+		Stream<Tip> stream = tips.stream().filter(tip -> tip.getKey().toLowerCase().equals(key.toLowerCase()));
+		return stream.collect(Collectors.toList());
+	}
+		
 }

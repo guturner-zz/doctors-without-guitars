@@ -14,6 +14,7 @@ $(document).ready(function() {
 	
 	// Hide panes:
 	$('#combatPane').hide();
+	$('#tipsPane').hide();
 	
 	// Add calculate value events:
 	$('input:not(:checkbox)').each(

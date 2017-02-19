@@ -1,0 +1,60 @@
+<section th:fragment="tips_race_and_class_pane">
+
+	<!-- Combat Pane -->
+	<div th:if="${editMode == false}" class="row pane">
+		<div class="col-md-1 pane-btn">
+			<h1>
+				<button class="label label-default" onclick="showPane('#tipsPane');">
+					Tips
+				</button>
+			</h1>
+		</div>
+		
+		<div id="tipsPane" class="col-md-11">
+			<ul class="list-group pane-steps">
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-3">
+							<span th:text="'Because your race is ' + ${character?.race?.name} + ':'"></span>
+						</div>
+					</div>
+				</li>
+					
+				<th:block th:each="tip : ${raceTips}">
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-md-2 col-md-offset-1">
+								<span th:text="${tip.traitName}"></span>
+							</div>
+							<div class="col-md-8">
+								<span th:utext="${tip.traitDescription}"></span>
+							</div>
+						</div>
+					</li>
+				</th:block>
+				
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-md-3">
+							<span th:text="'Because your class is ' + ${character?.charClass?.name} + ':'"></span>
+						</div>
+					</div>
+				</li>
+					
+				<th:block th:each="tip : ${classTips}">
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-md-2 col-md-offset-1">
+								<span th:text="${tip.traitName}"></span>
+							</div>
+							<div class="col-md-8">
+								<span th:utext="${tip.traitDescription}"></span>
+							</div>
+						</div>
+					</li>
+				</th:block>
+			</ul>
+		</div>
+	</div>
+
+</section>

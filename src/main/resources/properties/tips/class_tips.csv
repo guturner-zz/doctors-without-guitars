@@ -1,0 +1,13 @@
+barbarian|Fast Movement|When wearing no armor, light armor, or medium armor your base speed is +10 faster than normal.
+barbarian|Rage|For 4 <span name="conMod"></span> (CON Mod) combat rounds a day you may choose to gain a +4 morale bonus to Strength and Constitution and a +2 morale bonus to Will saves; HOWEVER, you will suffer a penalty of -2 to Armor Class. <a href='http://www.d20pfsrd.com/classes/core-classes/barbarian/#Rage_Ex' target="_blank">See Paizo page for full description.</a>
+bard|Bardic Knowledge|You may make all Knowledge skill checks untrained. Additionally, add half of your level to Knowledge skill checks.
+bard|Bardic Performance|For 4 <span name="chaMod"></span> (CHA Mod) combat rounds a day you may use any of the performances you have mastered. <a href='http://www.d20pfsrd.com/classes/core-classes/bard/' target="_blank">See Paizo page for full description.</a>
+cleric|Aura|If your deity is Chaotic, Evil, Good, or Lawful you gain an aura. <a href='http://www.d20pfsrd.com/classes/core-classes/cleric/#Aura_Ex' target="_blank">See Paizo page for full description.</a>
+cleric|Channel Energy|You may release a wave of energy that provides various bonuses depending on alignment. <a href='http://www.d20pfsrd.com/classes/core-classes/cleric/#Channel_Energy_Su' target="_blank">See Paizo page for full description.</a>
+cleric|Spontaneous Casting|If you are Good: you may cast a healing spell that you did not prepare, and you may convert prepared spells into cure spells. If you are Evil: you may convert cure spells into inflict spells. Otherwise: you must make a choice on how to convert spells.
+druid|Nature Sense|Gain +2 bonus on Knowledge (Nature) and Survival skill checks.
+druid|Spontaneous Casting|You may cast a summoning spell that you did not prepare, and you may convert prepared spells of a rank into the corresponding rank of Summon Nature's Ally.
+druid|Wild Empathy|Roll 1D20 + Level <span name="chaMod"></span> (CHA Mod) to determine if you can improve the attitude of an animal.
+monk|AC Bonus|When unarmored and unencumbered you may add <span name="wisMod"></span> (WIS Mod) to your AC and CMD.
+monk|Flurry of Blows|You may make one additional attack per combat round, taking a -2 penalty on your Attack Roll.
+monk|Unarmed Strike|You gain the effects of <a href="http://www.d20pfsrd.com/feats/combat-feats/improved-unarmed-strike-combat-final/" target="_blank">Improved Unarmed Strike</a>.
