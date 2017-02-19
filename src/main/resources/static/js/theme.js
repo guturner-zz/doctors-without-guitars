@@ -98,4 +98,52 @@ jQuery(document).ready(function($){
 		$('#imageField').val(selectedPortraitSrc);
 	}
 	
+	
+	$("[name='optional']").hide();
+	$("#main-div").hide();
+	$("#pip-div").hide();
 });
+
+function showIFrame(valEl, frame) {
+	var val = $(valEl).val();
+	
+	// Validation:
+	var res = val.match(/http.*:\d{4}/g) != null;
+	
+	if (val != "" && res) {
+		$(frame).attr('src', val);
+		$(frame + "-div").show();
+		$(frame).show();
+	} else {
+		$(frame).attr('src', '');
+		$(frame + "-div").hide();
+		$(frame).hide();
+	}
+}
+
+function toggleElement(el) {
+	var elVisible = $(el).is(':visible');
+	
+	if (elVisible) {
+		$(el).hide();
+	} else {
+		$(el).show();
+	}
+}
+
+function toggleOptional() {
+	toggleElement("[name='optional']");
+	if (!$('#pipChk').is(':checked')) {
+		$('#pip-div').hide();
+	} else {
+		showIFrame('#two', '#pip');
+	}
+}
+
+function switchInputVals(el1, el2) {
+	var val1 = $(el1).val();
+	var val2 = $(el2).val();
+	
+	$(el1).val(val2);
+	$(el2).val(val1);
+}

@@ -33,7 +33,7 @@ public class MapController extends BaseController {
 		List<Landmark> landmarks = mapManager.getLandmarks();
 		model.addAttribute("landmarks", landmarks);
 		
-		return "map/map";
+		return "map/main";
 	}
 	
 }

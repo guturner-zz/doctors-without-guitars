@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<section th:replace="fragments/theme/head :: head(Stream)"></section>
+<body>
+	<section th:replace="fragments/theme/nav(Stream)"></section>
+
+	<div class="single">
+		<div class="container">
+
+			<div id="main-div" class="row center-contents">
+				<div class="col-md-12">
+					<iframe id="main" width="858" height="480" src=""></iframe>
+				</div>
+			</div>
+			
+			<div id="pip-div" class="row center-contents">
+				<div class="col-md-12">
+					<iframe id="pip" width="320" height="240" src=""></iframe>
+				</div>
+			</div>
+
+			<div class="row lower">
+				<div class="col-sm-3 form-col-left">
+				
+					<h4>Stream URL</h4>
+					<input id="one" placeholder="http://123.45.6.7:5001" onblur="showIFrame('#one', '#main')" class="long-input" />
+					
+					<h4 class="lower">Picture-in-Picture? <input id="pipChk" type="checkbox" onclick="toggleOptional();" style="margin-left: 1em;" /></h4>
+					
+					<h1 name="optional" class="centered">
+						<button onclick="switchInputVals('#one', '#two');" class="label label-default">Switch</button>
+					</h1>
+					
+				</div>
+				
+				<div name="optional" class="col-sm-3 form-col-left">
+				
+					<h4>PIP URL</h4>
+					<input id="two" placeholder="http://123.45.6.7:5002" onblur="showIFrame('#two', '#pip')" class="long-input" />
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+</body>
+</html>

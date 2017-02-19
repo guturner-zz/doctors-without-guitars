@@ -54,6 +54,7 @@ public class SeleniumTest extends Locomotive {
 	@Before
 	public void setup() {
 		email = null;
+		driver.manage().window().maximize();
 		logoutBeforeStartingTest();
 	}
 	
