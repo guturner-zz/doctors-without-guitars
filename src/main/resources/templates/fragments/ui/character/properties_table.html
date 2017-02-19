@@ -1,4 +1,4 @@
-<div th:fragment="properties_table" class="col-md-6">
+<div th:fragment="properties_table" class="col-md-12">
 	<table class="table table-hover lower">
 		<thead>
 			<tr>
@@ -16,21 +16,9 @@
 				</td>
 			</tr>
 			
-			<tr>
+			<tr th:if="${editMode == true}">
 				<td>Hit Points</td>
-				<td th:if="${editMode == false}">
-					<div id="progressBarParent" class="progress">
-						<div id="hpProgressBar">
-							<div id="hpText center-contents">
-								<span id="hpBarCurrent"
-									th:text="${character?.charSheet?.currentHp}"></span> / <span
-									id="hpBarMax" name="maxHp"
-									th:text="${character?.charSheet?.maxHp}"></span>
-							</div>
-						</div>
-					</div>
-				</td>
-				<td th:if="${editMode == true}">
+				<td>
 					<input id="currentHp" name="currentHp" th:value="${character?.charSheet?.currentHp}" />
 				</td>
 			</tr>
@@ -40,11 +28,6 @@
 				<td th:if="${editMode == true}">
 					<input id="maxHp" name="maxHp" th:value="${character?.charSheet?.maxHp}" />
 				</td>
-			</tr>
-			
-			<tr>
-				<td>Initiative</td>
-				<td name="dexMod"></td>
 			</tr>
 			
 			<tr>

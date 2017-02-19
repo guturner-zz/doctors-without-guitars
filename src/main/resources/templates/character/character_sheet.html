@@ -12,7 +12,7 @@
 	
 		<div class="single">
 			<div class="container">
-	
+			
 				<!-- Error Messages -->
 				<div class="row">
 					<div class="alert alert-dismissable alert-danger bad-login"
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 	
-				<div class="row">
+				<div class="row upper">
 					<div class="col-md-8 col-md-offset-4"> <!-- Half the whole page. -->
 						<div class="col-md-6 portrait-column"> <!-- Half of the half. -->
 							<div class="portrait-container">
@@ -36,47 +36,83 @@
 					
 								<!-- Character Class -->
 								<div class="portrait-label">
-									<h4><span id="classLabel" th:text="${character?.charClass?.name}"></span></h4>
-								</div>			
-							</div>
-							
-							<div th:switch="${editMode}"  class="portrait-element">
-								<!-- Edit Buttons -->
-								<div th:case="false" class="row">
-									<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
-										<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
-									</form>
+									<h4><span id="classLabel" th:text="${character?.name}"></span></h4>
 								</div>
-					
-								<div th:case="*" class="row">
-									<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
-									<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
-									<script th:inline="javascript">
-										/*<![CDATA[*/
-										$('#cancelBtn').click(function() {
-											cancelCharacterSheet(/*[[${character?.id}]]*/);
-										});
-										/*]]>*/
-									</script>
+								
+								<div th:if="${editMode == false}" id="progressBarParent" class="progress">
+									<div id="hpProgressBar">
+										<div id="hpText center-contents">
+											<span id="hpBarCurrent"
+												th:text="${character?.charSheet?.currentHp}"></span> / <span
+												id="hpBarMax" name="maxHp"
+												th:text="${character?.charSheet?.maxHp}"></span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<!-- Health Bar -->
+				<div class="row lower">
+					<div class="col-md-3 col-md-offset-3">
+						
+					</div>
+				</div>
 	
-				<!-- Attributes -->
-				<form id="saveForm" method="post" th:action="'/characterSheet?id=' + ${character?.id}" th:object="${characterSheetValidator}">
+				<div th:switch="${editMode}"  class="row">
+					<!-- Edit Buttons -->
+					<div th:case="false" class="col-md-1">
+						<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
+							<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
+						</form>
+					</div>
+		
+					<section th:case="*">
+						<div class="col-md-1">
+							<h1 th:replace="fragments/theme/elements :: button(saveBtn, Save)"></h1>
+						</div>
+						<div class="col-md-1">
+							<h1 th:replace="fragments/theme/elements :: button(cancelBtn, Cancel)"></h1>
+						</div>
+						
+						<script th:inline="javascript">
+							/*<![CDATA[*/
+							$('#cancelBtn').click(function() {
+								cancelCharacterSheet(/*[[${character?.id}]]*/);
+							});
+							/*]]>*/
+						</script>
+					</section>
+				</div>
+	
+				<div class="row lower pill center-contents">
 					<div class="row">
-						<section th:replace="fragments/ui/character/stats_table :: stats_table('false')"></section>
+						<div class="col-md-3"><a onclick="showPanel('#attributesPanel');" class="hand-cursor">Attributes</a></div>
+						<div class="col-md-3"><a onclick="showPanel('#propertiesPanel');" class="hand-cursor">Properties</a></div>
+						<div class="col-md-3"><a onclick="showPanel('#weaponsPanel');" class="hand-cursor">Weapons</a></div>
+						<div class="col-md-3"><a onclick="showPanel('#skillsPanel');" class="hand-cursor">Skill Book</a></div>
+					</div>
+				</div>
+	
+				<!-- Panels -->
+				<form id="saveForm" method="post" th:action="'/characterSheet?id=' + ${character?.id}" th:object="${characterSheetValidator}">
+					<div id="attributesPanel" name="panel" class="row">
+						<section th:replace="fragments/ui/character/stats_table :: stats_table('col-md-12')"></section>
+					</div>
+					
+					<div id="propertiesPanel" name="panel" class="row">
 						<section th:replace="fragments/ui/character/properties_table"></section>
 					</div>
 					
-					<p class="dolor"></p>
-				
-					<!-- Damage Attributes -->
-					<div class="row">
+					<div id="weaponsPanel" name="panel" class="row">
 						<section th:replace="fragments/ui/character/attack_properties_table"></section>
 						<section th:replace="fragments/ui/character/weapon_table"></section>
+					</div>
+					
+					<div id="skillsPanel" name="panel" class="row">
+						<section th:replace="fragments/ui/character/skills_table"></section>
 					</div>
 				</form>
 				

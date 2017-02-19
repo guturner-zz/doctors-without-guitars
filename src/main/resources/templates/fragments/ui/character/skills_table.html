@@ -1,0 +1,23 @@
+<div th:fragment="skills_table" class="col-md-12">
+	<table class="table table-hover lower">
+		<thead>
+			<tr>
+				<th>Skill Name</th>
+				<th th:if="${editMode == true}">Trained Value</th>
+				<th th:if="${editMode == true}">Bonus Value</th>
+				<th th:if="${editMode == true}">Modifier</th>
+				<th id="totalSkillsHeader" th:if="${editMode == false}">Total Value</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:with="acrobaticsTotal = ${(character?.skillBook?.acrobaticsBase) + (character?.skillBook?.acrobaticsEnhance)}">
+				<td>Acrobatics</td>
+				<td id="acrobaticsTotal" th:if="${editMode == false}"><span th:text="${acrobaticsTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="acrobaticsBase" th:if="${editMode == true}"><input th:field="*{acrobaticsBase}" th:placeholder="${character?.skillBook?.acrobaticsBase}" /></td>
+				<td id="acrobaticsEnhance" th:if="${editMode == true}"><input th:field="*{acrobaticsEnhance}" th:placeholder="${character?.skillBook?.acrobaticsEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

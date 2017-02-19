@@ -1,5 +1,5 @@
-<section th:fragment="stats_table(center)">
-	<div class="col-md-6" th:classappend="${center == 'true'} ? col-md-offset-3 : no-extras">
+<section th:fragment="stats_table(classes)">
+	<div th:classappend="${classes}">
 		<table class="table table-hover lower">
 			<thead>
 				<tr>

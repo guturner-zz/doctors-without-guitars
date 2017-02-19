@@ -10,6 +10,8 @@ $(document).ready(function() {
 	
 	calculateBaseAttackBonus('[name=bab]', getInputText('#baseAttackBonus'));
 	
+	showPanel("#attributesPanel");
+	
 	// Hide panes:
 	$('#combatPane').hide();
 	
@@ -28,6 +30,11 @@ $(document).ready(function() {
 		$('#hitDie').val(hitDieVal);
 	});
 });
+
+function showPanel(panelId) {
+	$("div[name='panel']").hide();
+	$(panelId).show();
+}
 
 function prepareViewCharacterSheetFields() {
 	// Formats attribute mods:

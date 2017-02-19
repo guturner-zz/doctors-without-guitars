@@ -4,9 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.guy.rpg.dwg.db.repositories.CharacterRepository;
 import org.guy.rpg.dwg.db.repositories.CharacterSheetRepository;
+import org.guy.rpg.dwg.db.repositories.SkillBookRepository;
 import org.guy.rpg.dwg.db.repositories.UserRepository;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
+import org.guy.rpg.dwg.models.db.SkillBook;
 import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.security.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class DatabaseManager {
 	
 	@Autowired
 	CharacterSheetRepository characterSheetRepository;
+	
+	@Autowired
+	SkillBookRepository skillBookRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -60,7 +65,7 @@ public class DatabaseManager {
 		Character savedCharacter = characterRepository.save(character);
 		
 		if (savedCharacter != null) {
-			success = false;
+			success = true;
 		}
 		
 		return success;
@@ -81,7 +86,19 @@ public class DatabaseManager {
 		CharacterSheet savedCharacterSheet = characterSheetRepository.save(characterSheet);
 		
 		if (savedCharacterSheet != null) {
-			success = false;
+			success = true;
+		}
+		
+		return success;
+	}
+	
+	public boolean saveSkillBook(SkillBook skillBook) {
+		boolean success = false;
+		
+		SkillBook savedSkillBook = skillBookRepository.save(skillBook);
+		
+		if (savedSkillBook != null) {
+			success = true;
 		}
 		
 		return success;

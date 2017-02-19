@@ -24,24 +24,16 @@
 				<h2>Hello Adventurer!</h2>
 				<p class="dolor">Before we begin, tell me about yourself...</p>
 	
-				<div class="row lower">
-					<div class="col-md-6 center-contents">
-						Decide Your Base Attributes
+				<form id="saveForm" method="post" th:action="'/firstSteps?id=' + ${character?.id}" th:object="${characterSheetValidator}">
+					<div class="row center-contents lower">
+						<div class="col-md-12">Input Your Hit Die</div>
+						<input id="hitDie" th:field="*{hitDie}" />
+						<div class="input-hint">Hint: <span th:text="${character?.charClass?.name}"></span>s typically use <span id="hitDieHint" class="hand-cursor" th:text="${hitDieHint}"></span>.</div>
 					</div>
 					
-					<div class="col-md-6 center-contents">
-						Input Your Hit Die
-					</div>
-				</div>
-	
-				<form id="saveForm" method="post" th:action="'/firstSteps?id=' + ${character?.id}" th:object="${characterSheetValidator}">
-					<div class="row">
-						<section th:replace="fragments/ui/character/stats_table :: stats_table('false')"></section>
-						
-						<div class="col-md-6 center-contents lower">
-							<input id="hitDie" th:field="*{hitDie}" />
-							<div class="input-hint">Hint: <span th:text="${character?.charClass?.name}"></span>s typically use <span id="hitDieHint" class="hand-cursor" th:text="${hitDieHint}"></span>.</div>
-						</div>
+					<div class="row center-contents lower">
+						<div class="col-md-12">Decide Your Base Attributes</div>
+						<section th:replace="fragments/ui/character/stats_table :: stats_table('col-md-6 col-md-offset-3')"></section>
 					</div>
 					
 					<div class="row center-contents">

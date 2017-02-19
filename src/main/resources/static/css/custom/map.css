@@ -3,3 +3,7 @@
 .pathfinderMap {
 	outline: 0.15em solid orange;
 }
+
+.popover {
+	width: 500px;
+}

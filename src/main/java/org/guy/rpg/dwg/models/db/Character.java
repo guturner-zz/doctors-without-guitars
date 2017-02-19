@@ -15,8 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * Represents a user's character.
- * Via the character object, a user can access a character sheet, weapon, and more.
+ * Represents a user's character. Via the character object, a user can access a
+ * character sheet, weapon, and more.
  * 
  * @author Guy
  */
@@ -27,7 +27,7 @@ public class Character implements Serializable {
 
 	private static final String SMALL_UNARMED_DAMAGE = "1D2";
 	private static final String MEDIUM_UNARMED_DAMAGE = "1D3";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -47,6 +47,10 @@ public class Character implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "charactersheetid")
 	private CharacterSheet charSheet;
+
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "skillbookid")
+	private SkillBook skillBook;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "weaponid")
@@ -117,6 +121,14 @@ public class Character implements Serializable {
 		this.charSheet = charSheet;
 	}
 
+	public SkillBook getSkillBook() {
+		return skillBook;
+	}
+
+	public void setSkillBook(SkillBook skillBook) {
+		this.skillBook = skillBook;
+	}
+
 	public Weapon getWeapon() {
 		return weapon;
 	}
@@ -156,7 +168,7 @@ public class Character implements Serializable {
 	public void setNewCharacterFlag(boolean newCharacterFlag) {
 		this.newCharacterFlag = newCharacterFlag;
 	}
-	
+
 	/**
 	 * Returns a die value corresponding to the character's unarmed damage.
 	 * Small characters deal 1D2 damage, Medium and larger deal 1D3 damage.

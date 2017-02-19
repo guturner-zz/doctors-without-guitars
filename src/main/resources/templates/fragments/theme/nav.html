@@ -52,6 +52,7 @@
 					<form id="logoutForm" method="post" th:action="@{/logout}"></form>
 					<li><a th:href="@{/profile}" th:text="${user}"></a></li>
 					<li><a th:href="@{/characters}">Characters</a></li>
+					<li><a th:href="@{/map}">Map</a></li>
 					<li><a href="#cd-search" class="cd-search-trigger" onclick="clearSearchResponse();">Ask DM</a></li>
 					<li><a onclick="document.getElementById('logoutForm').submit();">Logout</a></li>
 				</ul>

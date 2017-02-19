@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.guy.rpg.dwg.db.repositories.CharacterRepository;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
+import org.guy.rpg.dwg.models.db.SkillBook;
 import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.models.db.Weapon;
 import org.guy.rpg.dwg.validators.CharacterSheetValidator;
@@ -154,6 +155,7 @@ public class CharacterSheetController extends BaseController {
 		}
 		
 		CharacterSheet characterSheet = characterFromId.getCharSheet();
+		SkillBook skillBook = characterFromId.getSkillBook();
 		Weapon weapon = characterFromId.getWeapon();
 		
 		// Validate Form Result first:
@@ -170,6 +172,9 @@ public class CharacterSheetController extends BaseController {
 		
 		modifyCharacterSheetByValidator(characterSheet, weapon, characterSheetValidator, request);
 		dbManager.saveCharacterSheet(characterSheet);
+		
+		modifySkillBookByValidator(skillBook, characterSheetValidator, request);
+		dbManager.saveSkillBook(skillBook);
 		
 		model.addAllAttributes(getCharacterSpecificAttributeMap(characterFromId, request));
 		modelAndView.setViewName("character/character_sheet");
@@ -318,6 +323,18 @@ public class CharacterSheetController extends BaseController {
 		String weaponCrit = characterSheetValidator.getWeaponCrit();
 		if (weaponCrit != null) {
 			weapon.setCrit(weaponCrit);
+		}
+	}
+	
+	private void modifySkillBookByValidator(SkillBook skillBook, CharacterSheetValidator characterSheetValidator, HttpServletRequest request) {
+		String acrobaticsBase = characterSheetValidator.getAcrobaticsBase();
+		if (!StringUtils.isNullOrEmpty(acrobaticsBase)) {
+			skillBook.setAcrobaticsBase(Integer.parseInt(acrobaticsBase));
+		}
+		
+		String acrobaticsEnhance = characterSheetValidator.getAcrobaticsEnhance();
+		if (!StringUtils.isNullOrEmpty(acrobaticsEnhance)) {
+			skillBook.setAcrobaticsEnhance(Integer.parseInt(acrobaticsEnhance));
 		}
 	}
 	

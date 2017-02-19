@@ -51,6 +51,9 @@ public class CharacterSheetValidator {
 	private String weaponDamage;
 	private String weaponCrit;
 
+	private String acrobaticsBase;
+	private String acrobaticsEnhance;
+	
 	public String getStrengthBase() {
 		return strengthBase;
 	}
@@ -225,6 +228,22 @@ public class CharacterSheetValidator {
 
 	public void setWeaponCrit(String weaponCrit) {
 		this.weaponCrit = weaponCrit;
+	}
+
+	public String getAcrobaticsBase() {
+		return acrobaticsBase;
+	}
+
+	public void setAcrobaticsBase(String acrobaticsBase) {
+		this.acrobaticsBase = acrobaticsBase;
+	}
+
+	public String getAcrobaticsEnhance() {
+		return acrobaticsEnhance;
+	}
+
+	public void setAcrobaticsEnhance(String acrobaticsEnhance) {
+		this.acrobaticsEnhance = acrobaticsEnhance;
 	}
 
 	/**

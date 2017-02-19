@@ -34,3 +34,9 @@ Pane usage.
 	</div>
 
 --*/
+
+.progress {
+	bottom        : -25%;
+    position      : absolute;
+    width         : 100%;
+}

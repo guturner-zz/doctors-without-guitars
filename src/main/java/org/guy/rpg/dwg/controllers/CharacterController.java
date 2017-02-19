@@ -13,6 +13,7 @@ import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.guy.rpg.dwg.models.db.Class;
 import org.guy.rpg.dwg.models.db.Race;
 import org.guy.rpg.dwg.models.db.Size;
+import org.guy.rpg.dwg.models.db.SkillBook;
 import org.guy.rpg.dwg.models.db.User;
 import org.guy.rpg.dwg.models.db.Weapon;
 import org.guy.rpg.dwg.validators.CharacterValidator;
@@ -188,6 +189,7 @@ public class CharacterController extends BaseController {
 		// Properties on new characters:
 		newCharacter.setNewCharacterFlag(true);
 		newCharacter.setCharSheet(new CharacterSheet());
+		newCharacter.setSkillBook(new SkillBook());
 		newCharacter.setWeapon(new Weapon());
 		
 		return newCharacter;
