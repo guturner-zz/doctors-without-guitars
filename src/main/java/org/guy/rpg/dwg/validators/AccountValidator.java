@@ -92,7 +92,7 @@ public class AccountValidator {
     	}
     	
     	// Password is invalid:
-    	Pattern p = Pattern.compile("^(?=.*[AZ])(?=.*\\d).{8,100}$");
+    	Pattern p = Pattern.compile("^(?=.*[A-Z])(?=.*\\d).{8,100}$");
     	Matcher m = p.matcher(this.getPassword());
     	m.find();
     	if (!m.matches()) {
