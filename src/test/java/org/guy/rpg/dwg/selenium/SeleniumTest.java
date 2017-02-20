@@ -1,6 +1,7 @@
 package org.guy.rpg.dwg.selenium;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -298,6 +299,85 @@ public class SeleniumTest extends Locomotive {
 		
 		assertEquals("DWG : Character Sheet", driver.getTitle());
 		assertTrue(driver.findElements(h2).isEmpty());
+	}
+	
+	@Test
+	public void testCharacterSheet() {
+		createUserFromHomePage();
+		createNewCharacterFromHomePage();
+		
+		By characterActionsDrp = By.xpath("//select[@name='actionsDrp']");
+		Select characterActionsSelect = new Select(driver.findElement(characterActionsDrp));
+		characterActionsSelect.selectByVisibleText("Character Sheet");
+		
+		assertEquals("DWG : Character Sheet", driver.getTitle());
+		
+		By h2 = By.xpath("//div[contains(@class,'container')]/h2");
+		assertEquals("Hello Adventurer!", getText(h2));
+		
+		String hitDieVal = "1D10";
+		
+		By hitDieHintTxt = By.xpath("//div[contains(@class,'input-hint')]");
+		assertEquals("Hint: Fighters typically use 1D10.", getText(hitDieHintTxt));
+		
+		By hitDieHintLink = By.id("hitDieHint");
+		assertEquals(hitDieVal, getText(hitDieHintLink));
+		
+		click(hitDieHintLink);
+		
+		By hitDieTxt = By.xpath("//input[@name='hitDie']");
+		assertEquals(hitDieVal, getText(hitDieTxt));
+		
+		String strengthMod = "-5";
+		By strengthModTd = By.xpath("//td[@name='strMod']");
+		assertEquals(strengthMod, getText(strengthModTd));
+		
+		String strengthBaseVal = "5";
+		By strengthBaseInput = By.id("strengthBase");
+		setText(strengthBaseInput, strengthBaseVal);
+		
+		strengthMod = "-3";
+		click(strengthModTd);
+		assertEquals(strengthMod, getText(strengthModTd));
+		
+		String intelligenceMod = "-5";
+		By intelligenceModTd = By.xpath("//td[@name='intMod']");
+		assertEquals(intelligenceMod, getText(intelligenceModTd));
+		
+		String intelligencehEnhanceVal = "10";
+		By intelligenceEnhanceInput = By.id("intelligenceEnhance");
+		setText(intelligenceEnhanceInput, intelligencehEnhanceVal);
+		
+		intelligenceMod = "+0";
+		click(intelligenceModTd);
+		assertEquals(intelligenceMod, getText(intelligenceModTd));
+		
+		By saveCharacterBtn = By.xpath("//button[text()='Save Character']");
+		click(saveCharacterBtn);
+		
+		assertEquals("DWG : Character Sheet", driver.getTitle());
+		assertTrue(driver.findElements(h2).isEmpty());
+		
+		strengthModTd = By.xpath("//td[@name='strMod']");
+		assertEquals(strengthMod, getText(strengthModTd));
+		
+		intelligenceModTd = By.xpath("//td[@name='intMod']");
+		assertEquals(intelligenceMod, getText(intelligenceModTd));
+		
+		By propertiesBtn = By.xpath("//a[text()='Properties']");
+		click(propertiesBtn);
+		
+		By hitDieTd = By.id("hitDie");
+		assertEquals(hitDieVal, getText(hitDieTd));
+		
+		By combatPane = By.id("combatPane");
+		assertFalse(driver.findElement(combatPane).isDisplayed());
+		
+		By combatBtn = By.xpath("//button[contains(text(),'Combat')]");
+		click(combatBtn);
+		
+		combatPane = By.id("combatPane");
+		assertTrue(driver.findElement(combatPane).isDisplayed());
 	}
 	
 	@After

@@ -3,6 +3,7 @@ package org.guy.rpg.dwg.validators;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 
 import org.guy.rpg.dwg.validators.annotations.HitDie;
@@ -12,15 +13,15 @@ import org.springframework.validation.ObjectError;
 import com.mysql.jdbc.StringUtils;
 
 /**
- * Used to validate character sheets upon form submit.
- * This includes Weapon values.
+ * Used to validate character sheets upon form submit. This includes Weapon
+ * values.
  * 
  * @author Guy
  */
 public class CharacterSheetValidator {
 
 	private static final String WEAPON_DAMAGE_ERROR = "Weapon Damage value must match pattern <num>d<num> as in 1d8.";
-	
+
 	private String strengthBase;
 	private String strengthEnhance;
 	private String dexterityBase;
@@ -46,14 +47,32 @@ public class CharacterSheetValidator {
 	private String willpower;
 
 	private String weaponName;
-	
-	@HitDie(message=WEAPON_DAMAGE_ERROR)
+
+	@HitDie(message = WEAPON_DAMAGE_ERROR)
 	private String weaponDamage;
 	private String weaponCrit;
 
 	private String acrobaticsBase;
 	private String acrobaticsEnhance;
-	
+	private String appraiseBase;
+	private String appraiseEnhance;
+	private String bluffBase;
+	private String bluffEnhance;
+	private String climbBase;
+	private String climbEnhance;
+	private String diplomacyBase;
+	private String diplomacyEnhance;
+	private String disableDeviceBase;
+	private String disableDeviceEnhance;
+	private String disguiseBase;
+	private String disguiseEnhance;
+	private String escapeArtistBase;
+	private String escapeArtistEnhance;
+	private String flyBase;
+	private String flyEnhance;
+	private String handleAnimalBase;
+	private String handleAnimalEnhance;
+
 	public String getStrengthBase() {
 		return strengthBase;
 	}
@@ -246,6 +265,150 @@ public class CharacterSheetValidator {
 		this.acrobaticsEnhance = acrobaticsEnhance;
 	}
 
+	public String getAppraiseBase() {
+		return appraiseBase;
+	}
+
+	public void setAppraiseBase(String appraiseBase) {
+		this.appraiseBase = appraiseBase;
+	}
+
+	public String getAppraiseEnhance() {
+		return appraiseEnhance;
+	}
+
+	public void setAppraiseEnhance(String appraiseEnhance) {
+		this.appraiseEnhance = appraiseEnhance;
+	}
+
+	public String getBluffBase() {
+		return bluffBase;
+	}
+
+	public void setBluffBase(String bluffBase) {
+		this.bluffBase = bluffBase;
+	}
+
+	public String getBluffEnhance() {
+		return bluffEnhance;
+	}
+
+	public void setBluffEnhance(String bluffEnhance) {
+		this.bluffEnhance = bluffEnhance;
+	}
+
+	public String getClimbBase() {
+		return climbBase;
+	}
+
+	public void setClimbBase(String climbBase) {
+		this.climbBase = climbBase;
+	}
+
+	public String getClimbEnhance() {
+		return climbEnhance;
+	}
+
+	public void setClimbEnhance(String climbEnhance) {
+		this.climbEnhance = climbEnhance;
+	}
+
+	public String getDiplomacyBase() {
+		return diplomacyBase;
+	}
+
+	public void setDiplomacyBase(String diplomacyBase) {
+		this.diplomacyBase = diplomacyBase;
+	}
+
+	public String getDiplomacyEnhance() {
+		return diplomacyEnhance;
+	}
+
+	public void setDiplomacyEnhance(String diplomacyEnhance) {
+		this.diplomacyEnhance = diplomacyEnhance;
+	}
+
+	public String getDisableDeviceBase() {
+		return disableDeviceBase;
+	}
+
+	public void setDisableDeviceBase(String disableDeviceBase) {
+		this.disableDeviceBase = disableDeviceBase;
+	}
+
+	public String getDisableDeviceEnhance() {
+		return disableDeviceEnhance;
+	}
+
+	public void setDisableDeviceEnhance(String disableDeviceEnhance) {
+		this.disableDeviceEnhance = disableDeviceEnhance;
+	}
+
+	public String getDisguiseBase() {
+		return disguiseBase;
+	}
+
+	public void setDisguiseBase(String disguiseBase) {
+		this.disguiseBase = disguiseBase;
+	}
+
+	public String getDisguiseEnhance() {
+		return disguiseEnhance;
+	}
+
+	public void setDisguiseEnhance(String disguiseEnhance) {
+		this.disguiseEnhance = disguiseEnhance;
+	}
+
+	public String getEscapeArtistBase() {
+		return escapeArtistBase;
+	}
+
+	public void setEscapeArtistBase(String escapeArtistBase) {
+		this.escapeArtistBase = escapeArtistBase;
+	}
+
+	public String getEscapeArtistEnhance() {
+		return escapeArtistEnhance;
+	}
+
+	public void setEscapeArtistEnhance(String escapeArtistEnhance) {
+		this.escapeArtistEnhance = escapeArtistEnhance;
+	}
+
+	public String getFlyBase() {
+		return flyBase;
+	}
+
+	public void setFlyBase(String flyBase) {
+		this.flyBase = flyBase;
+	}
+
+	public String getFlyEnhance() {
+		return flyEnhance;
+	}
+
+	public void setFlyEnhance(String flyEnhance) {
+		this.flyEnhance = flyEnhance;
+	}
+
+	public String getHandleAnimalBase() {
+		return handleAnimalBase;
+	}
+
+	public void setHandleAnimalBase(String handleAnimalBase) {
+		this.handleAnimalBase = handleAnimalBase;
+	}
+
+	public String getHandleAnimalEnhance() {
+		return handleAnimalEnhance;
+	}
+
+	public void setHandleAnimalEnhance(String handleAnimalEnhance) {
+		this.handleAnimalEnhance = handleAnimalEnhance;
+	}
+
 	/**
 	 * Validates character sheet objects on form submit.
 	 */
@@ -255,27 +418,25 @@ public class CharacterSheetValidator {
 		// Form violated validators:
 		if (result.hasErrors()) {
 			for (ObjectError e : result.getAllErrors()) {
-				if (StringUtils.isNullOrEmpty(getWeaponName()) &&
-					e.getDefaultMessage().equals(WEAPON_DAMAGE_ERROR)) {
+				if (StringUtils.isNullOrEmpty(getWeaponName()) && e.getDefaultMessage().equals(WEAPON_DAMAGE_ERROR)) {
 					// Ignore - this is a valid scenario.
 					continue;
 				}
-				
+
 				errors.add(e.getDefaultMessage());
 			}
 		}
-		
+
 		// Weapon damage and crit cannot be null if weapon is set:
 		if (!StringUtils.isNullOrEmpty(getWeaponName())) {
 			Boolean isWeaponDamageSet = !StringUtils.isNullOrEmpty(getWeaponDamage());
 			Boolean isWeaponCritSet = !StringUtils.isNullOrEmpty(getWeaponCrit());
-			
+
 			if (!isWeaponDamageSet || !isWeaponCritSet) {
 				errors.add("Weapon damage and crit values must be set.");
 			}
 		}
 
-		
 		return errors;
 	}
 }
