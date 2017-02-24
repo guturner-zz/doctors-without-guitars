@@ -10,6 +10,7 @@ Demonstrates knowledge of:
 - Spring-JPA (with MySQL)
 - API.AI
 - OpenLayers 3 (Map API)
+- iText (PDF API)
 - Stormpath (User Authentication)
 - Web APIs (HTTP)
 - Test-Driven Development (JUnit 4 and Mockito)
