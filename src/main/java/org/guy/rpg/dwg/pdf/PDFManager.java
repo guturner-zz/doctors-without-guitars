@@ -3,7 +3,6 @@ package org.guy.rpg.dwg.pdf;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
 
-import org.assertj.core.util.diff.Chunk;
 import org.guy.rpg.dwg.models.db.Character;
 import org.guy.rpg.dwg.models.db.CharacterSheet;
 import org.springframework.stereotype.Component;
