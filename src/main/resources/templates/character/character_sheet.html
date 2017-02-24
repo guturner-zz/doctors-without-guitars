@@ -63,11 +63,20 @@
 	
 				<div th:switch="${editMode}"  class="row">
 					<!-- Edit Buttons -->
-					<div th:case="false" class="col-md-1">
-						<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
-							<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
-						</form>
-					</div>
+					<section th:case="false">
+						<div class="col-md-1">
+							<form id="editForm" method="post" th:action="'/editCharacterSheet?id=' + ${character?.id}">
+								<h1 th:replace="fragments/theme/elements :: button(editBtn, Edit)"></h1>
+							</form>
+						</div>
+						
+						<div class="col-md-2">
+							<h1 class="centered">
+								<a th:href="${'/pdf?id=' + character?.charSheet?.id}"><button class="label label-default">Download as PDF</button></a>
+							</h1>
+						</div>
+						
+					</section>
 		
 					<section th:case="*">
 						<div class="col-md-1">
