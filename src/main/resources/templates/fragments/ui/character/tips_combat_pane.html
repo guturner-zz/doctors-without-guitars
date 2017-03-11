@@ -52,7 +52,7 @@
 							Roll Attack!
 						</div>
 						<div class="col-md-8">
-							<span id="rangeCombat"></span>
+							<span id="rangeCombat"></span> <span name="bab"></span> (Base Attack Bonus)
 						</div>
 					</div>
 				</li>
@@ -66,10 +66,10 @@
 							Roll Damage!
 						</div>
 						<div th:if="${isUnarmed}" class="col-md-8">
-							<span th:text="${unarmedDamage} + ' (Unarmed) '"></span> <span name="bab"></span> (Base Attack Bonus)
+							<span th:text="${unarmedDamage} + ' (Unarmed) '"></span>
 						</div>
 						<div th:if="${!isUnarmed}" class="col-md-8">
-							<span th:text="${character?.weapon?.damage}"></span> <span name="bab"></span> (Base Attack Bonus)
+							<span th:text="${character?.weapon?.damage}"></span>
 						</div>
 					</div>
 				</li>

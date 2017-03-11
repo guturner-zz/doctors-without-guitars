@@ -3,7 +3,6 @@ package org.guy.rpg.dwg.validators;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 
 import org.guy.rpg.dwg.validators.annotations.HitDie;
@@ -13,15 +12,15 @@ import org.springframework.validation.ObjectError;
 import com.mysql.jdbc.StringUtils;
 
 /**
- * Used to validate character sheets upon form submit. This includes Weapon
- * values.
+ * Used to validate character sheets upon form submit.
+ * This includes Weapon values.
  * 
  * @author Guy
  */
 public class CharacterSheetValidator {
 
 	private static final String WEAPON_DAMAGE_ERROR = "Weapon Damage value must match pattern <num>d<num> as in 1d8.";
-
+	
 	private String strengthBase;
 	private String strengthEnhance;
 	private String dexterityBase;
@@ -47,11 +46,12 @@ public class CharacterSheetValidator {
 	private String willpower;
 
 	private String weaponName;
-
-	@HitDie(message = WEAPON_DAMAGE_ERROR)
+	
+	@HitDie(message=WEAPON_DAMAGE_ERROR)
 	private String weaponDamage;
 	private String weaponCrit;
 
+	/** Skills **/
 	private String acrobaticsBase;
 	private String acrobaticsEnhance;
 	private String appraiseBase;
@@ -72,7 +72,33 @@ public class CharacterSheetValidator {
 	private String flyEnhance;
 	private String handleAnimalBase;
 	private String handleAnimalEnhance;
-
+	private String healBase;
+	private String healEnhance;
+	private String intimidateBase;
+	private String intimidateEnhance;
+	private String linguisticsBase;
+	private String linguisticsEnhance;
+	private String perceptionBase;
+	private String perceptionEnhance;
+	private String performBase;
+	private String performEnhance;
+	private String rideBase;
+	private String rideEnhance;
+	private String senseMotiveBase;
+	private String senseMotiveEnhance;
+	private String sleightOfHandBase;
+	private String sleightOfHandEnhance;
+	private String spellcraftBase;
+	private String spellcraftEnhance;
+	private String stealthBase;
+	private String stealthEnhance;
+	private String survivalBase;
+	private String survivalEnhance;
+	private String swimBase;
+	private String swimEnhance;
+	private String useMagicDeviceBase;
+	private String useMagicDeviceEnhance;
+	
 	public String getStrengthBase() {
 		return strengthBase;
 	}
@@ -264,7 +290,7 @@ public class CharacterSheetValidator {
 	public void setAcrobaticsEnhance(String acrobaticsEnhance) {
 		this.acrobaticsEnhance = acrobaticsEnhance;
 	}
-
+	
 	public String getAppraiseBase() {
 		return appraiseBase;
 	}
@@ -408,6 +434,214 @@ public class CharacterSheetValidator {
 	public void setHandleAnimalEnhance(String handleAnimalEnhance) {
 		this.handleAnimalEnhance = handleAnimalEnhance;
 	}
+	
+	public String getHealBase() {
+		return healBase;
+	}
+
+	public void setHealBase(String healBase) {
+		this.healBase = healBase;
+	}
+
+	public String getHealEnhance() {
+		return healEnhance;
+	}
+
+	public void setHealEnhance(String healEnhance) {
+		this.healEnhance = healEnhance;
+	}
+
+	public String getIntimidateBase() {
+		return intimidateBase;
+	}
+
+	public void setIntimidateBase(String intimidateBase) {
+		this.intimidateBase = intimidateBase;
+	}
+
+	public String getIntimidateEnhance() {
+		return intimidateEnhance;
+	}
+
+	public void setIntimidateEnhance(String intimidateEnhance) {
+		this.intimidateEnhance = intimidateEnhance;
+	}
+
+	public String getLinguisticsBase() {
+		return linguisticsBase;
+	}
+
+	public void setLinguisticsBase(String linguisticsBase) {
+		this.linguisticsBase = linguisticsBase;
+	}
+
+	public String getLinguisticsEnhance() {
+		return linguisticsEnhance;
+	}
+
+	public void setLinguisticsEnhance(String linguisticsEnhance) {
+		this.linguisticsEnhance = linguisticsEnhance;
+	}
+
+	public String getPerceptionBase() {
+		return perceptionBase;
+	}
+
+	public void setPerceptionBase(String perceptionBase) {
+		this.perceptionBase = perceptionBase;
+	}
+
+	public String getPerceptionEnhance() {
+		return perceptionEnhance;
+	}
+
+	public void setPerceptionEnhance(String perceptionEnhance) {
+		this.perceptionEnhance = perceptionEnhance;
+	}
+
+	public String getPerformBase() {
+		return performBase;
+	}
+
+	public void setPerformBase(String performBase) {
+		this.performBase = performBase;
+	}
+
+	public String getPerformEnhance() {
+		return performEnhance;
+	}
+
+	public void setPerformEnhance(String performEnhance) {
+		this.performEnhance = performEnhance;
+	}
+
+	public String getRideBase() {
+		return rideBase;
+	}
+
+	public void setRideBase(String rideBase) {
+		this.rideBase = rideBase;
+	}
+
+	public String getRideEnhance() {
+		return rideEnhance;
+	}
+
+	public void setRideEnhance(String rideEnhance) {
+		this.rideEnhance = rideEnhance;
+	}
+
+	public String getSenseMotiveBase() {
+		return senseMotiveBase;
+	}
+
+	public void setSenseMotiveBase(String senseMotiveBase) {
+		this.senseMotiveBase = senseMotiveBase;
+	}
+
+	public String getSenseMotiveEnhance() {
+		return senseMotiveEnhance;
+	}
+
+	public void setSenseMotiveEnhance(String senseMotiveEnhance) {
+		this.senseMotiveEnhance = senseMotiveEnhance;
+	}
+
+	public String getSleightOfHandBase() {
+		return sleightOfHandBase;
+	}
+
+	public void setSleightOfHandBase(String sleightOfHandBase) {
+		this.sleightOfHandBase = sleightOfHandBase;
+	}
+
+	public String getSleightOfHandEnhance() {
+		return sleightOfHandEnhance;
+	}
+
+	public void setSleightOfHandEnhance(String sleightOfHandEnhance) {
+		this.sleightOfHandEnhance = sleightOfHandEnhance;
+	}
+
+	public String getSpellcraftBase() {
+		return spellcraftBase;
+	}
+
+	public void setSpellcraftBase(String spellcraftBase) {
+		this.spellcraftBase = spellcraftBase;
+	}
+
+	public String getSpellcraftEnhance() {
+		return spellcraftEnhance;
+	}
+
+	public void setSpellcraftEnhance(String spellcraftEnhance) {
+		this.spellcraftEnhance = spellcraftEnhance;
+	}
+
+	public String getStealthBase() {
+		return stealthBase;
+	}
+
+	public void setStealthBase(String stealthBase) {
+		this.stealthBase = stealthBase;
+	}
+
+	public String getStealthEnhance() {
+		return stealthEnhance;
+	}
+
+	public void setStealthEnhance(String stealthEnhance) {
+		this.stealthEnhance = stealthEnhance;
+	}
+
+	public String getSurvivalBase() {
+		return survivalBase;
+	}
+
+	public void setSurvivalBase(String survivalBase) {
+		this.survivalBase = survivalBase;
+	}
+
+	public String getSurvivalEnhance() {
+		return survivalEnhance;
+	}
+
+	public void setSurvivalEnhance(String survivalEnhance) {
+		this.survivalEnhance = survivalEnhance;
+	}
+
+	public String getSwimBase() {
+		return swimBase;
+	}
+
+	public void setSwimBase(String swimBase) {
+		this.swimBase = swimBase;
+	}
+
+	public String getSwimEnhance() {
+		return swimEnhance;
+	}
+
+	public void setSwimEnhance(String swimEnhance) {
+		this.swimEnhance = swimEnhance;
+	}
+
+	public String getUseMagicDeviceBase() {
+		return useMagicDeviceBase;
+	}
+
+	public void setUseMagicDeviceBase(String useMagicDeviceBase) {
+		this.useMagicDeviceBase = useMagicDeviceBase;
+	}
+
+	public String getUseMagicDeviceEnhance() {
+		return useMagicDeviceEnhance;
+	}
+
+	public void setUseMagicDeviceEnhance(String useMagicDeviceEnhance) {
+		this.useMagicDeviceEnhance = useMagicDeviceEnhance;
+	}
 
 	/**
 	 * Validates character sheet objects on form submit.
@@ -418,25 +652,27 @@ public class CharacterSheetValidator {
 		// Form violated validators:
 		if (result.hasErrors()) {
 			for (ObjectError e : result.getAllErrors()) {
-				if (StringUtils.isNullOrEmpty(getWeaponName()) && e.getDefaultMessage().equals(WEAPON_DAMAGE_ERROR)) {
+				if (StringUtils.isNullOrEmpty(getWeaponName()) &&
+					e.getDefaultMessage().equals(WEAPON_DAMAGE_ERROR)) {
 					// Ignore - this is a valid scenario.
 					continue;
 				}
-
+				
 				errors.add(e.getDefaultMessage());
 			}
 		}
-
+		
 		// Weapon damage and crit cannot be null if weapon is set:
 		if (!StringUtils.isNullOrEmpty(getWeaponName())) {
 			Boolean isWeaponDamageSet = !StringUtils.isNullOrEmpty(getWeaponDamage());
 			Boolean isWeaponCritSet = !StringUtils.isNullOrEmpty(getWeaponCrit());
-
+			
 			if (!isWeaponDamageSet || !isWeaponCritSet) {
 				errors.add("Weapon damage and crit values must be set.");
 			}
 		}
 
+		
 		return errors;
 	}
 }

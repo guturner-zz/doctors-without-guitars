@@ -342,6 +342,226 @@ public class CharacterSheetController extends BaseController {
 		if (!StringUtils.isNullOrEmpty(acrobaticsEnhance)) {
 			skillBook.setAcrobaticsEnhance(Integer.parseInt(acrobaticsEnhance));
 		}
+		
+		String appraiseBase = characterSheetValidator.getAppraiseBase();
+		if (!StringUtils.isNullOrEmpty(appraiseBase)) {
+			skillBook.setAppraiseBase(Integer.parseInt(appraiseBase));
+		}
+		
+		String appraiseEnhance = characterSheetValidator.getAppraiseEnhance();
+		if (!StringUtils.isNullOrEmpty(appraiseEnhance)) {
+			skillBook.setAppraiseEnhance(Integer.parseInt(appraiseEnhance));
+		}
+		
+		String bluffBase = characterSheetValidator.getBluffBase();
+		if (!StringUtils.isNullOrEmpty(bluffBase)) {
+			skillBook.setBluffBase(Integer.parseInt(bluffBase));
+		}
+		
+		String bluffEnhance = characterSheetValidator.getBluffEnhance();
+		if (!StringUtils.isNullOrEmpty(bluffEnhance)) {
+			skillBook.setBluffEnhance(Integer.parseInt(bluffEnhance));
+		}
+		
+		String climbBase = characterSheetValidator.getClimbBase();
+		if (!StringUtils.isNullOrEmpty(climbBase)) {
+			skillBook.setClimbBase(Integer.parseInt(climbBase));
+		}
+		
+		String climbEnhance = characterSheetValidator.getClimbEnhance();
+		if (!StringUtils.isNullOrEmpty(climbEnhance)) {
+			skillBook.setClimbEnhance(Integer.parseInt(climbEnhance));
+		}
+		
+		String diplomacyBase = characterSheetValidator.getDiplomacyBase();
+		if (!StringUtils.isNullOrEmpty(diplomacyBase)) {
+			skillBook.setDiplomacyBase(Integer.parseInt(diplomacyBase));
+		}
+		
+		String diplomacyEnhance = characterSheetValidator.getDiplomacyEnhance();
+		if (!StringUtils.isNullOrEmpty(diplomacyEnhance)) {
+			skillBook.setDiplomacyEnhance(Integer.parseInt(diplomacyEnhance));
+		}
+		
+		String disableDeviceBase = characterSheetValidator.getDisableDeviceBase();
+		if (!StringUtils.isNullOrEmpty(disableDeviceBase)) {
+			skillBook.setDisableDeviceBase(Integer.parseInt(disableDeviceBase));
+		}
+		
+		String disableDeviceEnhance = characterSheetValidator.getDisableDeviceEnhance();
+		if (!StringUtils.isNullOrEmpty(disableDeviceEnhance)) {
+			skillBook.setDisableDeviceEnhance(Integer.parseInt(disableDeviceEnhance));
+		}
+		
+		String disguiseBase = characterSheetValidator.getDisguiseBase();
+		if (!StringUtils.isNullOrEmpty(disguiseBase)) {
+			skillBook.setDisguiseBase(Integer.parseInt(disguiseBase));
+		}
+		
+		String disguiseEnhance = characterSheetValidator.getDisguiseEnhance();
+		if (!StringUtils.isNullOrEmpty(disguiseEnhance)) {
+			skillBook.setDisguiseEnhance(Integer.parseInt(disguiseEnhance));
+		}
+		
+		String escapeArtistBase = characterSheetValidator.getEscapeArtistBase();
+		if (!StringUtils.isNullOrEmpty(escapeArtistBase)) {
+			skillBook.setEscapeArtistBase(Integer.parseInt(escapeArtistBase));
+		}
+		
+		String escapeArtistEnhance = characterSheetValidator.getEscapeArtistEnhance();
+		if (!StringUtils.isNullOrEmpty(escapeArtistEnhance)) {
+			skillBook.setEscapeArtistEnhance(Integer.parseInt(escapeArtistEnhance));
+		}
+		
+		String flyBase = characterSheetValidator.getFlyBase();
+		if (!StringUtils.isNullOrEmpty(flyBase)) {
+			skillBook.setFlyBase(Integer.parseInt(flyBase));
+		}
+		
+		String flyEnhance = characterSheetValidator.getFlyEnhance();
+		if (!StringUtils.isNullOrEmpty(flyEnhance)) {
+			skillBook.setFlyEnhance(Integer.parseInt(flyEnhance));
+		}
+		
+		String handleAnimalBase = characterSheetValidator.getHandleAnimalBase();
+		if (!StringUtils.isNullOrEmpty(handleAnimalBase)) {
+			skillBook.setHandleAnimalBase(Integer.parseInt(handleAnimalBase));
+		}
+		
+		String handleAnimalEnhance = characterSheetValidator.getHandleAnimalEnhance();
+		if (!StringUtils.isNullOrEmpty(handleAnimalEnhance)) {
+			skillBook.setHandleAnimalEnhance(Integer.parseInt(handleAnimalEnhance));
+		}
+		
+		String healBase = characterSheetValidator.getHealBase();
+		if (!StringUtils.isNullOrEmpty(healBase)) {
+			skillBook.setHealBase(Integer.parseInt(healBase));
+		}
+		
+		String healEnhance = characterSheetValidator.getHealEnhance();
+		if (!StringUtils.isNullOrEmpty(healEnhance)) {
+			skillBook.setHealEnhance(Integer.parseInt(healEnhance));
+		}
+		
+		String intimidateBase = characterSheetValidator.getIntimidateBase();
+		if (!StringUtils.isNullOrEmpty(intimidateBase)) {
+			skillBook.setIntimidateBase(Integer.parseInt(intimidateBase));
+		}
+		
+		String intimidateEnhance = characterSheetValidator.getIntimidateEnhance();
+		if (!StringUtils.isNullOrEmpty(intimidateEnhance)) {
+			skillBook.setIntimidateEnhance(Integer.parseInt(intimidateEnhance));
+		}
+		
+		String linguisticsBase = characterSheetValidator.getLinguisticsBase();
+		if (!StringUtils.isNullOrEmpty(linguisticsBase)) {
+			skillBook.setLinguisticsBase(Integer.parseInt(linguisticsBase));
+		}
+		
+		String linguisticsEnhance = characterSheetValidator.getLinguisticsEnhance();
+		if (!StringUtils.isNullOrEmpty(linguisticsEnhance)) {
+			skillBook.setLinguisticsEnhance(Integer.parseInt(linguisticsEnhance));
+		}
+		
+		String perceptionBase = characterSheetValidator.getPerceptionBase();
+		if (!StringUtils.isNullOrEmpty(perceptionBase)) {
+			skillBook.setPerceptionBase(Integer.parseInt(perceptionBase));
+		}
+		
+		String perceptionEnhance = characterSheetValidator.getPerceptionEnhance();
+		if (!StringUtils.isNullOrEmpty(perceptionEnhance)) {
+			skillBook.setPerceptionEnhance(Integer.parseInt(perceptionEnhance));
+		}
+		
+		String performBase = characterSheetValidator.getPerformBase();
+		if (!StringUtils.isNullOrEmpty(performBase)) {
+			skillBook.setPerformBase(Integer.parseInt(performBase));
+		}
+		
+		String performEnhance = characterSheetValidator.getPerformEnhance();
+		if (!StringUtils.isNullOrEmpty(performEnhance)) {
+			skillBook.setPerformEnhance(Integer.parseInt(performEnhance));
+		}
+		
+		String rideBase = characterSheetValidator.getRideBase();
+		if (!StringUtils.isNullOrEmpty(rideBase)) {
+			skillBook.setRideBase(Integer.parseInt(rideBase));
+		}
+		
+		String rideEnhance = characterSheetValidator.getRideEnhance();
+		if (!StringUtils.isNullOrEmpty(rideEnhance)) {
+			skillBook.setRideEnhance(Integer.parseInt(rideEnhance));
+		}
+		
+		String senseMotiveBase = characterSheetValidator.getSenseMotiveBase();
+		if (!StringUtils.isNullOrEmpty(senseMotiveBase)) {
+			skillBook.setSenseMotiveBase(Integer.parseInt(senseMotiveBase));
+		}
+		
+		String senseMotiveEnhance = characterSheetValidator.getSenseMotiveEnhance();
+		if (!StringUtils.isNullOrEmpty(senseMotiveEnhance)) {
+			skillBook.setSenseMotiveEnhance(Integer.parseInt(senseMotiveEnhance));
+		}
+		
+		String sleightOfHandBase = characterSheetValidator.getSleightOfHandBase();
+		if (!StringUtils.isNullOrEmpty(sleightOfHandBase)) {
+			skillBook.setSleightOfHandBase(Integer.parseInt(sleightOfHandBase));
+		}
+		
+		String sleightOfHandEnhance = characterSheetValidator.getSleightOfHandEnhance();
+		if (!StringUtils.isNullOrEmpty(sleightOfHandEnhance)) {
+			skillBook.setSleightOfHandEnhance(Integer.parseInt(sleightOfHandEnhance));
+		}
+		
+		String spellcraftBase = characterSheetValidator.getSpellcraftBase();
+		if (!StringUtils.isNullOrEmpty(spellcraftBase)) {
+			skillBook.setSpellcraftBase(Integer.parseInt(spellcraftBase));
+		}
+		
+		String spellcraftEnhance = characterSheetValidator.getSpellcraftEnhance();
+		if (!StringUtils.isNullOrEmpty(spellcraftEnhance)) {
+			skillBook.setSpellcraftEnhance(Integer.parseInt(spellcraftEnhance));
+		}
+		
+		String stealthBase = characterSheetValidator.getStealthBase();
+		if (!StringUtils.isNullOrEmpty(stealthBase)) {
+			skillBook.setStealthBase(Integer.parseInt(stealthBase));
+		}
+		
+		String stealthEnhance = characterSheetValidator.getStealthEnhance();
+		if (!StringUtils.isNullOrEmpty(stealthEnhance)) {
+			skillBook.setStealthEnhance(Integer.parseInt(stealthEnhance));
+		}
+		
+		String survivalBase = characterSheetValidator.getSurvivalBase();
+		if (!StringUtils.isNullOrEmpty(survivalBase)) {
+			skillBook.setSurvivalBase(Integer.parseInt(survivalBase));
+		}
+		
+		String survivalEnhance = characterSheetValidator.getSurvivalEnhance();
+		if (!StringUtils.isNullOrEmpty(survivalEnhance)) {
+			skillBook.setSurvivalEnhance(Integer.parseInt(survivalEnhance));
+		}
+		
+		String swimBase = characterSheetValidator.getSwimBase();
+		if (!StringUtils.isNullOrEmpty(swimBase)) {
+			skillBook.setSwimBase(Integer.parseInt(swimBase));
+		}
+		
+		String swimEnhance = characterSheetValidator.getSwimEnhance();
+		if (!StringUtils.isNullOrEmpty(swimEnhance)) {
+			skillBook.setSwimEnhance(Integer.parseInt(swimEnhance));
+		}
+		
+		String useMagicDeviceBase = characterSheetValidator.getUseMagicDeviceBase();
+		if (!StringUtils.isNullOrEmpty(useMagicDeviceBase)) {
+			skillBook.setUseMagicDeviceBase(Integer.parseInt(useMagicDeviceBase));
+		}
+		
+		String useMagicDeviceEnhance = characterSheetValidator.getUseMagicDeviceEnhance();
+		if (!StringUtils.isNullOrEmpty(useMagicDeviceEnhance)) {
+			skillBook.setUseMagicDeviceEnhance(Integer.parseInt(useMagicDeviceEnhance));
+		}
 	}
 	
 	/**

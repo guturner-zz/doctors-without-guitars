@@ -18,6 +18,182 @@
 				<td id="acrobaticsEnhance" th:if="${editMode == true}"><input th:field="*{acrobaticsEnhance}" th:placeholder="${character?.skillBook?.acrobaticsEnhance}" /></td>
 				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
 			</tr>
+			
+			<tr th:with="appraiseTotal = ${(character?.skillBook?.appraiseBase) + (character?.skillBook?.appraiseEnhance)}">
+				<td>Appraise</td>
+				<td id="appraiseTotal" th:if="${editMode == false}"><span th:text="${appraiseTotal} + ' '"></span><span name="intMod"></span> (INT Mod)</td>
+				<td id="appraiseBase" th:if="${editMode == true}"><input th:field="*{appraiseBase}" th:placeholder="${character?.skillBook?.appraiseBase}" /></td>
+				<td id="appraiseEnhance" th:if="${editMode == true}"><input th:field="*{appraiseEnhance}" th:placeholder="${character?.skillBook?.appraiseEnhance}" /></td>
+				<td th:if="${editMode == true}">INT Mod = <span name="intMod"></span></td>
+			</tr>
+			
+			<tr th:with="bluffTotal = ${(character?.skillBook?.bluffBase) + (character?.skillBook?.bluffEnhance)}">
+				<td>Bluff</td>
+				<td id="bluffTotal" th:if="${editMode == false}"><span th:text="${bluffTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="bluffBase" th:if="${editMode == true}"><input th:field="*{bluffBase}" th:placeholder="${character?.skillBook?.bluffBase}" /></td>
+				<td id="bluffEnhance" th:if="${editMode == true}"><input th:field="*{bluffEnhance}" th:placeholder="${character?.skillBook?.bluffEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
+			
+			<tr th:with="climbTotal = ${(character?.skillBook?.climbBase) + (character?.skillBook?.climbEnhance)}">
+				<td>Climb</td>
+				<td id="climbTotal" th:if="${editMode == false}"><span th:text="${climbTotal} + ' '"></span><span name="strMod"></span> (STR Mod)</td>
+				<td id="climbBase" th:if="${editMode == true}"><input th:field="*{climbBase}" th:placeholder="${character?.skillBook?.climbBase}" /></td>
+				<td id="climbEnhance" th:if="${editMode == true}"><input th:field="*{climbEnhance}" th:placeholder="${character?.skillBook?.climbEnhance}" /></td>
+				<td th:if="${editMode == true}">STR Mod = <span name="strMod"></span></td>
+			</tr>
+			
+			<tr th:with="diplomacyTotal = ${(character?.skillBook?.diplomacyBase) + (character?.skillBook?.diplomacyEnhance)}">
+				<td>Diplomacy</td>
+				<td id="diplomacyTotal" th:if="${editMode == false}"><span th:text="${diplomacyTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="diplomacyBase" th:if="${editMode == true}"><input th:field="*{diplomacyBase}" th:placeholder="${character?.skillBook?.diplomacyBase}" /></td>
+				<td id="diplomacyEnhance" th:if="${editMode == true}"><input th:field="*{diplomacyEnhance}" th:placeholder="${character?.skillBook?.diplomacyEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
+			
+			<tr th:with="disableDeviceTotal = ${(character?.skillBook?.disableDeviceBase) + (character?.skillBook?.disableDeviceEnhance)}">
+				<td>Disable Device</td>
+				<td id="disableDeviceTotal" th:if="${editMode == false}"><span th:text="${disableDeviceTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="disableDeviceBase" th:if="${editMode == true}"><input th:field="*{disableDeviceBase}" th:placeholder="${character?.skillBook?.disableDeviceBase}" /></td>
+				<td id="disableDeviceEnhance" th:if="${editMode == true}"><input th:field="*{disableDeviceEnhance}" th:placeholder="${character?.skillBook?.disableDeviceEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="disguiseTotal = ${(character?.skillBook?.disguiseBase) + (character?.skillBook?.disguiseEnhance)}">
+				<td>Disguise</td>
+				<td id="disguiseTotal" th:if="${editMode == false}"><span th:text="${disguiseTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="disguiseBase" th:if="${editMode == true}"><input th:field="*{disguiseBase}" th:placeholder="${character?.skillBook?.disguiseBase}" /></td>
+				<td id="disguiseEnhance" th:if="${editMode == true}"><input th:field="*{disguiseEnhance}" th:placeholder="${character?.skillBook?.disguiseEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
+			
+			<tr th:with="escapeArtistTotal = ${(character?.skillBook?.escapeArtistBase) + (character?.skillBook?.escapeArtistEnhance)}">
+				<td>Escape Artist</td>
+				<td id="escapeArtistTotal" th:if="${editMode == false}"><span th:text="${escapeArtistTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="escapeArtistBase" th:if="${editMode == true}"><input th:field="*{escapeArtistBase}" th:placeholder="${character?.skillBook?.escapeArtistBase}" /></td>
+				<td id="escapeArtistEnhance" th:if="${editMode == true}"><input th:field="*{escapeArtistEnhance}" th:placeholder="${character?.skillBook?.escapeArtistEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="flyTotal = ${(character?.skillBook?.flyBase) + (character?.skillBook?.flyEnhance)}">
+				<td>Fly</td>
+				<td id="flyTotal" th:if="${editMode == false}"><span th:text="${flyTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="flyBase" th:if="${editMode == true}"><input th:field="*{flyBase}" th:placeholder="${character?.skillBook?.flyBase}" /></td>
+				<td id="flyEnhance" th:if="${editMode == true}"><input th:field="*{flyEnhance}" th:placeholder="${character?.skillBook?.flyEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="handleAnimalTotal = ${(character?.skillBook?.handleAnimalBase) + (character?.skillBook?.handleAnimalEnhance)}">
+				<td>Handle Animal</td>
+				<td id="handleAnimalTotal" th:if="${editMode == false}"><span th:text="${handleAnimalTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="handleAnimalBase" th:if="${editMode == true}"><input th:field="*{handleAnimalBase}" th:placeholder="${character?.skillBook?.handleAnimalBase}" /></td>
+				<td id="handleAnimalEnhance" th:if="${editMode == true}"><input th:field="*{handleAnimalEnhance}" th:placeholder="${character?.skillBook?.handleAnimalEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
+			
+			<tr th:with="healTotal = ${(character?.skillBook?.healBase) + (character?.skillBook?.healEnhance)}">
+				<td>Heal</td>
+				<td id="healTotal" th:if="${editMode == false}"><span th:text="${healTotal} + ' '"></span><span name="wisMod"></span> (WIS Mod)</td>
+				<td id="healBase" th:if="${editMode == true}"><input th:field="*{healBase}" th:placeholder="${character?.skillBook?.healBase}" /></td>
+				<td id="healEnhance" th:if="${editMode == true}"><input th:field="*{healEnhance}" th:placeholder="${character?.skillBook?.healEnhance}" /></td>
+				<td th:if="${editMode == true}">WIS Mod = <span name="wisMod"></span></td>
+			</tr>
+			
+			<tr th:with="intimidateTotal = ${(character?.skillBook?.intimidateBase) + (character?.skillBook?.intimidateEnhance)}">
+				<td>Intimidate</td>
+				<td id="intimidateTotal" th:if="${editMode == false}"><span th:text="${intimidateTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="intimidateBase" th:if="${editMode == true}"><input th:field="*{intimidateBase}" th:placeholder="${character?.skillBook?.intimidateBase}" /></td>
+				<td id="intimidateEnhance" th:if="${editMode == true}"><input th:field="*{intimidateEnhance}" th:placeholder="${character?.skillBook?.intimidateEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
+			
+			<tr th:with="linguisticsTotal = ${(character?.skillBook?.linguisticsBase) + (character?.skillBook?.linguisticsEnhance)}">
+				<td>Linguistics</td>
+				<td id="linguisticsTotal" th:if="${editMode == false}"><span th:text="${linguisticsTotal} + ' '"></span><span name="intMod"></span> (INT Mod)</td>
+				<td id="linguisticsBase" th:if="${editMode == true}"><input th:field="*{linguisticsBase}" th:placeholder="${character?.skillBook?.linguisticsBase}" /></td>
+				<td id="linguisticsEnhance" th:if="${editMode == true}"><input th:field="*{linguisticsEnhance}" th:placeholder="${character?.skillBook?.linguisticsEnhance}" /></td>
+				<td th:if="${editMode == true}">INT Mod = <span name="intMod"></span></td>
+			</tr>
+			
+			<tr th:with="perceptionTotal = ${(character?.skillBook?.perceptionBase) + (character?.skillBook?.perceptionEnhance)}">
+				<td>Perception</td>
+				<td id="perceptionTotal" th:if="${editMode == false}"><span th:text="${perceptionTotal} + ' '"></span><span name="wisMod"></span> (WIS Mod)</td>
+				<td id="perceptionBase" th:if="${editMode == true}"><input th:field="*{perceptionBase}" th:placeholder="${character?.skillBook?.perceptionBase}" /></td>
+				<td id="perceptionEnhance" th:if="${editMode == true}"><input th:field="*{perceptionEnhance}" th:placeholder="${character?.skillBook?.perceptionEnhance}" /></td>
+				<td th:if="${editMode == true}">WIS Mod = <span name="wisMod"></span></td>
+			</tr>
+			
+			<tr th:with="performTotal = ${(character?.skillBook?.performBase) + (character?.skillBook?.performEnhance)}">
+				<td>Perform</td>
+				<td id="performTotal" th:if="${editMode == false}"><span th:text="${performTotal} + ' '"></span><span name="wisMod"></span> (WIS Mod)</td>
+				<td id="performBase" th:if="${editMode == true}"><input th:field="*{performBase}" th:placeholder="${character?.skillBook?.performBase}" /></td>
+				<td id="performEnhance" th:if="${editMode == true}"><input th:field="*{performEnhance}" th:placeholder="${character?.skillBook?.performEnhance}" /></td>
+				<td th:if="${editMode == true}">WIS Mod = <span name="wisMod"></span></td>
+			</tr>
+			
+			<tr th:with="rideTotal = ${(character?.skillBook?.rideBase) + (character?.skillBook?.rideEnhance)}">
+				<td>Ride</td>
+				<td id="rideTotal" th:if="${editMode == false}"><span th:text="${rideTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="rideBase" th:if="${editMode == true}"><input th:field="*{rideBase}" th:placeholder="${character?.skillBook?.rideBase}" /></td>
+				<td id="rideEnhance" th:if="${editMode == true}"><input th:field="*{rideEnhance}" th:placeholder="${character?.skillBook?.rideEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="senseMotiveTotal = ${(character?.skillBook?.senseMotiveBase) + (character?.skillBook?.senseMotiveEnhance)}">
+				<td>Sense Motive</td>
+				<td id="senseMotiveTotal" th:if="${editMode == false}"><span th:text="${senseMotiveTotal} + ' '"></span><span name="wisMod"></span> (WIS Mod)</td>
+				<td id="senseMotiveBase" th:if="${editMode == true}"><input th:field="*{senseMotiveBase}" th:placeholder="${character?.skillBook?.senseMotiveBase}" /></td>
+				<td id="senseMotiveEnhance" th:if="${editMode == true}"><input th:field="*{senseMotiveEnhance}" th:placeholder="${character?.skillBook?.senseMotiveEnhance}" /></td>
+				<td th:if="${editMode == true}">WIS Mod = <span name="wisMod"></span></td>
+			</tr>
+			
+			<tr th:with="sleightOfHandTotal = ${(character?.skillBook?.sleightOfHandBase) + (character?.skillBook?.sleightOfHandEnhance)}">
+				<td>Sleight Of Hand</td>
+				<td id="sleightOfHandTotal" th:if="${editMode == false}"><span th:text="${sleightOfHandTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="sleightOfHandBase" th:if="${editMode == true}"><input th:field="*{sleightOfHandBase}" th:placeholder="${character?.skillBook?.sleightOfHandBase}" /></td>
+				<td id="sleightOfHandEnhance" th:if="${editMode == true}"><input th:field="*{sleightOfHandEnhance}" th:placeholder="${character?.skillBook?.sleightOfHandEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="spellcraftTotal = ${(character?.skillBook?.spellcraftBase) + (character?.skillBook?.spellcraftEnhance)}">
+				<td>Spellcraft</td>
+				<td id="spellcraftTotal" th:if="${editMode == false}"><span th:text="${spellcraftTotal} + ' '"></span><span name="intMod"></span> (INT Mod)</td>
+				<td id="spellcraftBase" th:if="${editMode == true}"><input th:field="*{spellcraftBase}" th:placeholder="${character?.skillBook?.spellcraftBase}" /></td>
+				<td id="spellcraftEnhance" th:if="${editMode == true}"><input th:field="*{spellcraftEnhance}" th:placeholder="${character?.skillBook?.spellcraftEnhance}" /></td>
+				<td th:if="${editMode == true}">INT Mod = <span name="intMod"></span></td>
+			</tr>
+			
+			<tr th:with="stealthTotal = ${(character?.skillBook?.stealthBase) + (character?.skillBook?.stealthEnhance)}">
+				<td>Stealth</td>
+				<td id="stealthTotal" th:if="${editMode == false}"><span th:text="${stealthTotal} + ' '"></span><span name="dexMod"></span> (DEX Mod)</td>
+				<td id="stealthBase" th:if="${editMode == true}"><input th:field="*{stealthBase}" th:placeholder="${character?.skillBook?.stealthBase}" /></td>
+				<td id="stealthEnhance" th:if="${editMode == true}"><input th:field="*{stealthEnhance}" th:placeholder="${character?.skillBook?.stealthEnhance}" /></td>
+				<td th:if="${editMode == true}">DEX Mod = <span name="dexMod"></span></td>
+			</tr>
+			
+			<tr th:with="survivalTotal = ${(character?.skillBook?.survivalBase) + (character?.skillBook?.survivalEnhance)}">
+				<td>Survival</td>
+				<td id="survivalTotal" th:if="${editMode == false}"><span th:text="${survivalTotal} + ' '"></span><span name="wisMod"></span> (WIS Mod)</td>
+				<td id="survivalBase" th:if="${editMode == true}"><input th:field="*{survivalBase}" th:placeholder="${character?.skillBook?.survivalBase}" /></td>
+				<td id="survivalEnhance" th:if="${editMode == true}"><input th:field="*{survivalEnhance}" th:placeholder="${character?.skillBook?.survivalEnhance}" /></td>
+				<td th:if="${editMode == true}">WIS Mod = <span name="wisMod"></span></td>
+			</tr>
+			
+			<tr th:with="swimTotal = ${(character?.skillBook?.swimBase) + (character?.skillBook?.swimEnhance)}">
+				<td>Swim</td>
+				<td id="swimTotal" th:if="${editMode == false}"><span th:text="${swimTotal} + ' '"></span><span name="strMod"></span> (STR Mod)</td>
+				<td id="swimBase" th:if="${editMode == true}"><input th:field="*{swimBase}" th:placeholder="${character?.skillBook?.swimBase}" /></td>
+				<td id="swimEnhance" th:if="${editMode == true}"><input th:field="*{swimEnhance}" th:placeholder="${character?.skillBook?.swimEnhance}" /></td>
+				<td th:if="${editMode == true}">STR Mod = <span name="strMod"></span></td>
+			</tr>
+			
+			<tr th:with="useMagicDeviceTotal = ${(character?.skillBook?.useMagicDeviceBase) + (character?.skillBook?.useMagicDeviceEnhance)}">
+				<td>Use Magic Device</td>
+				<td id="useMagicDeviceTotal" th:if="${editMode == false}"><span th:text="${useMagicDeviceTotal} + ' '"></span><span name="chaMod"></span> (CHA Mod)</td>
+				<td id="useMagicDeviceBase" th:if="${editMode == true}"><input th:field="*{useMagicDeviceBase}" th:placeholder="${character?.skillBook?.useMagicDeviceBase}" /></td>
+				<td id="useMagicDeviceEnhance" th:if="${editMode == true}"><input th:field="*{useMagicDeviceEnhance}" th:placeholder="${character?.skillBook?.useMagicDeviceEnhance}" /></td>
+				<td th:if="${editMode == true}">CHA Mod = <span name="chaMod"></span></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
